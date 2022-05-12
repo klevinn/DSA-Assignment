@@ -9,7 +9,7 @@ from slowsortfuncs import bogoSort
 
 #Extras to be done : Design (Color Codes)
 
-#Functions to be done : Heap Sort (O(n log n)), Tim Sort, Intra Sort, Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page
+#Functions to be done : Heap Sort (O(n log n)), Tim Sort, Intra Sort, Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
 
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible : Fibonnachi Search #CODES DONE JUST NOT IMPLEMENTED
