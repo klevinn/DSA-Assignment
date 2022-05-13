@@ -572,6 +572,259 @@ def countingSort(array, mode, rev):
 
     return output
 
+#Not implemented
+
+def shellSort(array, mode, rev):
+
+    n = len(array)
+
+    # Rearrange elements at each n/2, n/4, n/8, ... intervals
+    interval = n // 2
+    while interval > 0:
+        for i in range(interval, n):
+            temp = array[i]
+            j = i
+            if rev:
+                if mode == 1:
+                    while j >= interval and array[j - interval].get_name() > temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 2:
+                    while j >= interval and array[j - interval].get_packname() > temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 3:
+                    while j >= interval and array[j - interval].get_paxnum() > temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 4:
+                    while j >= interval and array[j - interval].get_packcost() > temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+            
+            else:
+                if mode == 1:
+                    while j >= interval and array[j - interval].get_name() < temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 2:
+                    while j >= interval and array[j - interval].get_packname() < temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 3:
+                    while j >= interval and array[j - interval].get_paxnum() < temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+                elif mode == 4:
+                    while j >= interval and array[j - interval].get_packcost() < temp:
+                        array[j] = array[j - interval]
+                        j -= interval
+
+            array[j] = temp
+        interval //= 2
+
+def gnomeSort(arr, mode , rev):
+    n = len(arr)
+    index = 0
+    while index < n:
+        if index == 0:
+            index += 1
+
+        if rev:
+            if mode == 1:
+                if arr[index].get_name() >= arr[index - 1].get_name():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 2:
+                if arr[index].get_packname() >= arr[index - 1].get_packname():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 3:
+                if arr[index].get_paxnum() >= arr[index - 1].get_paxnum():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 4:
+                if arr[index].get_packcost() >= arr[index - 1].get_packcost():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+        
+        else:
+            if mode == 1:
+                if arr[index].get_name() <= arr[index - 1].get_name():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 2:
+                if arr[index].get_packname() <= arr[index - 1].get_packname():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 3:
+                if arr[index].get_paxnum() <= arr[index - 1].get_paxnum():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif mode == 4:
+                if arr[index].get_packcost() <= arr[index - 1].get_packcost():
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            
+    return arr
+
+def combsort(arr, mode, rev):
+    gap = len(arr)
+    swaps = True
+    while gap > 1 or swaps:
+        gap = max(1, int(gap / 1.25))  # minimum gap is 1
+        swaps = False
+        for i in range(len(arr) - gap):
+            j = i+gap
+
+            if rev:
+                if mode == 1:
+                    if arr[i].get_name() > arr[j].get_name():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 2:
+                    if arr[i].get_packname() > arr[j].get_packname():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 3:
+                    if arr[i].get_paxnum() > arr[j].get_paxnum():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 4:
+                    if arr[i].get_packcost() > arr[j].get_packcost():
+                        arr[i], arr[j] = arr[j], arr[i]   
+            else:
+                if mode == 1:
+                    if arr[i].get_name() < arr[j].get_name():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 2:
+                    if arr[i].get_packname() < arr[j].get_packname():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 3:
+                    if arr[i].get_paxnum() < arr[j].get_paxnum():
+                        arr[i], arr[j] = arr[j], arr[i]
+                elif mode == 4:
+                    if arr[i].get_packcost() < arr[j].get_packcost():
+                        arr[i], arr[j] = arr[j], arr[i]
+
+            swaps = True
+
+def cocktail_shaker_sort(nums, mode, rev):
+    for i in range(len(nums)-1, 0, -1):
+        is_swapped = False
+        
+        if rev:
+            if mode == 1:
+                for j in range(i, 0, -1):
+                    if nums[j].get_name() < nums[j-1].get_name():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_name() > nums[j+1].get_name():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 2:
+                for j in range(i, 0, -1):
+                    if nums[j].get_packname() < nums[j-1].get_packname():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_packname() > nums[j+1].get_packname():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 3:
+                for j in range(i, 0, -1):
+                    if nums[j].get_paxnum() < nums[j-1].get_paxnum():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_paxnum() > nums[j+1].get_paxnum():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 4:
+                for j in range(i, 0, -1):
+                    if nums[j].get_packcost() < nums[j-1].get_packcost():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_packcost() > nums[j+1].get_packcost():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+        
+        else:
+            if mode == 1:
+                for j in range(i, 0, -1):
+                    if nums[j].get_name() > nums[j-1].get_name():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_name() < nums[j+1].get_name():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 2:
+                for j in range(i, 0, -1):
+                    if nums[j].get_packname() > nums[j-1].get_packname():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_packname() < nums[j+1].get_packname():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 3:
+                for j in range(i, 0, -1):
+                    if nums[j].get_paxnum() > nums[j-1].get_paxnum():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_paxnum() < nums[j+1].get_paxnum():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+
+            elif mode == 4:
+                for j in range(i, 0, -1):
+                    if nums[j].get_packcost() > nums[j-1].get_packcost():
+                        nums[j], nums[j-1] = nums[j-1], nums[j]
+                        is_swapped = True
+
+                for j in range(i):
+                    if nums[j].get_packcost() < nums[j+1].get_packcost():
+                        nums[j], nums[j+1] = nums[j+1], nums[j]
+                        is_swapped = True
+        
+        if not is_swapped:
+            return nums
+
 #Searching Functions
 
 def linearSearch(arr, target, mode):

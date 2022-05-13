@@ -3,9 +3,9 @@ from tabulate import tabulate
 import time
 
 from records import Records
-from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input
+from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort
 
-from slowsortfuncs import bogoSort
+from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Extras to be done : Design (Color Codes)
 
