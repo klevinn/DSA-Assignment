@@ -9,7 +9,7 @@ from slowsortfuncs import bogoSort
 
 #Extras to be done : Design (Color Codes)
 
-#Functions to be done : Heap Sort (O(n log n)), Tim Sort, Intra Sort, Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
+#Functions to be done : Heap Sort (O(n log n)), Shell Sort, Gnome Sort, comb sort, cocktail shaker sort.  Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
 
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible : Fibonnachi Search #CODES DONE JUST NOT IMPLEMENTED
@@ -18,9 +18,9 @@ from slowsortfuncs import bogoSort
 
 #Maybe Functions : CubeSort O(n log n)
 
-#Fun Functions : Bogo Sort / Bozo Sort : o(infinity), slow sort, sleep sort, stalin sort,
+#Fun Functions : Bogo Sort / Bozo Sort : o(infinity), slow sort, sleep sort, stalin sort, bogo search
 
-#Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation)
+#Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick no extra marks involved)
 
 #Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search,
 
