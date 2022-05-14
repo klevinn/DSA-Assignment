@@ -84,7 +84,9 @@ def display_records_search(results):
 def menu(stage): 
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+
+    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
 
     submenu0 = ["Sort Records", "Search Records", "List Records"]
     submenu = ["Sort by Customer Name", "Sort by Package Name", "Sort by Number of Pax", "Sort by Cost Per Pax"]
@@ -94,31 +96,30 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", menu[0])
         print("2.", menu[1])
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
-        return {1:"\nDisplaying Records...\n", "X":"\nExitting Application...\n", 2:"\nRecords Settings...\n"}
+        return {1:"\nDisplaying Records...\n", "X":"\nExitting Application...\n", 2:"\nRecords Settings...\n", "EasterEgg":"\nDisplaying Easter Egg Sorts...\n"}
     
     elif stage == 1.1:
         print("\n========= Records Settings =========\n")
         print("1.", additional[0])
         print("2.", additional[1])
         print("3.", additional[2])
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
         return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nDeleting a Record...\n"}
-        pass
 
     elif stage == 2:
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[2:8]:
+        for i in menu[2:12]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSorting...\n"
 
             menunum += 1
         
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -127,13 +128,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[8:13]:
+        for i in menu[12:17]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSearching...\n"
 
             menunum += 1
         
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -142,13 +143,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[13:14]:
+        for i in menu[17]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nListing...\n"
 
             menunum += 1
         
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -171,7 +172,26 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[14])
+        print("X.", menu[18])
+        print("\n========================\n")
+
+        return logs
+
+    elif stage == 3.1:
+        logs = {"X":"\nExitting Application...\n"}
+        print("\n====== Sorting... ======\n")
+        menunum = 1
+        for i in submenu[2:]:
+            print("%d." %(menunum), i)
+            if menunum == 1:
+                logs[menunum] = "\nBy Number Of Pax...\n"
+            elif menunum == 2:
+                logs[menunum] = "\nBy Cost Per Pax...\n"
+            
+            menunum += 1
+
+        # print("B.", "Return to Main Records Page")
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -194,7 +214,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -204,9 +224,33 @@ def menu(stage):
         print("1.", submenu0[0])
         print("2.", submenu0[1])
         print("3.", submenu0[2])
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nExitting Application...\n"}
+
+    elif stage == 5.1:
+        print("\n========= Menu =========\n")
+        print("1.", submenu0[0])
+        print("2.", submenu0[1])
+        print("X.", menu[18])
+        print("\n========================\n")
+        return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", "X":"\nExitting Application...\n"}
+
+    #Special
+    elif stage == 6:
+        logs = {"X":"\nExitting Application...\n"}
+        print("\n========= Menu =========\n")
+        menunum = 1
+        for i in slowmenu[:3]:
+            print("%d." %(menunum) ,i)
+            logs[menunum] = "\nSorting...\n"
+
+            menunum += 1
+        
+        print("X.", menu[18])
+        print("\n========================\n")
+
+        return logs
 
     elif stage == "list":
         logs = {"X":"\nExitting Application...\n"}
@@ -218,7 +262,7 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -234,7 +278,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[14])
+        print("X.", menu[18])
         print("\n========================\n")
 
         return logs
@@ -572,8 +616,6 @@ def countingSort(array, mode, rev):
 
     return output
 
-#Not implemented
-
 def shellSort(array, mode, rev):
 
     n = len(array)
@@ -581,52 +623,53 @@ def shellSort(array, mode, rev):
     # Rearrange elements at each n/2, n/4, n/8, ... intervals
     interval = n // 2
     while interval > 0:
-        for i in range(interval, n):
+        for i in range(interval, n):          
             temp = array[i]
             j = i
-            if rev:
+            if rev == 1:
                 if mode == 1:
-                    while j >= interval and array[j - interval].get_name() > temp:
+                    while j >= interval and array[j - interval].get_name() > temp.get_name():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 2:
-                    while j >= interval and array[j - interval].get_packname() > temp:
+                    while j >= interval and array[j - interval].get_packname() > temp.get_packname():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 3:
-                    while j >= interval and array[j - interval].get_paxnum() > temp:
+                    while j >= interval and array[j - interval].get_paxnum() > temp.get_paxnum():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 4:
-                    while j >= interval and array[j - interval].get_packcost() > temp:
+                    while j >= interval and array[j - interval].get_packcost() > temp.get_packcost():
                         array[j] = array[j - interval]
                         j -= interval
             
             else:
                 if mode == 1:
-                    while j >= interval and array[j - interval].get_name() < temp:
+                    while j >= interval and array[j - interval].get_name() < temp.get_name():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 2:
-                    while j >= interval and array[j - interval].get_packname() < temp:
+                    while j >= interval and array[j - interval].get_packname() < temp.get_packname():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 3:
-                    while j >= interval and array[j - interval].get_paxnum() < temp:
+                    while j >= interval and array[j - interval].get_paxnum() < temp.get_paxnum():
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif mode == 4:
-                    while j >= interval and array[j - interval].get_packcost() < temp:
+                    while j >= interval and array[j - interval].get_packcost() < temp.get_packcost():
                         array[j] = array[j - interval]
                         j -= interval
 
             array[j] = temp
+
         interval //= 2
 
 def gnomeSort(arr, mode , rev):
@@ -636,7 +679,7 @@ def gnomeSort(arr, mode , rev):
         if index == 0:
             index += 1
 
-        if rev:
+        if rev == 1:
             if mode == 1:
                 if arr[index].get_name() >= arr[index - 1].get_name():
                     index += 1
@@ -661,7 +704,6 @@ def gnomeSort(arr, mode , rev):
                 else:
                     arr[index], arr[index-1] = arr[index-1], arr[index]
                     index -= 1
-        
         else:
             if mode == 1:
                 if arr[index].get_name() <= arr[index - 1].get_name():
@@ -699,40 +741,46 @@ def combsort(arr, mode, rev):
         for i in range(len(arr) - gap):
             j = i+gap
 
-            if rev:
+            if rev == 1:
                 if mode == 1:
                     if arr[i].get_name() > arr[j].get_name():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 2:
                     if arr[i].get_packname() > arr[j].get_packname():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 3:
                     if arr[i].get_paxnum() > arr[j].get_paxnum():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 4:
                     if arr[i].get_packcost() > arr[j].get_packcost():
                         arr[i], arr[j] = arr[j], arr[i]   
+                        swaps = True
             else:
                 if mode == 1:
                     if arr[i].get_name() < arr[j].get_name():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 2:
                     if arr[i].get_packname() < arr[j].get_packname():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 3:
                     if arr[i].get_paxnum() < arr[j].get_paxnum():
                         arr[i], arr[j] = arr[j], arr[i]
+                        swaps = True
                 elif mode == 4:
                     if arr[i].get_packcost() < arr[j].get_packcost():
                         arr[i], arr[j] = arr[j], arr[i]
-
-            swaps = True
+                        swaps = True
 
 def cocktail_shaker_sort(nums, mode, rev):
     for i in range(len(nums)-1, 0, -1):
         is_swapped = False
         
-        if rev:
+        if rev == 1:
             if mode == 1:
                 for j in range(i, 0, -1):
                     if nums[j].get_name() < nums[j-1].get_name():
@@ -1011,8 +1059,7 @@ def ExponentialSearch(arr, val, mode):
 
     return binarySearch( arr[:min(index, len(arr))], val, mode)
 
-#Not altered for implementation yet
-
+#Only single occurence // fix soon
 def FibonacciSearch(lys, val, mode):
     ind = {}
 #involves fibonacci sequence
@@ -1028,36 +1075,40 @@ def FibonacciSearch(lys, val, mode):
     while (fibM > 1):
         i = min(index + fibM_minus_2, (len(lys)-1))
         if mode == 1:
-            if (lys[i].get_name() < val):
+            if (lys[i].get_name().upper() < val.upper()):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
                 index = i
-            elif (lys[i].get_name() > val):
+            elif (lys[i].get_name().upper() > val.upper()):
                 fibM = fibM_minus_2
                 fibM_minus_1 = fibM_minus_1 - fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
-                return i
+                ind[i] = lys[i]
+                return ind
             
-            if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_name() == val):
-                return index+1
+            if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_name().upper() == val.upper()):
+                ind[index+1] = lys[index+1]
+                return ind
 
         if mode == 2:
-            if (lys[i].get_packname() < val):
+            if (lys[i].get_packname().upper() < val.upper()):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
                 index = i
-            elif (lys[i].get_packname() > val):
+            elif (lys[i].get_packname().upper() > val.upper()):
                 fibM = fibM_minus_2
                 fibM_minus_1 = fibM_minus_1 - fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
-                return i
+                ind[i] = lys[i]
+                return ind
                 
-            if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packname() == val):
-                return index+1;
+            if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packname().upper() == val.upper()):
+                ind[index+1] = lys[index+1]
+                return ind
 
         if mode == 3:
             if (lys[i].get_paxnum() < val):
@@ -1070,10 +1121,12 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_1 = fibM_minus_1 - fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
-                return i
+                ind[i] = lys[i]
+                return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_paxnum() == val):
-                return index+1;
+                ind[index+1] = lys[index+1]
+                return ind
 
         if mode == 4:
             if (lys[i].get_packcost() < val):
@@ -1086,14 +1139,13 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_1 = fibM_minus_1 - fibM_minus_2
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
-                return i
+                ind[i] = lys[i]
+                return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
-                return index+1;
+                ind[index+1] = lys[index+1]
+                return ind
             
-    return ind
-
-
 
 #Repeated Codes -- Simplified to Functions
 
@@ -1174,7 +1226,7 @@ def search(db, mode):
     elif choice < 3:
         if mode > 1:
             new = insertionSort(db,choice, 1)
-            print("\nJump Search Requires Sorting!\n")
+            print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
             print("\nSort Complete!\n")
 
@@ -1243,7 +1295,7 @@ def search(db, mode):
     else:
         if mode > 1:
             new = insertionSort(db,choice, 1)
-            print("\nBinary Search Requires Sorting!\n")
+            print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
             print("\nSort Complete!\n")
         keyword = question("Enter keyword: ", valid, "int")

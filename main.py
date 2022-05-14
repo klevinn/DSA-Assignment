@@ -39,16 +39,19 @@ def main():
                 if choice > 2:
                     print("Please enter either a valid option")
                 else:
-                    valid = 0
                     print(logs[choice])
+                    valid = 0
                     time.sleep(0.2)
 
             except:
-                if choice.upper() != "X":
-                    print("Please enter either 1 or X")
-                else:
+                if choice.upper() == "X":
                     print(logs[choice.upper()])
                     return
+                elif choice in logs:
+                    print(logs[choice])
+                    valid = 0
+                else:
+                    print("Please enter a valid option")
                 
 
         #Main records page
@@ -146,14 +149,74 @@ def main():
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
                     if asc == "X":
                         continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1)) #Remember to remove option for name and package name
                     if choice == "X":
                         continue
 
                     new = countingSort(db, choice, asc)
                     rewrite_pickles(new)
                     continue
-            
+                
+                #Shell Sort
+                elif choice == 7:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    if choice == "X":
+                        continue
+
+                    shellSort(db, choice, asc)
+                    rewrite_pickles(db)
+
+                    continue
+                
+                #Gnome Sort
+                elif choice == 8:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    if choice == "X":
+                        continue
+
+                    new = gnomeSort(db, choice, asc)
+                    rewrite_pickles(new)
+
+                    continue
+                
+                #Comb Sort
+                elif choice == 9:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    if choice == "X":
+                        continue
+
+                    combsort(db, choice, asc)
+                    rewrite_pickles(db)
+
+                    continue
+                
+                #Cocktail Shaker Sort
+                elif choice == 10:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    if choice == "X":
+                        continue
+
+                    new = cocktail_shaker_sort(db, choice, asc)
+                    rewrite_pickles(new)
+
+                    continue
+
             #Searching
             elif choice == 2:
                 
@@ -196,7 +259,7 @@ def main():
                     rez = search(db,choice)
                     if rez == '':
                         continue
-            
+                
             #Listing
             elif choice == 3:
 
@@ -447,9 +510,51 @@ def main():
                 continue
         
         #Hi cher
-        elif choice == "Easter Egg":
-            #The very slow sort menus
-            pass
+        elif choice == "EasterEgg":
+            display_records(db)
+
+            valid = 1
+            choice = inputValue("What would you like to do? ", valid, menu(5.1))
+
+
+            if choice == 1:
+                display_records(db)
+                valid = 1
+                choice = inputValue("What would you like to do? ", valid, menu(6))
+
+                #Bogo Sort
+                if choice == 1:
+                    valid = 1
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
+                    if choice == "X":
+                        continue
+                    try:
+                        bogoSort(db,choice)
+                    except (KeyboardInterrupt):
+                        print("Took too long to Sort. Welcome to O(Infinity)")
+                
+                elif choice == 2:
+                    valid = 1
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
+                    if choice == "X":
+                        continue
+                
+                    stalinSort(db, choice)
+                    display_records(db)
+                
+                elif choice == 3:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
+                    if choice == "X":
+                        continue
+                        
+                    slow_sort(db, 0 , len(db)-1, choice, asc)
+                    rewrite_pickles(db)
+
+
 
 if __name__ == "__main__":
     main()

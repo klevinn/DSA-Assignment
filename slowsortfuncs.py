@@ -28,8 +28,14 @@ def shuffle(arr):
         arr[i], arr[r] = arr[r], arr[i]
 
 def bogoSort(arr, mode):
+    i = 1
     while (is_sorted(arr, mode) == False):
         shuffle(arr)
+        print("Sort %d : Unsuccessful" %(i), end="\r")
+        i += 1
+    
+    print("Sort %d : Successful" %(i))
+
 
 def bogo_search(array, target, mode):
     try:
@@ -53,34 +59,56 @@ def bogo_search(array, target, mode):
         return -1  
 
 #Stalin Sort
-def stalinSort(arr):
-    return [x for max_val in arr[:1] for x in arr if x >= max_val for max_val in (x,)]
+def stalinSort(arr, mode):
+    #Need redo
+    pass
 
-def slow_sort(A, i, j):
-	
-	# Recursion break condition
-	if (i >= j):
-		return
-		
-	# Store the middle value
-	m = (i + j) // 2
-	
-	# Recursively call with the
-	# left half
-	slow_sort(A, i, m)
+def slow_sort(A, i, j, mode, rev):
+    #Recursion Break
+    if i >= j:
+        return
 
-	# Recursively call with the
-	# right half
-	slow_sort(A, m + 1, j)
+    #Store Middle Values
+    m = (i+j) // 2
 
-	# Swap if the first element is
-	# lower than second
-	if (A[j] < A[m]):
-		temp = A[m]
-		A[m] = A[j]
-		A[j] = temp
+    #Reecursively call left half and right halg
 
-	# Recursively call with the
-	# array excluding the maximum
-	# element
-	slow_sort(A, i, j - 1)
+    slow_sort(A, i, m, mode, rev)
+    slow_sort(A, m + 1, j, mode, rev)
+
+    if rev == 1:
+    #Swap first and second ele if First < than secon
+        if mode == 1:
+            if A[j].get_name() < A[m].get_name():
+                A[m] , A[j] = A[j], A[m]
+        
+        elif mode == 2:
+            if A[j].get_packname() < A[m].get_packname():
+                A[m] , A[j] = A[j], A[m]
+
+        elif mode == 3:
+            if A[j].get_paxnum() < A[m].get_paxnum():
+                A[m] , A[ j] = A[j], A[m]
+
+        elif mode == 4:
+            if A[j].get_packcost() < A[m].get_packcost():
+                A[m] , A[j] = A[j], A[m]
+    
+    else:
+        if mode == 1:
+            if A[j].get_name() > A[m].get_name():
+                A[m] , A[j] = A[j], A[m]
+        
+        elif mode == 2:
+            if A[j].get_packname() > A[m].get_packname():
+                A[m] , A[j] = A[j], A[m]
+
+        elif mode == 3:
+            if A[j].get_paxnum() > A[m].get_paxnum():
+                A[m] , A[j] = A[j], A[m]
+
+        elif mode == 4:
+            if A[j].get_packcost() > A[m].get_packcost():
+                A[m] , A[j] = A[j], A[m]
+    
+    slow_sort(A, i, j-1, mode, rev)
