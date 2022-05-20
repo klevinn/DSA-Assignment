@@ -1,3 +1,6 @@
+# from functions import open_pickles
+# db = open_pickles()
+
 class Node:
     def __init__(self, key, mode):
         self.left = None #Left subtree
@@ -42,3 +45,42 @@ def minValueNode(node):
         current = current.left
 
     return current
+
+#Searching Algorithm
+def search(root, val, mode):
+    if mode == 1:
+        val = val.get_paxnum()
+    else:
+        val = val.get_packcost()
+
+    if root == None:
+        return None
+    elif root.key == val:
+        return val
+    elif val < root.key:
+        return search(root.left, val, mode)
+    elif val > root.key:
+        return search(root.right, val, mode)
+
+
+def BSTCreate(db, mode):
+    for i in range(len(db)):
+        if i == 0:
+            tree = Node(db[i], mode)
+        else:
+            tree = insert(tree, db[i], mode)
+    
+    return tree
+
+
+
+# def inorder(root):
+#     if root is not None:
+#         # Traverse left
+#         inorder(root.left)
+
+#         # Traverse root
+#         print(str(root.key) + "->", end=' ')
+
+#         # Traverse right
+#         inorder(root.right)
