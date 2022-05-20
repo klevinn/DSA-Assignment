@@ -267,6 +267,21 @@ def menu(stage):
 
         return logs
 
+    elif stage == "intsort":
+        logs = {"X":"\nExitting Application...\n"}
+        print("\n====== Sorting... ======\n")
+        submenu = ["Sort by Pax Number", "Sort by Cost Per Pax"]
+        menunum = 1
+        for i in submenu:
+            print("%d. %s" %(menunum, i))
+            logs[menunum] = "Sorting..."
+            menunum += 1
+        
+        print("X.", menu[18])
+        print("\n========================\n")
+
+        return logs
+
     elif stage == "asc":
         logs = {"X":"\nExitting Application...\n"}
         print("\n====== Sorting... ======\n")
@@ -564,9 +579,9 @@ def countingSort(array, mode, rev):
     output = [0] * size
     newarr = []
     for i in range(len(array)):
-        if mode == 3:
+        if mode == 1:
             newarr.append(array[i].get_paxnum())
-        elif mode == 4:
+        else:
             newarr.append(array[i].get_packcost())
     greatest = max(newarr)
 
@@ -575,9 +590,9 @@ def countingSort(array, mode, rev):
 
     # Store the count of each elements in count array
     for i in range(0, size):
-        if mode == 3:
+        if mode == 1:
             count[array[i].get_paxnum()] += 1
-        elif mode == 4:
+        else:
             count[array[i].get_packcost()] += 1
     
 
@@ -593,10 +608,10 @@ def countingSort(array, mode, rev):
     #Ascending
     if rev == 1:
         while i >= 0:
-            if mode == 3:
+            if mode == 1:
                 output[count[array[i].get_paxnum()] - 1] = array[i]
                 count[array[i].get_paxnum()] -= 1
-            elif mode == 4:
+            else:
                 output[count[array[i].get_packcost()] - 1] = array[i]
                 count[array[i].get_packcost()] -= 1
 
@@ -605,10 +620,10 @@ def countingSort(array, mode, rev):
     else:
         #Descending
         while i >= 0:
-            if mode == 3:
+            if mode == 1:
                 output[-(count[array[i].get_paxnum()])] = array[i]
                 count[array[i].get_paxnum()] -= 1
-            elif mode == 4:
+            else:
                 output[-(count[array[i].get_packcost()])] = array[i]
                 count[array[i].get_packcost()] -= 1
             

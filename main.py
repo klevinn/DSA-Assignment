@@ -149,7 +149,7 @@ def main():
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
                     if asc == "X":
                         continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1)) #Remember to remove option for name and package name
+                    choice = inputValue("What would you like to sort by? ",valid, menu("intsort")) #Remember to remove option for name and package name
                     if choice == "X":
                         continue
 

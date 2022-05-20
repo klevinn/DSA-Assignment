@@ -2,14 +2,11 @@ class Node:
     def __init__(self, key, mode):
         self.left = None #Left subtree
         self.right = None #Right subtree
-        self.obj = key #Stored in Tree
+        a = lambda x: x.get_paxnum() if (mode == 1) \
+                        else x.get_packcost()
 
-        a = lambda x: x.get_name() if (mode == 1) \
-                                else x.get_packname() if (mode == 2) \
-                                                    else x.get_paxnum() if (mode == 3) \
-                                                                    else x.get_packcost()
-        
-        self.key = a
+        self.key = a(key) #Stored in Tree
+        self.elements = [key]
 
 
 # Insert a node
@@ -19,15 +16,29 @@ def insert(node, key, mode):
     if node is None:
         return Node(key, mode)
 
-    a = lambda x: x.get_name() if (mode == 1) \
-                            else x.get_packname() if (mode == 2) \
-                                                else x.get_paxnum() if (mode == 3) \
-                                                                else x.get_packcost()
+    if mode == 1:
+        a = key.get_paxnum()
+    else:
+        a = key.get_packcost()
 
     # Traverse to the right place and insert the node
-    if a < node.key:
-        node.left = insert(node.left, key)
+    if a == node.key:
+        node.elements.append(key)
+    elif a < node.key:
+        node.left = insert(node.left, key, mode)
     else:
-        node.right = insert(node.right, key)
+        node.right = insert(node.right, key, mode)
 
     return node
+
+
+# Find the inorder successor
+#the next smallest number 
+def minValueNode(node):
+    current = node
+
+    # Find the leftmost leaf
+    while(current.left is not None):
+        current = current.left
+
+    return current
