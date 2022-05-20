@@ -4,6 +4,8 @@ from records import Records
 import random #Bogo Sort
 import math #Jump Search
 
+from binarytree import BSTsearch
+
 #Initialising Data, Test Data
 name = ["Wei Ren", "Eden", "Chung Wai", "Jabriel", "Joshua", "Clarence", "Jason", "Calvin"]
 packs = {"Romance Package":300, "The Girls Getaway Package":500, "The Rest & Relaxation Package":325, "Staycation Package":250}
@@ -84,7 +86,7 @@ def display_records_search(results):
 def menu(stage): 
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
 
@@ -96,7 +98,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", menu[0])
         print("2.", menu[1])
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
         return {1:"\nDisplaying Records...\n", "X":"\nExitting Application...\n", 2:"\nRecords Settings...\n", "EasterEgg":"\nDisplaying Easter Egg Sorts...\n"}
     
@@ -105,7 +107,7 @@ def menu(stage):
         print("1.", additional[0])
         print("2.", additional[1])
         print("3.", additional[2])
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
         return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nDeleting a Record...\n"}
 
@@ -119,7 +121,7 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -128,13 +130,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[12:17]:
+        for i in menu[12:18]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSearching...\n"
 
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -143,13 +145,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[17]:
+        for i in menu[18]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nListing...\n"
 
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -172,7 +174,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -191,7 +193,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -214,7 +216,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -224,7 +226,7 @@ def menu(stage):
         print("1.", submenu0[0])
         print("2.", submenu0[1])
         print("3.", submenu0[2])
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -232,7 +234,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", submenu0[0])
         print("2.", submenu0[1])
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -247,7 +249,7 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -262,7 +264,7 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -277,7 +279,22 @@ def menu(stage):
             logs[menunum] = "Sorting..."
             menunum += 1
         
-        print("X.", menu[18])
+        print("X.", menu[19])
+        print("\n========================\n")
+
+        return logs
+    
+    elif stage == "intsearch":
+        logs = {"X":"\nExitting Application...\n"}
+        print("\n====== Sorting... ======\n")
+        submenu = ["Search by Pax Number", "Search by Cost Per Pax"]
+        menunum = 1
+        for i in submenu:
+            print("%d. %s" %(menunum, i))
+            logs[menunum] = "Searching..."
+            menunum += 1
+        
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -293,7 +310,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[18])
+        print("X.", menu[19])
         print("\n========================\n")
 
         return logs
@@ -1160,7 +1177,7 @@ def FibonacciSearch(lys, val, mode):
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
                 ind[index+1] = lys[index+1]
                 return ind
-            
+
 
 #Repeated Codes -- Simplified to Functions
 
@@ -1377,3 +1394,29 @@ def search(db, mode):
                     
     return 1
 
+def binarySearch(db, tree, mode):
+    valid = 1
+    choice = inputValue("Which category would you like to search in? ",valid, menu("intsearch"))
+    if choice == 'X':
+        return 1
+
+    keyword = question("Enter keyword: ", valid, "int")
+    results = BSTsearch(tree, keyword)
+
+    if len(results) != 0:
+        display_records_search(results)
+        if len(results) == 1:
+            valid = 1
+            update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
+            if update != '':
+                if mode == 1:
+                    db[list(results.keys())[0]].set_paxnum(update)
+                    rewrite_pickles(db)
+                else:
+                    db[list(results.keys())[0]].set_packcost(update)
+                    rewrite_pickles(db)
+
+    else:
+        print("\nNo Results Found\n")
+        print("Keywords need to be exact. Entered Keyword: %s" %(keyword))
+        print("\nReturning to main page...\n")

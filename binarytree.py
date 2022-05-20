@@ -47,20 +47,20 @@ def minValueNode(node):
     return current
 
 #Searching Algorithm
-def search(root, val, mode):
-    if mode == 1:
-        val = val.get_paxnum()
-    else:
-        val = val.get_packcost()
+def BSTsearch(root, val):
+    # if mode == 1:
+    #     val = val.get_paxnum()
+    # else:
+    #     val = val.get_packcost()
 
     if root == None:
         return None
     elif root.key == val:
-        return val
+        return root.elements
     elif val < root.key:
-        return search(root.left, val, mode)
+        return BSTsearch(root.left, val)
     elif val > root.key:
-        return search(root.right, val, mode)
+        return BSTsearch(root.right, val)
 
 
 def BSTCreate(db, mode):

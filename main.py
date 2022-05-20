@@ -5,6 +5,8 @@ import time
 from records import Records
 from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort
 
+from binarytree import BSTCreate
+
 from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Extras to be done : Design (Color Codes)
@@ -260,6 +262,9 @@ def main():
                     if rez == '':
                         continue
                 
+                #BST Code
+                elif choice == 6:
+                    pass
             #Listing
             elif choice == 3:
 
@@ -364,7 +369,7 @@ def main():
                             print("\nReturning to Main Page... \n")
 
                     continue
-        
+
         #Records Settings pahe
         elif choice == 2:
             
