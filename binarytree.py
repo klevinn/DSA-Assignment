@@ -68,8 +68,7 @@ def BSTsearch(root, val):
     elif val > root.key:
         return BSTsearch(root.right, val)
 
-
-
+#Tree creation
 def BSTCreate(db, mode):
     for i in range(len(db)):
         if i == 0:
@@ -79,19 +78,27 @@ def BSTCreate(db, mode):
     
     return tree
 
+#Inorder traversal, #inverse inorder for descending
+def treeSort(root, arr, inv):
+    if root is not None:
+        # Traverse left
+        if inv == 1:
+            treeSort(root.left, arr, inv)
+        else:
+            treeSort(root.right, arr, inv)
 
-# tree = BSTCreate(db, 1)
+        for i in root.elements:
+            arr.append(root.elements[i])
 
-# def inorder(root):
-#     if root is not None:
-#         # Traverse left
-#         inorder(root.left)
+        # Traverse right
+        if inv == 1:
+            treeSort(root.right, arr, inv)
+        else:
+            treeSort(root.left, arr, inv)
+    
+    return arr
 
-#         # Traverse root
-#         print(str(root.key) + "->", end=' ')
 
-#         # Traverse right
-#         inorder(root.right)
 
-# res = BSTsearch(tree, "Wei Ren")
-# print(res)
+# tree = BSTCreate(db, 3)
+# print(inorder(tree, [], 2))

@@ -5,7 +5,7 @@ import time
 from records import Records
 from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort
 
-from binarytree import BSTCreate
+from binarytree import BSTCreate, treeSort
 
 from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
@@ -210,7 +210,7 @@ def main():
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
                     if asc == "X":
                         continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) 
                     if choice == "X":
                         continue
 
@@ -218,6 +218,20 @@ def main():
                     rewrite_pickles(new)
 
                     continue
+                
+                #Tree Sort
+                elif choice == 11:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
+                    if choice == "X":
+                        continue
+                    
+                    tree = BSTCreate(db,choice)
+                    new = treeSort(tree,[], asc)
+                    rewrite_pickles(new)
 
             #Searching
             elif choice == 2:
@@ -267,6 +281,7 @@ def main():
                     rez = search(db,choice)
                     if rez == '':
                         continue
+            
             #Listing
             elif choice == 3:
 

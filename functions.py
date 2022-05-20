@@ -86,7 +86,7 @@ def display_records_search(results):
 def menu(stage): 
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" , "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
 
@@ -98,7 +98,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", menu[0])
         print("2.", menu[1])
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
         return {1:"\nDisplaying Records...\n", "X":"\nExitting Application...\n", 2:"\nRecords Settings...\n", "EasterEgg":"\nDisplaying Easter Egg Sorts...\n"}
     
@@ -107,7 +107,7 @@ def menu(stage):
         print("1.", additional[0])
         print("2.", additional[1])
         print("3.", additional[2])
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
         return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nDeleting a Record...\n"}
 
@@ -115,13 +115,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[2:12]:
+        for i in menu[2:13]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSorting...\n"
 
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -130,13 +130,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[12:18]:
+        for i in menu[13:19]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSearching...\n"
 
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -145,13 +145,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[18]:
+        for i in menu[19]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nListing...\n"
 
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -174,7 +174,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -193,7 +193,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -216,7 +216,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -226,7 +226,7 @@ def menu(stage):
         print("1.", submenu0[0])
         print("2.", submenu0[1])
         print("3.", submenu0[2])
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -234,7 +234,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", submenu0[0])
         print("2.", submenu0[1])
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -249,7 +249,7 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -264,7 +264,7 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -279,7 +279,7 @@ def menu(stage):
             logs[menunum] = "Sorting..."
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -294,7 +294,7 @@ def menu(stage):
             logs[menunum] = "Searching..."
             menunum += 1
         
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
@@ -310,7 +310,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[19])
+        print("X.", menu[20])
         print("\n========================\n")
 
         return logs
