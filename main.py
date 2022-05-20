@@ -264,7 +264,9 @@ def main():
                 
                 #BST Code
                 elif choice == 6:
-                    pass
+                    rez = search(db,choice)
+                    if rez == '':
+                        continue
             #Listing
             elif choice == 3:
 

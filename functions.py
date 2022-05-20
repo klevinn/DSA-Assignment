@@ -4,7 +4,7 @@ from records import Records
 import random #Bogo Sort
 import math #Jump Search
 
-from binarytree import BSTsearch
+from binarytree import BSTsearch, BSTCreate
 
 #Initialising Data, Test Data
 name = ["Wei Ren", "Eden", "Chung Wai", "Jabriel", "Joshua", "Clarence", "Jason", "Calvin"]
@@ -1256,7 +1256,7 @@ def search(db, mode):
     if choice == 'X':
         return 1
     elif choice < 3:
-        if mode > 1:
+        if mode > 1 and mode != 6:
             new = insertionSort(db,choice, 1)
             print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
@@ -1274,6 +1274,9 @@ def search(db, mode):
             results = FibonacciSearch(new,keyword,choice)
         elif mode == 5:
             results = ExponentialSearch(new,keyword,choice)
+        elif mode == 6:
+            tree = BSTCreate(db,choice)
+            results = BSTsearch(tree, keyword.upper())
 
         if len(results) != 0:
             
@@ -1284,14 +1287,14 @@ def search(db, mode):
                 update = question("What would you like to update the name to? (Leave blank if not wanted): ", valid, "str")
                 if len(update) != 0:
                     if choice == 1:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[0]].set_name(update)
                             rewrite_pickles(db)
                         else:
                             new[list(results.keys())[0]].set_name(update)
                             rewrite_pickles(new)                            
                     elif choice ==2:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[0]].set_packname(update)
                             rewrite_pickles(db)
                         else:
@@ -1306,14 +1309,14 @@ def search(db, mode):
                 update = question("What would you like to update the name to? (Leave blank if not wanted): ", valid, "str")
                 if len(update) != 0:
                     if choice == 1:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[num-1]].set_name(update)
                             rewrite_pickles(db)
                         else:
                             new[list(results.keys())[num-1]].set_name(update)
                             rewrite_pickles(new)
                     elif choice == 2:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[num-1]].set_packname(update)
                             rewrite_pickles(db)
                         else:
@@ -1325,7 +1328,7 @@ def search(db, mode):
             print("\nReturning to main page...\n")
 
     else:
-        if mode > 1:
+        if mode > 1 and mode != 6:
             new = insertionSort(db,choice, 1)
             print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
@@ -1342,6 +1345,9 @@ def search(db, mode):
             results = FibonacciSearch(new,keyword,choice)
         elif mode == 5:
             results = ExponentialSearch(new,keyword,choice)
+        elif mode == 6:
+            tree = BSTCreate(db,choice)
+            results = BSTsearch(tree, keyword)
 
         if len(results) != 0:
             
@@ -1352,14 +1358,14 @@ def search(db, mode):
                 update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
                 if update != '':
                     if choice == 3:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[0]].set_paxnum(update)
                             rewrite_pickles(db)
                         else:
                             new[list(results.keys())[0]].set_paxnum(update)
                             rewrite_pickles(new)
                     elif choice == 4:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[0]].set_packcost(update)
                             rewrite_pickles(db)
                         else:
@@ -1373,14 +1379,14 @@ def search(db, mode):
                 update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
                 if update != '':
                     if choice == 3:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[num-1]].set_paxnum(update)
                             rewrite_pickles(db)
                         else:
                             new[list(results.keys())[num-1]].set_paxnum(update)
                             rewrite_pickles(new)
                     elif choice == 4:
-                        if mode == 1:
+                        if mode == 1 or mode == 6:
                             db[list(results.keys())[num-1]].set_packcost(update)
                             rewrite_pickles(db)
                         else:
@@ -1394,29 +1400,3 @@ def search(db, mode):
                     
     return 1
 
-def binarySearch(db, tree, mode):
-    valid = 1
-    choice = inputValue("Which category would you like to search in? ",valid, menu("intsearch"))
-    if choice == 'X':
-        return 1
-
-    keyword = question("Enter keyword: ", valid, "int")
-    results = BSTsearch(tree, keyword)
-
-    if len(results) != 0:
-        display_records_search(results)
-        if len(results) == 1:
-            valid = 1
-            update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
-            if update != '':
-                if mode == 1:
-                    db[list(results.keys())[0]].set_paxnum(update)
-                    rewrite_pickles(db)
-                else:
-                    db[list(results.keys())[0]].set_packcost(update)
-                    rewrite_pickles(db)
-
-    else:
-        print("\nNo Results Found\n")
-        print("Keywords need to be exact. Entered Keyword: %s" %(keyword))
-        print("\nReturning to main page...\n")
