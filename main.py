@@ -11,7 +11,7 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Extras to be done : Design (Color Codes)
 
-#Functions to be done : Heap Sort (O(n log n)), Shell Sort, Gnome Sort, comb sort, cocktail shaker sort.  Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
+#Functions to be done : Heap Sort (O(n log n)),   Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
 
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible : Fibonnachi Search #CODES DONE JUST NOT IMPLEMENTED
@@ -24,7 +24,7 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick no extra marks involved)
 
-#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search,
+#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence)
 
 def main():
     choice = ""
@@ -531,7 +531,7 @@ def main():
 
                 continue
         
-        #Hi cher
+        #Inefficient Sorts
         elif choice == "EasterEgg":
             display_records(db)
 
@@ -576,6 +576,16 @@ def main():
                     slow_sort(db, 0 , len(db)-1, choice, asc)
                     rewrite_pickles(db)
 
+            elif choice == 2:
+                display_records(db)
+                valid = 1
+                choice = inputValue("What would you like to do? ", valid, menu(6.1))
+
+                if choice == 1:
+                    valid = 1
+                    choice = inputValue("Which Category would you like to search in? ",valid, menu(4))
+                    if choice == "X":
+                        continue
 
 
 if __name__ == "__main__":

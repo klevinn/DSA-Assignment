@@ -254,6 +254,20 @@ def menu(stage):
 
         return logs
 
+    elif stage == 6.1:
+        logs = {"X":"\nExitting Application...\n"}
+        print("\n========= Menu =========\n")
+        menunum = 1
+        print("%d." %(menunum), slowmenu[3])
+        logs[menunum] = "\nSearching...\n"
+
+
+        
+        print("X.", menu[20])
+        print("\n========================\n")
+
+        return logs
+
     elif stage == "list":
         logs = {"X":"\nExitting Application...\n"}
         print("\n====== Listing... ======\n")
