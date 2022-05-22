@@ -3,7 +3,7 @@ from tabulate import tabulate
 import time
 
 from records import Records
-from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort
+from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort, heapSort
 
 from binarytree import BSTCreate, treeSort
 
@@ -11,7 +11,7 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Extras to be done : Design (Color Codes)
 
-#Functions to be done : Heap Sort (O(n log n)),   Maybe 1 more search algo, Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search)
+#Functions to be done : Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search), Fix up UI
 
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible : Fibonnachi Search #CODES DONE JUST NOT IMPLEMENTED
@@ -24,7 +24,7 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick no extra marks involved)
 
-#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence)
+#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort
 
 def main():
     choice = ""
@@ -159,7 +159,7 @@ def main():
                     rewrite_pickles(new)
                     continue
                 
-                #Shell Sort
+                #Shell Sort O((n log n)^2)
                 elif choice == 7:
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
@@ -174,7 +174,7 @@ def main():
 
                     continue
                 
-                #Gnome Sort
+                #Gnome Sort O(n^2)
                 elif choice == 8:
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
@@ -189,7 +189,7 @@ def main():
 
                     continue
                 
-                #Comb Sort
+                #Comb Sort O(n^2)
                 elif choice == 9:
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
@@ -204,7 +204,7 @@ def main():
 
                     continue
                 
-                #Cocktail Shaker Sort
+                #Cocktail Shaker Sort O(n^2)
                 elif choice == 10:
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
@@ -219,7 +219,7 @@ def main():
 
                     continue
                 
-                #Tree Sort
+                #Tree Sort O(n^2)
                 elif choice == 11:
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
@@ -233,6 +233,23 @@ def main():
                     new = treeSort(tree,[], asc)
                     rewrite_pickles(new)
 
+                    continue
+                
+                #Heap Sort O(n log n)
+                elif choice == 12:
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if asc == "X":
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) 
+                    if choice == "X":
+                        continue
+
+                    heapSort(db, choice, asc)
+                    rewrite_pickles(db)
+
+                    continue
+
             #Searching
             elif choice == 2:
                 
@@ -241,42 +258,42 @@ def main():
                 valid = 1
                 choice = inputValue("What would you like to do? ", valid, menu(2.1))
 
-                #Linear Search Code
+                #Linear Search Code O(n)
                 if choice == 1:
                     
                     rez = search(db, choice)
                     if rez:
                         continue
                 
-                #Binary Search Code
+                #Binary Search Code O(log n)
                 elif choice == 2:
 
                     rez = search(db, choice)
                     if rez:
                         continue
                 
-                #Jump Search Code
+                #Jump Search Code O(root n)
                 elif choice == 3:
 
                     rez = search(db, choice)
                     if rez:
                         continue
                 
-                #Fibonacci Search Code (NOT DONE) 
+                #Fibonacci Search Code (NOT DONE) O(log n)
                 elif choice == 4:
 
                     rez = search(db,choice)
                     if rez == '':
                         continue
                 
-                #Exponential Search Code
+                #Exponential Search Code #O(log2 i)
                 elif choice == 5:
 
                     rez = search(db,choice)
                     if rez == '':
                         continue
                 
-                #BST Code
+                #BST Code O(log n)
                 elif choice == 6:
                     rez = search(db,choice)
                     if rez == '':
@@ -386,7 +403,10 @@ def main():
                             print("\nReturning to Main Page... \n")
 
                     continue
-
+                
+                #list using BST not done
+                elif choice == 2:
+                    pass
         #Records Settings pahe
         elif choice == 2:
             

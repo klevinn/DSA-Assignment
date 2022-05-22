@@ -84,9 +84,10 @@ def display_records_search(results):
 #Menu
 
 def menu(stage): 
+    #For menu
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" , "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
 
@@ -98,7 +99,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", menu[0])
         print("2.", menu[1])
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
         return {1:"\nDisplaying Records...\n", "X":"\nExitting Application...\n", 2:"\nRecords Settings...\n", "EasterEgg":"\nDisplaying Easter Egg Sorts...\n"}
     
@@ -107,7 +108,7 @@ def menu(stage):
         print("1.", additional[0])
         print("2.", additional[1])
         print("3.", additional[2])
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
         return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nDeleting a Record...\n"}
 
@@ -115,13 +116,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[2:13]:
+        for i in menu[2:14]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSorting...\n"
 
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -130,13 +131,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[13:19]:
+        for i in menu[14:20]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSearching...\n"
 
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -145,13 +146,13 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in menu[19]:
+        for i in menu[20]:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nListing...\n"
 
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -174,7 +175,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -193,7 +194,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -216,7 +217,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -226,7 +227,7 @@ def menu(stage):
         print("1.", submenu0[0])
         print("2.", submenu0[1])
         print("3.", submenu0[2])
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -234,7 +235,7 @@ def menu(stage):
         print("\n========= Menu =========\n")
         print("1.", submenu0[0])
         print("2.", submenu0[1])
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
         return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", "X":"\nExitting Application...\n"}
 
@@ -249,7 +250,7 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -263,7 +264,7 @@ def menu(stage):
 
 
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -278,7 +279,7 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -293,7 +294,7 @@ def menu(stage):
             logs[menunum] = "Sorting..."
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -308,7 +309,7 @@ def menu(stage):
             logs[menunum] = "Searching..."
             menunum += 1
         
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -324,7 +325,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[20])
+        print("X.", menu[21])
         print("\n========================\n")
 
         return logs
@@ -338,6 +339,7 @@ def addmenu():
 
 #Extra functions for sorting Functions
 
+#merge sort
 def mergeSortedList(left, right, mode, rev):
     leftInd = 0
     rightInd = 0
@@ -415,6 +417,7 @@ def mergeSortedList(left, right, mode, rev):
     result += right[rightInd:]
     return result
 
+#quick sort
 def partition(array, low, high, mode, rev):
     pivot = array[high] #last element is pivot value
     i = low - 1 # pointer for greater element
@@ -460,6 +463,88 @@ def partition(array, low, high, mode, rev):
 
     # return the position from where partition is done
     return i + 1
+
+#heap sort
+def heapify(arr, n, i, mode, rev):
+
+#Order of elements is the level order traversal of the tree
+
+#Build max heap by swapping the root with the node (higher node on top)
+
+    # Find largest among root and children
+    largest = i #greatest index placed into the heapify()
+
+    #since its a complete binary tree, where the order of elements in an array is the level order traversal of the tree. the left and right subtree of the root is always decided by a set formula
+    l = 2 * i + 1 #Left node of the root (i) 
+    r = 2 * i + 2 #right node of the root (i)
+
+    if rev == 1:
+        if mode == 1:
+        #checking if the element suppsoed to be in the left tree exists, if more than len means doesnt exist
+        #checking if the subtree node is greater, if greater the element number takes the largest
+            if l < n and arr[i].get_name() < arr[l].get_name():
+                largest = l
+
+            #checkign right element if exists, and checking if right element is greater than the left element if exists
+            if r < n and arr[largest].get_name() < arr[r].get_name():
+                largest = r
+
+        elif mode == 2:
+            if l < n and arr[i].get_packname() < arr[l].get_packname():
+                largest = l
+
+            if r < n and arr[largest].get_packname() < arr[r].get_packname():
+                largest = r
+        
+        elif mode == 3:
+            if l < n and arr[i].get_paxnum() < arr[l].get_paxnum():
+                largest = l
+
+            if r < n and arr[largest].get_paxnum() < arr[r].get_paxnum():
+                largest = r
+        
+        elif mode == 4:
+            if l < n and arr[i].get_packcost() < arr[l].get_packcost():
+                largest = l
+
+            if r < n and arr[largest].get_packcost() < arr[r].get_packcost():
+                largest = r
+    else:
+        if mode == 1:
+        #checking if the element suppsoed to be in the left tree exists, if more than len means doesnt exist
+        #checking if the subtree node is lesser, if lesser the element number takes the largest
+            if l < n and arr[i].get_name() > arr[l].get_name():
+                largest = l
+
+            #checkign right element if exists, and checking if right element is lesser than the left element if exists
+            if r < n and arr[largest].get_name() > arr[r].get_name():
+                largest = r
+
+        elif mode == 2:
+            if l < n and arr[i].get_packname() > arr[l].get_packname():
+                largest = l
+
+            if r < n and arr[largest].get_packname() > arr[r].get_packname():
+                largest = r
+        
+        elif mode == 3:
+            if l < n and arr[i].get_paxnum() > arr[l].get_paxnum():
+                largest = l
+
+            if r < n and arr[largest].get_paxnum() > arr[r].get_paxnum():
+                largest = r
+        
+        elif mode == 4:
+            if l < n and arr[i].get_packcost() > arr[l].get_packcost():
+                largest = l
+
+            if r < n and arr[largest].get_packcost() > arr[r].get_packcost():
+                largest = r
+
+    # If root is not largest, swap with largest and continue heapifying
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest,mode, rev) #to ensure that the nodes new position, is still the max heap
 
 #Sorting Functions
 
@@ -919,6 +1004,21 @@ def cocktail_shaker_sort(nums, mode, rev):
         if not is_swapped:
             return nums
 
+def heapSort(arr, mode, rev):
+    #complete binary tree
+    n = len(arr)
+
+    # Build max heap, its // 2 because any more would result in useless loops 
+    for i in range(n//2, -1, -1):
+        heapify(arr, n, i, mode, rev)
+
+    for i in range(n-1, 0, -1):
+        # Swap last element with first element (should be greatest due to maxheap)
+        arr[i], arr[0] = arr[0], arr[i]
+
+        # Heapify new root element then redo the whole process
+        heapify(arr, i, 0, mode, rev)
+
 #Searching Functions
 
 def linearSearch(arr, target, mode):
@@ -1191,7 +1291,6 @@ def FibonacciSearch(lys, val, mode):
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
                 ind[index+1] = lys[index+1]
                 return ind
-
 
 #Repeated Codes -- Simplified to Functions
 
