@@ -83,8 +83,8 @@ def main():
                     if choice == "X":
                         continue
 
-                    new = bubbleSort(db,choice, asc)
-                    rewrite_pickles(new)
+                    bubbleSort(db,choice, asc)
+                    rewrite_pickles(db)
 
                     continue
                 
@@ -98,8 +98,8 @@ def main():
                     if choice == "X":
                         continue
 
-                    new = selectionSort(db,choice, asc)
-                    rewrite_pickles(new)
+                    selectionSort(db,choice, asc)
+                    rewrite_pickles(db)
 
                     continue
                 
@@ -113,8 +113,8 @@ def main():
                     if choice == "X":
                         continue
 
-                    new = insertionSort(db,choice, asc)
-                    rewrite_pickles(new)
+                    insertionSort(db,choice, asc)
+                    rewrite_pickles(db)
                     continue
                 
                 #Merge Sort Code O(n log n)
@@ -151,7 +151,7 @@ def main():
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
                     if asc == "X":
                         continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu("intsort")) #Remember to remove option for name and package name
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
                     if choice == "X":
                         continue
 
@@ -184,8 +184,8 @@ def main():
                     if choice == "X":
                         continue
 
-                    new = gnomeSort(db, choice, asc)
-                    rewrite_pickles(new)
+                    gnomeSort(db, choice, asc)
+                    rewrite_pickles(db)
 
                     continue
                 
