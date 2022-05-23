@@ -18,7 +18,7 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 #Binary Search Tree
 
-#Maybe Functions : CubeSort O(n log n)
+#Maybe Functions : CubeSort O(n log n), Timsort, Intra Sort
 
 #Fun Functions : Bogo Sort / Bozo Sort : o(infinity), slow sort, sleep sort, stalin sort, bogo search
 
