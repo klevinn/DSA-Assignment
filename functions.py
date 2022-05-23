@@ -1267,6 +1267,23 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
                 ind[i] = lys[i]
+
+                j = i
+                original = lys[i]
+                while True:
+                    i += 1
+                    if lys[i].get_packname() == original.get_packname():
+                        ind[i] = lys[i]
+                    else:
+                        break
+                
+                while True:
+                    j -= 1
+                    if lys[j].get_packname() == original.get_packname():
+                        ind[j] = lys[j]
+                    else:
+                        break
+
                 return ind
                 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packname().upper() == val.upper()):
@@ -1285,6 +1302,23 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
                 ind[i] = lys[i]
+
+                j = i
+                original = lys[i]
+                while True:
+                    i += 1
+                    if lys[i].get_paxnum() == original.get_paxnum():
+                        ind[i] = lys[i]
+                    else:
+                        break
+                
+                while True:
+                    j -= 1
+                    if lys[j].get_paxnum() == original.get_paxnum():
+                        ind[j] = lys[j]
+                    else:
+                        break
+
                 return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_paxnum() == val):
@@ -1303,6 +1337,23 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
                 ind[i] = lys[i]
+
+                j = i
+                original = lys[i]
+                while True:
+                    i += 1
+                    if lys[i].get_packcost() == original.get_packcost():
+                        ind[i] = lys[i]
+                    else:
+                        break
+                
+                while True:
+                    j -= 1
+                    if lys[j].get_packcost() == original.get_packcost():
+                        ind[j] = lys[j]
+                    else:
+                        break
+
                 return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
