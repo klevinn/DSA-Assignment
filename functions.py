@@ -87,7 +87,7 @@ def menu(stage):
     #For menu
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record(Single Occurence)", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
 
@@ -1205,7 +1205,6 @@ def ExponentialSearch(arr, val, mode):
 
     return binarySearch( arr[:min(index, len(arr))], val, mode)
 
-#Only single occurence // fix soon
 def FibonacciSearch(lys, val, mode):
     ind = {}
 #involves fibonacci sequence
@@ -1359,6 +1358,8 @@ def FibonacciSearch(lys, val, mode):
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
                 ind[index+1] = lys[index+1]
                 return ind
+    
+    return ind
 
 #Repeated Codes -- Simplified to Functions
 
@@ -1389,7 +1390,7 @@ def question(question, valid, itype):
             if itype == "str":
                 x = input(question)
                 return x
-            elif itype == "int":
+            elif itype == "int" or itype == "int1":
                 x = int(input(question))
                 return x
         except:
@@ -1514,7 +1515,7 @@ def search(db, mode):
             print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
             print("\nSort Complete!\n")
-        keyword = question("Enter keyword: ", valid, "int")
+        keyword = question("Enter keyword: ", valid, "int1")
 
         if mode == 1:
             results = linearSearch(db,keyword,choice)
