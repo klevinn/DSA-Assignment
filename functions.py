@@ -1232,6 +1232,23 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
                 ind[i] = lys[i]
+                #Accomodate for duplicates
+                j = i
+                original = lys[i]
+                while True:
+                    i += 1
+                    if lys[i].get_name() == original.get_name():
+                        ind[i] = lys[i]
+                    else:
+                        break
+                
+                while True:
+                    j -= 1
+                    if lys[j].get_name() == original.get_name():
+                        ind[j] = lys[j]
+                    else:
+                        break
+                    
                 return ind
             
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_name().upper() == val.upper()):
