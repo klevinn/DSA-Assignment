@@ -3,11 +3,11 @@ from tabulate import tabulate
 import time
 
 from records import Records
-from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, bubbleSort, selectionSort, insertionSort, mergeSort, search, linearSearch, binarySearch,  inputValue, question, listing, quickSort, countingSort, update_input, shellSort, gnomeSort, combsort, cocktail_shaker_sort, heapSort
+from functions import display_records, get_packs_index, get_packs_cost, open_pickles, rewrite_pickles, menu, addmenu, insertionSort, search, linearSearch, binarySearch,  inputValue, listing, update_input, sorting
 
 from binarytree import BSTCreate, treeSort
 
-from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
+from slowsortfuncs import bogoSort, stalinSort, slow_sort
 
 #Extras to be done : Design (Color Codes)
 
@@ -28,17 +28,17 @@ from slowsortfuncs import bogoSort, bogo_search, stalinSort, slow_sort
 
 def main():
     choice = ""
-    while choice != "X":
+    while (choice != "X"):
         db = open_pickles()
         valid = 1
         print("Successful Running...")
 
-        while valid: #Validation for User Inputs
+        while (valid): #Validation for User Inputs
             logs = menu(1)
             choice = input("What would you like to do? ")
             try: 
                 choice = int(choice)
-                if choice > 2:
+                if (choice > 2):
                     print("Please enter either a valid option")
                 else:
                     print(logs[choice])
@@ -46,10 +46,10 @@ def main():
                     time.sleep(0.2)
 
             except:
-                if choice.upper() == "X":
+                if (choice.upper() == "X"):
                     print(logs[choice.upper()])
                     return
-                elif choice in logs:
+                elif (choice in logs):
                     print(logs[choice])
                     valid = 0
                 else:
@@ -57,7 +57,7 @@ def main():
                 
 
         #Main records page
-        if choice == 1:
+        if (choice == 1):
             #input pagination for Records
             #Hardcode table after done with sorting algos
             display_records(db)
@@ -66,7 +66,7 @@ def main():
             choice = inputValue("What would you like to do? ", valid, menu(5))
             
             #Sorting
-            if choice == 1:
+            if (choice == 1):
 
                 display_records(db)
 
@@ -74,179 +74,98 @@ def main():
                 choice = inputValue("What would you like to do? ", valid, menu(2))
 
                 #Bubble Sort Code O(n^2)
-                if choice == 1:
+                if (choice == 1):
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
 
-                    bubbleSort(db,choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Selection Sort Code O(n^2)
                 elif choice == 2:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
-
-                    selectionSort(db,choice, asc)
-                    rewrite_pickles(db)
+                    
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Insertion Sort Code O(n^2)
                 elif choice == 3:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
+                    
+                    sorting(db, valid, choice)
 
-                    insertionSort(db,choice, asc)
-                    rewrite_pickles(db)
                     continue
                 
                 #Merge Sort Code O(n log n)
                 elif choice == 4:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
 
-                    new = mergeSort(db,choice, asc)
-                    rewrite_pickles(new)
+                    sorting(db, valid, choice)
+
                     continue
                 
                 #Quick Sort Code O(n^2)
                 elif choice == 5:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
 
-                    quickSort(db, 0, len(db)-1, choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
+
                     continue
                 
                 #Counting Sort O(n+k)
                 elif choice == 6:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
-                    if choice == "X":
-                        continue
 
-                    new = countingSort(db, choice, asc)
-                    rewrite_pickles(new)
+                    sorting(db, valid, choice)
+
                     continue
                 
                 #Shell Sort O((n log n)^2)
                 elif choice == 7:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
-                    if choice == "X":
-                        continue
 
-                    shellSort(db, choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Gnome Sort O(n^2)
                 elif choice == 8:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
-                    if choice == "X":
-                        continue
 
-                    gnomeSort(db, choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Comb Sort O(n^2)
                 elif choice == 9:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) #Remember to remove option for name and package name
-                    if choice == "X":
-                        continue
 
-                    combsort(db, choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Cocktail Shaker Sort O(n^2)
                 elif choice == 10:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) 
-                    if choice == "X":
-                        continue
 
-                    new = cocktail_shaker_sort(db, choice, asc)
-                    rewrite_pickles(new)
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Tree Sort O(n^2)
                 elif choice == 11:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
-                    
-                    tree = BSTCreate(db,choice)
-                    new = treeSort(tree,[], asc)
-                    rewrite_pickles(new)
+
+                    sorting(db, valid, choice)
 
                     continue
                 
                 #Heap Sort O(n log n)
                 elif choice == 12:
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3)) 
-                    if choice == "X":
-                        continue
 
-                    heapSort(db, choice, asc)
-                    rewrite_pickles(db)
+                    sorting(db, valid, choice)
 
                     continue
 

@@ -5,7 +5,7 @@ import random #Bogo Sort
 import math #Jump Search
 
 #BST
-from binarytree import BSTsearch, BSTCreate
+from binarytree import BSTsearch, BSTCreate, treeSort
 
 #Initialising Data, Test Data
 name = ["Wei Ren", "Eden", "Chung Wai", "Jabriel", "Joshua", "Clarence", "Jason", "Calvin"]
@@ -1242,7 +1242,6 @@ def ExponentialSearch(arr, val, mode):
 
     return binarySearch( arr[:min(index, len(arr))], val, mode)
 
-#lazy do next time
 def FibonacciSearch(lys, val, mode):
     ind = {}
 #involves fibonacci sequence
@@ -1257,7 +1256,7 @@ def FibonacciSearch(lys, val, mode):
     index = -1;
     while (fibM > 1):
         i = min(index + fibM_minus_2, (len(lys)-1))
-        if mode == 1:
+        if (mode == 1):
             if (lys[i].get_name().upper() < val.upper()):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
@@ -1269,19 +1268,20 @@ def FibonacciSearch(lys, val, mode):
                 fibM_minus_2 = fibM - fibM_minus_1
             else :
                 ind[i] = lys[i]
-                #Accomodate for duplicates
+                #Accomodate for duplicates, though does not really follow the Fibonnachi Search Logic.
+                #It basically loops and checks the left and right elements because its a sorted list and when its no longer what we want it breaks
                 j = i
                 original = lys[i]
-                while True:
+                while (True):
                     i += 1
-                    if lys[i].get_name() == original.get_name():
+                    if (lys[i].get_name() == original.get_name()):
                         ind[i] = lys[i]
                     else:
                         break
                 
-                while True:
+                while (True):
                     j -= 1
-                    if lys[j].get_name() == original.get_name():
+                    if (lys[j].get_name() == original.get_name()):
                         ind[j] = lys[j]
                     else:
                         break
@@ -1292,7 +1292,7 @@ def FibonacciSearch(lys, val, mode):
                 ind[index+1] = lys[index+1]
                 return ind
 
-        if mode == 2:
+        if (mode == 2):
             if (lys[i].get_packname().upper() < val.upper()):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
@@ -1307,16 +1307,16 @@ def FibonacciSearch(lys, val, mode):
 
                 j = i
                 original = lys[i]
-                while True:
+                while (True):
                     i += 1
-                    if lys[i].get_packname() == original.get_packname():
+                    if (lys[i].get_packname() == original.get_packname()):
                         ind[i] = lys[i]
                     else:
                         break
                 
-                while True:
+                while (True):
                     j -= 1
-                    if lys[j].get_packname() == original.get_packname():
+                    if (lys[j].get_packname() == original.get_packname()):
                         ind[j] = lys[j]
                     else:
                         break
@@ -1327,7 +1327,7 @@ def FibonacciSearch(lys, val, mode):
                 ind[index+1] = lys[index+1]
                 return ind
 
-        if mode == 3:
+        if (mode == 3):
             if (lys[i].get_paxnum() < val):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
@@ -1342,16 +1342,16 @@ def FibonacciSearch(lys, val, mode):
 
                 j = i
                 original = lys[i]
-                while True:
+                while (True):
                     i += 1
-                    if lys[i].get_paxnum() == original.get_paxnum():
+                    if (lys[i].get_paxnum() == original.get_paxnum()):
                         ind[i] = lys[i]
                     else:
                         break
                 
                 while True:
                     j -= 1
-                    if lys[j].get_paxnum() == original.get_paxnum():
+                    if (lys[j].get_paxnum() == original.get_paxnum()):
                         ind[j] = lys[j]
                     else:
                         break
@@ -1362,7 +1362,7 @@ def FibonacciSearch(lys, val, mode):
                 ind[index+1] = lys[index+1]
                 return ind
 
-        if mode == 4:
+        if (mode == 4):
             if (lys[i].get_packcost() < val):
                 fibM = fibM_minus_1
                 fibM_minus_1 = fibM_minus_2
@@ -1377,14 +1377,14 @@ def FibonacciSearch(lys, val, mode):
 
                 j = i
                 original = lys[i]
-                while True:
+                while (True):
                     i += 1
                     if lys[i].get_packcost() == original.get_packcost():
                         ind[i] = lys[i]
                     else:
                         break
                 
-                while True:
+                while (True):
                     j -= 1
                     if lys[j].get_packcost() == original.get_packcost():
                         ind[j] = lys[j]
@@ -1622,3 +1622,42 @@ def search(db, mode):
                     
     return 1
 
+def sorting(db, valid, mode):
+    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+    if (asc == "X"):
+        return
+    if(mode == 6):
+        choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
+    else:
+        choice = inputValue("What would you like to sort by? ",valid, menu(3))
+    if (choice == "X"):
+        return
+
+    if (mode == 1):
+        bubbleSort(db,choice, asc)
+    elif (mode == 2):
+        selectionSort(db,choice,asc)
+    elif (mode == 3):
+        insertionSort(db,choice,asc)
+    elif (mode == 4):
+        db = mergeSort(db,choice, asc)
+    elif (mode == 5):
+        quickSort(db, 0, len(db)-1, choice, asc)
+    elif (mode == 6):
+        db = countingSort(db, choice, asc)
+    elif (mode == 7):
+        shellSort(db, choice, asc)
+    elif (mode == 8):
+        gnomeSort(db, choice, asc)
+    elif (mode == 9):
+        combsort(db, choice, asc)
+    elif (mode == 10):
+        db = cocktail_shaker_sort(db, choice, asc)
+    elif (mode == 11):
+        tree = BSTCreate(db,choice)
+        db = treeSort(tree,[], asc)
+    elif (mode == 12):
+        heapSort(db, choice, asc)
+
+
+    rewrite_pickles(db)
