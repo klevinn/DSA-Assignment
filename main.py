@@ -7,7 +7,7 @@ from functions import display_records, get_packs_index, get_packs_cost, open_pic
 
 from binarytree import BSTCreate, treeSort
 
-from slowsortfuncs import bogoSort, stalinSort, slow_sort, sleep_sort
+from slowsortfuncs import bogoSort, stalinSort, slow_sort, sleep_sort, gnomeSort, slow_sorting
 
 #Extras to be done : Design (Color Codes)
 
@@ -481,57 +481,40 @@ def main():
                 #Bogo Sort
                 if (choice == 1):
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if (asc == "X"):
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if (choice == "X"):
-                        continue
-                    try:
-                        bogoSort(db,choice, asc)
-                    except (KeyboardInterrupt):
-                        print("Took too long to Sort. Welcome to O(Infinity)")
+
+                    slow_sorting(db, valid, choice)
+
+                    continue
                 
                 #stalin Sort
                 elif (choice == 2):
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if (asc == "X"):
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if (choice == "X"):
-                        continue
-                    upd = update_input(valid, "This sort may remove elements from the list. Are you sure you want to do this? (Y/N)")
-                    if (upd == "X"):
-                        continue
-                
-                    arr = stalinSort(db, choice, asc)
-                    rewrite_pickles(arr)
+
+                    slow_sorting(db, valid, choice)
+
+                    continue
                 
                 #Slow sort
                 elif (choice == 3):
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if (asc == "X"):
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if (choice == "X"):
-                        continue
-                        
-                    slow_sort(db, 0 , len(db)-1, choice, asc)
-                    rewrite_pickles(db)
+
+                    slow_sorting(db, valid, choice)
+
+                    continue
 
                 elif (choice == 4):
                     valid = 1
-                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if (asc == "X"):
-                        continue
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
-                    if (choice == "X"):
-                        continue
 
-                    new = sleep_sort(db,choice,asc)
-                    rewrite_pickles(new)
+                    slow_sorting(db, valid, choice)
+
+                    continue
+
+                elif (choice == 5):
+                    valid = 1
+
+                    slow_sorting(db, valid, choice)
+
+                    continue
 
 if __name__ == "__main__":
     main()

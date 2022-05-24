@@ -100,10 +100,10 @@ def menu(stage):
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
     #Main Menu (The basic functions + advanced functions)
-    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
+    menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     #Exceptionally Slow sorts, for demonstration of Sorts NOT TO USE
-    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Sort using Sleep Sort"]
+    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Sort using Sleep Sort", "Sort using Gnome Sort"]
 
     #Submenu to group all the sort, search and list functions
     submenu0 = ["Sort Records", "Search Records", "List Records"]
@@ -571,6 +571,49 @@ def heapify(arr, n, i, mode, rev):
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(arr, n, largest,mode, rev) #to ensure that the nodes new position, is still the max heap
 
+#pancake sort
+# Reverses arr[0..i] */
+def flip(arr, i):
+    start = 0
+    while (start < i):
+        arr[start], arr[i] = arr[i], arr[start]
+        start += 1
+        i -= 1
+
+# Returns index of the maximum
+# element in arr
+def findMax(arr, n, mode, rev):
+    maxindex = 0
+    for i in range(0,n):
+        if (rev == 1):
+            if (mode == 1):
+                if (arr[i].get_name() > arr[maxindex].get_name()):
+                    maxindex = i
+            elif (mode == 2):
+                if (arr[i].get_packname() > arr[maxindex].get_packname()):
+                    maxindex = i
+            elif (mode == 3):
+                if (arr[i].get_paxnum() > arr[maxindex].get_paxnum()):
+                    maxindex = i
+            elif (mode == 4):
+                if (arr[i].get_packcost() > arr[maxindex].get_packcost()):
+                    maxindex = i
+        else:
+            if (mode == 1):
+                if (arr[i].get_name() < arr[maxindex].get_name()):
+                    maxindex = i
+            elif (mode == 2):
+                if (arr[i].get_packname() < arr[maxindex].get_packname()):
+                    maxindex = i
+            elif (mode == 3):
+                if (arr[i].get_paxnum() < arr[maxindex].get_paxnum()):
+                    maxindex = i
+            elif (mode == 4):
+                if (arr[i].get_packcost() < arr[maxindex].get_packcost()):
+                    maxindex = i
+    
+    return maxindex
+
 #Sorting Functions
 
 def bubbleSort(arr, mode, rev):
@@ -710,6 +753,7 @@ def quickSort(array, low, high, mode, rev):
         quickSort(array, low, pi - 1, mode, rev) #left side
         quickSort(array, pi + 1, high, mode, rev) #right side
 
+#better time complexity, though space complexity may be sacrificed when dealing with larger numbers
 def countingSort(array, mode, rev):
 
     #Counting Sort counts the number of occurences of each number
@@ -775,6 +819,7 @@ def countingSort(array, mode, rev):
 
     return output
 
+#not as many comparisons as using intervals, better time complexity than the first 3, where compares with all
 def shellSort(array, mode, rev):
 
     n = len(array)
@@ -832,65 +877,22 @@ def shellSort(array, mode, rev):
 
         interval //= 2
 
-#MAYBE CHANGE
-def gnomeSort(arr, mode , rev):
-    #improved insertion sort
-    n = len(arr)
-    index = 0
-    while (index < n):
-        if (index == 0):
-            index += 1
+def pancakeSort(arr, mode, rev):
+    size = len(arr)
+    while (size > 1):
+        #find index of the greatest value
+        maxind = findMax(arr,size, mode , rev)
+        
+        if (maxind != size-1):
+            #make the highest number the first index
+            #the flips second argument being the maxind meaning the list flipped would be [element, element, element with maxind]
+            flip(arr,maxind)
 
-        if (rev == 1):
-            if (mode == 1):
-                if (arr[index].get_name() >= arr[index - 1].get_name()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 2):
-                if (arr[index].get_packname() >= arr[index - 1].get_packname()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 3):
-                if (arr[index].get_paxnum() >= arr[index - 1].get_paxnum()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 4):
-                if (arr[index].get_packcost() >= arr[index - 1].get_packcost()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-        else:
-            if (mode == 1):
-                if (arr[index].get_name() <= arr[index - 1].get_name()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 2):
-                if (arr[index].get_packname() <= arr[index - 1].get_packname()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 3):
-                if (arr[index].get_paxnum() <= arr[index - 1].get_paxnum()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
-            elif (mode == 4):
-                if (arr[index].get_packcost() <= arr[index - 1].get_packcost()):
-                    index += 1
-                else:
-                    arr[index], arr[index-1] = arr[index-1], arr[index]
-                    index -= 1
+            #Then places the highest number at the end, by flipping the whole list
+            flip(arr,size-1)
+        
+        #minus 1 to not touch the last element of the list
+        size -= 1
 
 def combsort(arr, mode, rev):
     #optimised Shell sort?
@@ -1633,7 +1635,7 @@ def sorting(db, valid, mode):
     elif (mode == 7):
         shellSort(db, choice, asc)
     elif (mode == 8):
-        gnomeSort(db, choice, asc)
+        pancakeSort(db, choice, asc)
     elif (mode == 9):
         combsort(db, choice, asc)
     elif (mode == 10):

@@ -1,6 +1,7 @@
 import random
 from time import sleep
 from threading import Timer
+from functions import inputValue, menu, update_input, rewrite_pickles
 #BogoSort
 
 #To check if array is sorted or Not
@@ -182,3 +183,100 @@ def sleep_sort(arr, mode, rev):
         sleep(ind.get_packcost()+1)
     
     return result
+
+def gnomeSort(arr, mode , rev):
+    #improved insertion sort
+    n = len(arr)
+    index = 0
+    while (index < n):
+        if (index == 0):
+            index += 1
+
+        if (rev == 1):
+            if (mode == 1):
+                if (arr[index].get_name() >= arr[index - 1].get_name()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 2):
+                if (arr[index].get_packname() >= arr[index - 1].get_packname()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 3):
+                if (arr[index].get_paxnum() >= arr[index - 1].get_paxnum()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 4):
+                if (arr[index].get_packcost() >= arr[index - 1].get_packcost()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+        else:
+            if (mode == 1):
+                if (arr[index].get_name() <= arr[index - 1].get_name()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 2):
+                if (arr[index].get_packname() <= arr[index - 1].get_packname()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 3):
+                if (arr[index].get_paxnum() <= arr[index - 1].get_paxnum()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+            elif (mode == 4):
+                if (arr[index].get_packcost() <= arr[index - 1].get_packcost()):
+                    index += 1
+                else:
+                    arr[index], arr[index-1] = arr[index-1], arr[index]
+                    index -= 1
+
+def slow_sorting(db, valid, mode):
+    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+    if (asc == "X"):
+        return
+    if(mode == 4):
+        choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
+    else:
+        choice = inputValue("What would you like to sort by? ",valid, menu(3))
+    if (choice == "X"):
+        return
+
+    if (mode == 1):
+        try:
+            bogoSort(db,choice, asc)
+        except (KeyboardInterrupt):
+            print("Took too long to Sort. Welcome to O(Infinity)")
+
+    elif (mode == 2):
+        upd = update_input(valid, "This sort may remove elements from the list. Are you sure you want to do this? (Y/N)")
+        if (upd == "X"):
+            return
+    
+        db = stalinSort(db, choice, asc)
+
+    elif (mode == 3):
+
+        slow_sort(db, 0 , len(db)-1, choice, asc)
+
+    elif (mode == 4):
+
+        db = sleep_sort(db,choice,asc)
+
+    elif (mode == 5):
+
+        gnomeSort(db, choice, asc)
+    
+    rewrite_pickles(db)
