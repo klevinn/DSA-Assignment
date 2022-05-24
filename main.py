@@ -7,7 +7,7 @@ from functions import display_records, get_packs_index, get_packs_cost, open_pic
 
 from binarytree import BSTCreate, treeSort
 
-from slowsortfuncs import bogoSort, stalinSort, slow_sort
+from slowsortfuncs import bogoSort, stalinSort, slow_sort, sleep_sort
 
 #Extras to be done : Design (Color Codes)
 
@@ -16,15 +16,13 @@ from slowsortfuncs import bogoSort, stalinSort, slow_sort
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible :
 
-#Binary Search Tree
-
-#Maybe Functions : CubeSort O(n log n), Timsort, Intra Sort
+#Maybe Functions : CubeSort O(n log n)
 
 #Fun Functions : Bogo Sort / Bozo Sort : o(infinity), slow sort, sleep sort, stalin sort, bogo search
 
-#Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick no extra marks involved)
+#Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick / insertion no extra marks involved, probably have but not as much as new algoritms)
 
-#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort, Fibonnachi Search
+#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort, Fibonnachi Search, Binary Search Tree
 
 def main():
     choice = ""
@@ -82,7 +80,7 @@ def main():
                     continue
                 
                 #Selection Sort Code O(n^2)
-                elif choice == 2:
+                elif (choice == 2):
                     valid = 1
                     
                     sorting(db, valid, choice)
@@ -90,7 +88,7 @@ def main():
                     continue
                 
                 #Insertion Sort Code O(n^2)
-                elif choice == 3:
+                elif (choice == 3):
                     valid = 1
                     
                     sorting(db, valid, choice)
@@ -98,7 +96,7 @@ def main():
                     continue
                 
                 #Merge Sort Code O(n log n)
-                elif choice == 4:
+                elif (choice == 4):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -106,7 +104,7 @@ def main():
                     continue
                 
                 #Quick Sort Code O(n^2)
-                elif choice == 5:
+                elif (choice == 5):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -114,7 +112,7 @@ def main():
                     continue
                 
                 #Counting Sort O(n+k)
-                elif choice == 6:
+                elif (choice == 6):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -122,7 +120,7 @@ def main():
                     continue
                 
                 #Shell Sort O((n log n)^2)
-                elif choice == 7:
+                elif (choice == 7):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -130,7 +128,7 @@ def main():
                     continue
                 
                 #Gnome Sort O(n^2)
-                elif choice == 8:
+                elif (choice == 8):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -138,7 +136,7 @@ def main():
                     continue
                 
                 #Comb Sort O(n^2)
-                elif choice == 9:
+                elif (choice == 9):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -146,7 +144,7 @@ def main():
                     continue
                 
                 #Cocktail Shaker Sort O(n^2)
-                elif choice == 10:
+                elif (choice == 10):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -154,7 +152,7 @@ def main():
                     continue
                 
                 #Tree Sort O(n^2)
-                elif choice == 11:
+                elif (choice == 11):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -162,7 +160,7 @@ def main():
                     continue
                 
                 #Heap Sort O(n log n)
-                elif choice == 12:
+                elif (choice == 12):
                     valid = 1
 
                     sorting(db, valid, choice)
@@ -170,7 +168,7 @@ def main():
                     continue
 
             #Searching
-            elif choice == 2:
+            elif (choice == 2):
                 
                 display_records(db)
 
@@ -178,48 +176,48 @@ def main():
                 choice = inputValue("What would you like to do? ", valid, menu(2.1))
 
                 #Linear Search Code O(n)
-                if choice == 1:
+                if (choice == 1):
                     
                     rez = search(db, choice)
                     if rez:
                         continue
                 
                 #Binary Search Code O(log n)
-                elif choice == 2:
+                elif (choice == 2):
 
                     rez = search(db, choice)
                     if rez:
                         continue
                 
                 #Jump Search Code O(root n)
-                elif choice == 3:
+                elif (choice == 3):
 
                     rez = search(db, choice)
                     if rez:
                         continue
                 
-                #Fibonacci Search Code (NOT DONE) O(log n)
-                elif choice == 4:
+                #Fibonacci Search Code O(log n)
+                elif (choice == 4):
 
                     rez = search(db,choice)
                     if rez == '':
                         continue
                 
                 #Exponential Search Code #O(log2 i)
-                elif choice == 5:
+                elif (choice == 5):
 
                     rez = search(db,choice)
                     if rez == '':
                         continue
                 
                 #BST Code O(log n)
-                elif choice == 6:
+                elif (choice == 6):
                     rez = search(db,choice)
                     if rez == '':
                         continue
             
             #Listing
-            elif choice == 3:
+            elif (choice == 3):
 
                 display_records(db)
 
@@ -227,12 +225,12 @@ def main():
                 choice = inputValue("What would you like to do? ", valid, menu(2.2))
             
             #List Code (Using both Linear & Binary Search)
-                if choice == 1:
+                if (choice == 1):
                     valid = 1
                     choice = inputValue("What would you like to do? ", valid, menu("list"))
-                    if choice == "X":
+                    if (choice == "X"):
                         continue
-                    elif choice == 1:
+                    elif (choice == 1):
                         mode = 3
                         ranje = listing(valid)
                         new = insertionSort(db,mode,1)
@@ -243,11 +241,11 @@ def main():
                         for i in range(len(ranje)):
                             results = binarySearch(new,ranje[i],mode)
 
-                            if len(results) == 0 and i == 0: #To find nearest number -- Using Linear Search to retrieve the next nearest index
+                            if (len(results) == 0) and (i == 0): #To find nearest number -- Using Linear Search to retrieve the next nearest index
                                 results = linearSearch(new, ranje[i],'listNum1')
-                            elif len(results) == 0 and i == 1:
+                            elif (len(results) == 0) and (i == 1):
                                 results = linearSearch(new, ranje[i],'listNum2')
-                                if len(results) == 0:
+                                if (len(results) == 0):
                                     print("\n0 Results found!")
                                     print("Entered Range: %d-%d\n" %(ranje[0], ranje[1]))
                                     invalid = 1
@@ -255,11 +253,11 @@ def main():
                                 #Validate if results not present    
                             resultslist.append(results)
                         
-                        if not invalid:
+                        if (not invalid):
                             lowestInd = min(resultslist[0])
                             highestInd = max(resultslist[1]) #Never factor in that user can enter a value not present in table / Binary search might not be best idea
                             
-                            if highestInd > 0:
+                            if (highestInd > 0):
                                 highestInd += 1
 
                             headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
@@ -277,7 +275,7 @@ def main():
                             print("\nThere are %d results found! \n" %(len(data)))
                             print("\nReturning to Main Page... \n")
 
-                    elif choice == 2:
+                    elif (choice == 2):
                         mode = 4
                         ranje = listing(valid)
                         new = insertionSort(db,mode,1)
@@ -288,22 +286,22 @@ def main():
                         for i in range(len(ranje)):
                             results = binarySearch(new,ranje[i],mode)
 
-                            if len(results) == 0 and i == 0:
+                            if (len(results) == 0) and (i == 0):
                                 results = linearSearch(new, ranje[i],'listCost1')
-                            elif len(results) == 0 and i == 1:
+                            elif (len(results) == 0) and (i == 1):
                                 results = linearSearch(new, ranje[i],'listCost2')
-                                if len(results) == 0:
+                                if (len(results) == 0):
                                     print("\n0 Results found!")
                                     print("Entered Range: %d-%d\n" %(ranje[0], ranje[1]))
                                     invalid = 1
                             
                             resultslist.append(results)
                     
-                        if not invalid:
+                        if (not invalid):
                             lowestInd = min(resultslist[0])
                             highestInd = max(resultslist[1]) 
 
-                            if highestInd > 0:
+                            if (highestInd > 0):
                                 highestInd += 1
 
                             headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
@@ -322,22 +320,19 @@ def main():
                             print("\nReturning to Main Page... \n")
 
                     continue
-                
-                #list using BST not done
-                elif choice == 2:
-                    pass
+
         #Records Settings pahe
-        elif choice == 2:
+        elif (choice == 2):
             
             valid = 1
             choice = inputValue("What would you like to do? ", valid, menu(1.1))
 
             #Adding a Record
-            if choice == 1:
+            if (choice == 1):
                 valid = 1
                 obj = Records()
                 name = input("Name: ")
-                while valid:
+                while (valid):
                     addmenu()
                     package = input("\nChoose 1 of the packages: ")
                     try:
@@ -351,7 +346,7 @@ def main():
                 
                 package = get_packs_index(package)
 
-                while valid:
+                while (valid):
                     try:
                         paxnum = int(input("\nHow many people?: "))
                         break
@@ -370,16 +365,16 @@ def main():
                 continue
         
             #Update Record
-            elif choice == 2:
+            elif (choice == 2):
                 
                 display_records(db)
 
                 update = 0
                 valid = 1
-                while valid:
+                while (valid):
                     try:
                         num = int(input("Which record would you like to update? "))
-                        if num > len(db):
+                        if (num > len(db)):
                             print("Please enter an EXISTING record")
                         else:
                             break
@@ -391,20 +386,20 @@ def main():
                 #Name Update
                 print("Name : %s" %(new.get_name()))
                 upd = update_input(valid, "Would you like to update the name?(Y/N) ")
-                if upd == "Y":
+                if (upd == "Y"):
                     name = input("Enter the new name of this record: ")
                     new.set_name(name)
 
                 #Package Name Update
                 print("Package Name : %s" %(new.get_packname()))
                 upd = update_input(valid, "Would you like to update the Package Name?(Y/N) ")
-                if upd == "Y":
-                    while valid:
+                if (upd == "Y"):
+                    while (valid):
                         addmenu()
                         package = input("\nChoose 1 of the packages: ")
                         try:
                             package = int(package)
-                            if package > 4 or package < 1:
+                            if (package > 4) or (package < 1):
                                 print("Please enter a valid option")
                             else:
                                 break
@@ -418,8 +413,8 @@ def main():
                 #Pax Number Update
                 print("Pax Number : %d" %(new.get_paxnum()))
                 upd = update_input(valid, "Would you like to update the Pax Number?(Y/N) ")
-                if upd == "Y":
-                    while valid:
+                if (upd == "Y"):
+                    while (valid):
                         try:
                             paxnum = int(input("\nHow many people?: "))
                             update = 1
@@ -430,7 +425,7 @@ def main():
                     new.set_paxnum(paxnum)
 
                 #Cost Per Pax Update
-                if update:
+                if (update):
                     packcost = get_packs_cost(package, new.get_paxnum())
                     print("\n== There has been an update that affects the Cost per pax ==\n")
                     print("New Cost Per Pax : %.2f" %(packcost))
@@ -446,15 +441,15 @@ def main():
                 continue
 
             #Delete Certain Record
-            elif choice == 3:
+            elif (choice == 3):
 
                 display_records(db)
 
                 valid = 1
-                while valid:
+                while (valid):
                     try:
                         num = int(input("Which record would you like to delete? "))
-                        if num > len(db):
+                        if (num > len(db)):
                             print("Please enter an EXISTING record")
                         else:
                             break
@@ -462,7 +457,7 @@ def main():
                         print("Please enter a valid number")
 
                 upd = update_input(valid, "Are you sure?(Y/N) ")
-                if upd == "Y":
+                if (upd == "Y"):
                     db.pop(num-1)
                     rewrite_pickles(db)
                 else:
@@ -471,49 +466,72 @@ def main():
                 continue
         
         #Inefficient Sorts
-        elif choice == "EasterEgg":
+        elif (choice == "EasterEgg"):
             display_records(db)
 
             valid = 1
             choice = inputValue("What would you like to do? ", valid, menu(5.1))
 
 
-            if choice == 1:
+            if (choice == 1):
                 display_records(db)
                 valid = 1
                 choice = inputValue("What would you like to do? ", valid, menu(6))
 
                 #Bogo Sort
-                if choice == 1:
+                if (choice == 1):
                     valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if (asc == "X"):
+                        continue
                     choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
+                    if (choice == "X"):
                         continue
                     try:
-                        bogoSort(db,choice)
+                        bogoSort(db,choice, asc)
                     except (KeyboardInterrupt):
                         print("Took too long to Sort. Welcome to O(Infinity)")
                 
-                elif choice == 2:
-                    valid = 1
-                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
-                        continue
-                
-                    stalinSort(db, choice)
-                    display_records(db)
-                
-                elif choice == 3:
+                #stalin Sort
+                elif (choice == 2):
                     valid = 1
                     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
-                    if asc == "X":
+                    if (asc == "X"):
                         continue
                     choice = inputValue("What would you like to sort by? ",valid, menu(3))
-                    if choice == "X":
+                    if (choice == "X"):
+                        continue
+                    upd = update_input(valid, "This sort may remove elements from the list. Are you sure you want to do this? (Y/N)")
+                    if (upd == "X"):
+                        continue
+                
+                    arr = stalinSort(db, choice, asc)
+                    rewrite_pickles(arr)
+                
+                #Slow sort
+                elif (choice == 3):
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if (asc == "X"):
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3))
+                    if (choice == "X"):
                         continue
                         
                     slow_sort(db, 0 , len(db)-1, choice, asc)
                     rewrite_pickles(db)
+
+                elif (choice == 4):
+                    valid = 1
+                    asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
+                    if (asc == "X"):
+                        continue
+                    choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
+                    if (choice == "X"):
+                        continue
+
+                    new = sleep_sort(db,choice,asc)
+                    rewrite_pickles(new)
 
 if __name__ == "__main__":
     main()

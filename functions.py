@@ -103,7 +103,7 @@ def menu(stage):
     menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     #Exceptionally Slow sorts, for demonstration of Sorts NOT TO USE
-    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort"]
+    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Sort using Sleep Sort"]
 
     #Submenu to group all the sort, search and list functions
     submenu0 = ["Sort Records", "Search Records", "List Records"]
@@ -261,10 +261,9 @@ def menu(stage):
     elif (stage == 5.1):
         print("\n========= Menu =========\n")
         print("1.", submenu0[0])
-        print("2.", submenu0[1])
         print("X.", menu[21])
         print("\n========================\n")
-        return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", "X":"\nExitting Application...\n"}
+        return {1:"\nDisplaying Sorting Records Options...\n", "X":"\nExitting Application...\n"}
 
     #Special : Displaying of the ineffective sort options
     elif (stage == 6):
@@ -1229,16 +1228,17 @@ def ExponentialSearch(arr, val, mode):
 
 def FibonacciSearch(lys, val, mode):
     ind = {}
-#involves fibonacci sequence
+#involves fibonacci sequence, the 3rd number is the sum of the 1st and second
 # uses fibonacci numbers to determine the block it searches
-    fibM_minus_2 = 0
-    fibM_minus_1 = 1
-    fibM = fibM_minus_1 + fibM_minus_2
+# similar to binary search == divide and concur, but not equal split arrays and uses the +, - which is less costly on the cpu
+    fibM_minus_2 = 0 #(fibo(0))
+    fibM_minus_1 = 1 #(fibo(1))
+    fibM = fibM_minus_1 + fibM_minus_2 #(fibo(2))
     while (fibM < len(lys)): #finding the smallest fib number that is greater than or equal to the list
-        fibM_minus_2 = fibM_minus_1
-        fibM_minus_1 = fibM
-        fibM = fibM_minus_1 + fibM_minus_2
-    index = -1;
+        fibM_minus_2 = fibM_minus_1 #(next fibo number)
+        fibM_minus_1 = fibM #(fibo number)
+        fibM = fibM_minus_1 + fibM_minus_2 #(next fibo number)
+    index = -1
     while (fibM > 1):
         i = min(index + fibM_minus_2, (len(lys)-1))
         if (mode == 1):
