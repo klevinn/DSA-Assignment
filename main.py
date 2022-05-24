@@ -515,17 +515,5 @@ def main():
                     slow_sort(db, 0 , len(db)-1, choice, asc)
                     rewrite_pickles(db)
 
-            elif choice == 2:
-                display_records(db)
-                valid = 1
-                choice = inputValue("What would you like to do? ", valid, menu(6.1))
-
-                if choice == 1:
-                    valid = 1
-                    choice = inputValue("Which Category would you like to search in? ",valid, menu(4))
-                    if choice == "X":
-                        continue
-
-
 if __name__ == "__main__":
     main()

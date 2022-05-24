@@ -36,28 +36,6 @@ def bogoSort(arr, mode):
     
     print("Sort %d : Successful" %(i))
 
-
-# def bogo_search(array, target, mode):
-#     try:
-#         x = len(array) - 1
-#         i = 0
-
-#         if (mode == 1):
-#             while (array[i].get_name().upper() != target.upper()):
-#                 i = random.randint(0, x)
-#         elif (mode == 2):
-#             while (array[i].get_packname().upper() != target.upper()):
-#                 i = random.randint(0, x)
-#         elif (mode == 3):
-#             while (array[i] != target):
-#                 i = random.randint(0, x)
-#         elif (mode == 4):
-#             while (array[i] != target):
-#                 i = random.randint(0, x)
-#         return i
-#     except (KeyboardInterrupt):
-#         return -1  
-
 #Stalin Sort
 def stalinSort(arr, mode):
     #Need redo

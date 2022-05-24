@@ -103,7 +103,7 @@ def menu(stage):
     menu = ["Display all records", "Records Settings", "Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Gnome Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record", "List records range from $X to $Y. e.g $100-200", "Exit Application" ]
 
     #Exceptionally Slow sorts, for demonstration of Sorts NOT TO USE
-    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort", "Search record using Bogo Search"]
+    slowmenu = ["Sort using Bogo Sort", "Sort using Stalin Sort", "Sort using Slow Sort"]
 
     #Submenu to group all the sort, search and list functions
     submenu0 = ["Sort Records", "Search Records", "List Records"]
@@ -271,26 +271,11 @@ def menu(stage):
         logs = {"X":"\nExitting Application...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
-        for i in slowmenu[:3]:
+        for i in slowmenu:
             print("%d." %(menunum) ,i)
             logs[menunum] = "\nSorting...\n"
 
             menunum += 1
-        
-        print("X.", menu[21])
-        print("\n========================\n")
-
-        return logs
-
-    #Special : Displaying of the ineffective search options : might delete as bogo_search not really a thing
-    elif (stage == 6.1):
-        logs = {"X":"\nExitting Application...\n"}
-        print("\n========= Menu =========\n")
-        menunum = 1
-        print("%d." %(menunum), slowmenu[3])
-        logs[menunum] = "\nSearching...\n"
-
-
         
         print("X.", menu[21])
         print("\n========================\n")
