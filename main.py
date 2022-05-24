@@ -11,7 +11,7 @@ from slowsortfuncs import bogoSort, stalinSort, slow_sort, sleep_sort, gnomeSort
 
 #Extras to be done : Design (Color Codes)
 
-#Functions to be done : Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Validate supposed to be number only input can enter letters (pax num in search), Fix up UI
+#Functions to be done : Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Fix up UI
 
 #Search Funcs: https://stackabuse.com/search-algorithms-in-python/
 #Possible :
@@ -22,7 +22,7 @@ from slowsortfuncs import bogoSort, stalinSort, slow_sort, sleep_sort, gnomeSort
 
 #Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick / insertion no extra marks involved, probably have but not as much as new algoritms)
 
-#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort, Fibonnachi Search, Binary Search Tree
+#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort, Fibonnachi Search, Binary Search Tree, Pancake Sort
 
 def main():
     choice = ""

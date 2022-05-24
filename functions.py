@@ -1466,7 +1466,7 @@ def search(db, mode):
     #Choices 1 and 2 deal with String Inputs while 3 and 4 deal with numeric input
     elif (choice < 3):
         if (mode > 1) and (mode != 6): #Binary search tree is option 6, not needed sorting
-            new = insertionSort(db,choice, 1)
+            quickSort(db, 0, len(db)-1, choice, 1)
             print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
             print("\nSort Complete!\n")
@@ -1476,13 +1476,13 @@ def search(db, mode):
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
         elif (mode == 2):
-            results = binarySearch(new,keyword,choice)
+            results = binarySearch(db,keyword,choice)
         elif (mode == 3):
-            results = JumpSearch(new,keyword,choice)
+            results = JumpSearch(db,keyword,choice)
         elif (mode == 4):
-            results = FibonacciSearch(new,keyword,choice)
+            results = FibonacciSearch(db,keyword,choice)
         elif (mode == 5):
-            results = ExponentialSearch(new,keyword,choice)
+            results = ExponentialSearch(db,keyword,choice)
         elif (mode == 6):
             tree = BSTCreate(db,choice)
             results = BSTsearch(tree, keyword.upper())
@@ -1496,19 +1496,13 @@ def search(db, mode):
                 update = question("What would you like to update the name to? (Leave blank if not wanted): ", valid, "str")
                 if (len(update) != 0):
                     if (choice == 1):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[0]].set_name(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[0]].set_name(update)
-                            rewrite_pickles(new)                            
+                        db[list(results.keys())[0]].set_name(update)
+                        rewrite_pickles(db)
+                        
                     elif (choice ==2):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[0]].set_packname(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[0]].set_packname(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[0]].set_packname(update)
+                        rewrite_pickles(db)
+
 
             else:
                 valid = 1
@@ -1518,42 +1512,37 @@ def search(db, mode):
                 update = question("What would you like to update the name to? (Leave blank if not wanted): ", valid, "str")
                 if (len(update) != 0):
                     if (choice == 1):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[num-1]].set_name(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[num-1]].set_name(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[num-1]].set_name(update)
+                        rewrite_pickles(db)
+
                     elif (choice == 2):
-                        if(mode == 1) or (mode == 6):
-                            db[list(results.keys())[num-1]].set_packname(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[num-1]].set_packname(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[num-1]].set_packname(update)
+                        rewrite_pickles(db)
+
         else:
-            print("\nNo Results Found\n")
-            print("Keywords need to be exact. Entered Keyword: %s" %(keyword))
+            print("\n\033[31;1m No Results Found\n")
+            print("Keywords need to be exact. Entered Keyword: %s\033[0m" %(keyword))
             print("\nReturning to main page...\n")
 
     else:
         if (mode > 1) and (mode != 6):
-            new = insertionSort(db,choice, 1)
+            quickSort(db, 0, len(db)-1, choice, 1)
             print("\nThis Search Requires Sorting!\n")
             print("The Database will be sorted based on the category you searched by!")
             print("\nSort Complete!\n")
+
         keyword = question("Enter keyword: ", valid, "int1")
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
         elif (mode == 2):
-            results = binarySearch(new,keyword,choice)
+            results = binarySearch(db,keyword,choice)
         elif (mode == 3):
-            results = JumpSearch(new,keyword,choice)
+            results = JumpSearch(db,keyword,choice)
         elif (mode == 4):
-            results = FibonacciSearch(new,keyword,choice)
+            results = FibonacciSearch(db,keyword,choice)
         elif (mode == 5):
-            results = ExponentialSearch(new,keyword,choice)
+            results = ExponentialSearch(db,keyword,choice)
         elif (mode == 6):
             tree = BSTCreate(db,choice)
             results = BSTsearch(tree, keyword)
@@ -1567,19 +1556,13 @@ def search(db, mode):
                 update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
                 if (update != ''):
                     if (choice == 3):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[0]].set_paxnum(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[0]].set_paxnum(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[0]].set_paxnum(update)
+                        rewrite_pickles(db)
+
                     elif (choice == 4):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[0]].set_packcost(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[0]].set_packcost(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[0]].set_packcost(update)
+                        rewrite_pickles(db)
+
             else:
                 valid = 1
                 num = question("Who would you like to edit? (Use which row to indicate & Leave blank if not wanted): ", valid, "int")
@@ -1588,22 +1571,16 @@ def search(db, mode):
                 update = question("What would you like to update the number to? (Leave blank if not wanted): ", valid, "int")
                 if (update != ''):
                     if (choice == 3):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[num-1]].set_paxnum(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[num-1]].set_paxnum(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[num-1]].set_paxnum(update)
+                        rewrite_pickles(db)
+
                     elif (choice == 4):
-                        if (mode == 1) or (mode == 6):
-                            db[list(results.keys())[num-1]].set_packcost(update)
-                            rewrite_pickles(db)
-                        else:
-                            new[list(results.keys())[num-1]].set_packcost(update)
-                            rewrite_pickles(new)
+                        db[list(results.keys())[num-1]].set_packcost(update)
+                        rewrite_pickles(db)
+
         else:
-            print("\nNo Results Found\n")
-            print("Keywords need to be exact. Entered Keyword: %s" %(keyword))
+            print("\n\033[31;1m No Results Found\n")
+            print("Keywords need to be exact. Entered Keyword: %s\033[0m" %(keyword))
             print("\nReturning to main page...\n")
                     
                     
