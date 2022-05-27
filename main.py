@@ -65,147 +65,114 @@ def main():
             
             #Sorting
             if (choice == 1):
-
                 display_records(db)
-
                 valid = 1
                 choice = inputValue("What would you like to do? ", valid, menu(2))
 
                 #Bubble Sort Code O(n^2)
                 if (choice == 1):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Selection Sort Code O(n^2)
                 elif (choice == 2):
                     valid = 1
-                    
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Insertion Sort Code O(n^2)
                 elif (choice == 3):
                     valid = 1
-                    
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Merge Sort Code O(n log n)
                 elif (choice == 4):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Quick Sort Code O(n^2)
                 elif (choice == 5):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Counting Sort O(n+k)
                 elif (choice == 6):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Shell Sort O((n log n)^2)
                 elif (choice == 7):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Gnome Sort O(n^2)
                 elif (choice == 8):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Comb Sort O(n^2)
                 elif (choice == 9):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Cocktail Shaker Sort O(n^2)
                 elif (choice == 10):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Tree Sort O(n^2)
                 elif (choice == 11):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
                 
                 #Heap Sort O(n log n)
                 elif (choice == 12):
                     valid = 1
-
                     sorting(db, valid, choice)
-
                     continue
 
             #Searching
             elif (choice == 2):
-                
                 display_records(db)
-
                 valid = 1
                 choice = inputValue("What would you like to do? ", valid, menu(2.1))
 
                 #Linear Search Code O(n)
                 if (choice == 1):
-                    
                     rez = search(db, choice)
                     if rez:
                         continue
                 
                 #Binary Search Code O(log n)
                 elif (choice == 2):
-
                     rez = search(db, choice)
                     if rez:
                         continue
                 
                 #Jump Search Code O(root n)
                 elif (choice == 3):
-
                     rez = search(db, choice)
                     if rez:
                         continue
                 
                 #Fibonacci Search Code O(log n)
                 elif (choice == 4):
-
                     rez = search(db,choice)
                     if rez == '':
                         continue
                 
                 #Exponential Search Code #O(log2 i)
                 elif (choice == 5):
-
                     rez = search(db,choice)
                     if rez == '':
                         continue
@@ -218,9 +185,7 @@ def main():
             
             #Listing
             elif (choice == 3):
-
                 display_records(db)
-
                 valid = 1
                 choice = inputValue("What would you like to do? ", valid, menu(2.2))
             
@@ -327,7 +292,6 @@ def main():
 
         #Records Settings pahe
         elif (choice == 2):
-            
             valid = 1
             choice = inputValue("What would you like to do? ", valid, menu(1.1))
 
@@ -370,7 +334,6 @@ def main():
         
             #Update Record
             elif (choice == 2):
-                
                 display_records(db)
 
                 update = 0
@@ -446,9 +409,7 @@ def main():
 
             #Delete Certain Record
             elif (choice == 3):
-
                 display_records(db)
-
                 valid = 1
                 while (valid):
                     try:
@@ -472,10 +433,8 @@ def main():
         #Inefficient Sorts
         elif (choice == "EasterEgg"):
             display_records(db)
-
             valid = 1
             choice = inputValue("What would you like to do? ", valid, menu(5.1))
-
 
             if (choice == 1):
                 display_records(db)
@@ -485,39 +444,29 @@ def main():
                 #Bogo Sort
                 if (choice == 1):
                     valid = 1
-
                     slow_sorting(db, valid, choice)
-
                     continue
                 
                 #stalin Sort
                 elif (choice == 2):
                     valid = 1
-
                     slow_sorting(db, valid, choice)
-
                     continue
                 
                 #Slow sort
                 elif (choice == 3):
                     valid = 1
-
                     slow_sorting(db, valid, choice)
-
                     continue
 
                 elif (choice == 4):
                     valid = 1
-
                     slow_sorting(db, valid, choice)
-
                     continue
 
                 elif (choice == 5):
                     valid = 1
-
                     slow_sorting(db, valid, choice)
-
                     continue
 
 if __name__ == "__main__":
