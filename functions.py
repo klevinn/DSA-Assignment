@@ -197,7 +197,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -217,7 +217,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -242,7 +242,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -276,7 +276,7 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -292,7 +292,7 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -308,7 +308,7 @@ def menu(stage):
             logs[menunum] = "Searching..."
             menunum += 1
         
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
@@ -325,7 +325,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X.", menu[21])
+        print("X. Return to Main Menu")
         print("\n========================\n")
 
         return logs
