@@ -233,18 +233,18 @@ def main():
                     elif (choice == 1):
                         mode = 3
                         ranje = listing(valid)
-                        new = insertionSort(db,mode,1)
+                        insertionSort(db,mode,1)
 
                         resultslist = []
                         invalid = 0
 
                         for i in range(len(ranje)):
-                            results = binarySearch(new,ranje[i],mode)
+                            results = binarySearch(db,ranje[i],mode)
 
                             if (len(results) == 0) and (i == 0): #To find nearest number -- Using Linear Search to retrieve the next nearest index
-                                results = linearSearch(new, ranje[i],'listNum1')
+                                results = linearSearch(db, ranje[i],'listNum1')
                             elif (len(results) == 0) and (i == 1):
-                                results = linearSearch(new, ranje[i],'listNum2')
+                                results = linearSearch(db, ranje[i],'listNum2')
                                 if (len(results) == 0):
                                     print("\n0 Results found!")
                                     print("Entered Range: %d-%d\n" %(ranje[0], ranje[1]))
@@ -255,14 +255,16 @@ def main():
                         
                         if (not invalid):
                             lowestInd = min(resultslist[0])
-                            highestInd = max(resultslist[1]) #Never factor in that user can enter a value not present in table / Binary search might not be best idea
+                            highestInd = max(resultslist[1])
                             
                             if (highestInd > 0):
                                 highestInd += 1
+                            elif (highestInd < 0):
+                                highestInd = None
 
                             headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
                             data = []
-                            for i in new[lowestInd:highestInd]:
+                            for i in db[lowestInd:highestInd]:
                                 var = []
                                 var.append(i.get_name())
                                 var.append(i.get_packname())
@@ -278,18 +280,18 @@ def main():
                     elif (choice == 2):
                         mode = 4
                         ranje = listing(valid)
-                        new = insertionSort(db,mode,1)
+                        insertionSort(db,mode,1)
 
                         resultslist = []
                         invalid = 0
 
                         for i in range(len(ranje)):
-                            results = binarySearch(new,ranje[i],mode)
+                            results = binarySearch(db,ranje[i],mode)
 
                             if (len(results) == 0) and (i == 0):
-                                results = linearSearch(new, ranje[i],'listCost1')
+                                results = linearSearch(db, ranje[i],'listCost1')
                             elif (len(results) == 0) and (i == 1):
-                                results = linearSearch(new, ranje[i],'listCost2')
+                                results = linearSearch(db, ranje[i],'listCost2')
                                 if (len(results) == 0):
                                     print("\n0 Results found!")
                                     print("Entered Range: %d-%d\n" %(ranje[0], ranje[1]))
@@ -303,10 +305,12 @@ def main():
 
                             if (highestInd > 0):
                                 highestInd += 1
+                            elif (highestInd < 0):
+                                highestInd = None
 
                             headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
                             data = []
-                            for i in new[lowestInd:highestInd]:
+                            for i in db[lowestInd:highestInd]:
                                 var = []
                                 var.append(i.get_name())
                                 var.append(i.get_packname())
