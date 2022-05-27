@@ -153,8 +153,6 @@ def slow_sort(A, i, j, mode, rev):
     slow_sort(A, i, j-1, mode, rev)
 
 
-
-
 def sleep_sort(arr, mode, rev):
     result = []
     def add1(x):
