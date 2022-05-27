@@ -41,7 +41,6 @@ def main():
                 else:
                     print(logs[choice])
                     valid = 0
-                    time.sleep(0.2)
 
             except:
                 if (choice.upper() == "X"):

@@ -1276,7 +1276,14 @@ def FibonacciSearch(lys, val, mode):
                 return ind
             
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_name().upper() == val.upper()):
-                ind[index+1] = lys[index+1]
+                index += 1
+                ind[index] = lys[index]
+                while (True):
+                    index += 1
+                    if (lys[index].get_name().upper() == val.upper()):
+                        ind[index] = lys[index]
+                    else:
+                        break
                 return ind
 
         if (mode == 2):
@@ -1311,7 +1318,14 @@ def FibonacciSearch(lys, val, mode):
                 return ind
                 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packname().upper() == val.upper()):
-                ind[index+1] = lys[index+1]
+                index += 1
+                ind[index] = lys[index]
+                while (True):
+                    index += 1
+                    if (lys[index].get_packname().upper() == val.upper()):
+                        ind[index] = lys[index]
+                    else:
+                        break
                 return ind
 
         if (mode == 3):
@@ -1336,7 +1350,7 @@ def FibonacciSearch(lys, val, mode):
                     else:
                         break
                 
-                while True:
+                while (True):
                     j -= 1
                     if (lys[j].get_paxnum() == original.get_paxnum()):
                         ind[j] = lys[j]
@@ -1346,7 +1360,14 @@ def FibonacciSearch(lys, val, mode):
                 return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_paxnum() == val):
-                ind[index+1] = lys[index+1]
+                index+=1
+                ind[index] = lys[index]
+                while (True):
+                    index += 1
+                    if (lys[index].get_paxnum() == val):
+                        ind[index] = lys[index]
+                    else:
+                        break
                 return ind
 
         if (mode == 4):
@@ -1381,7 +1402,14 @@ def FibonacciSearch(lys, val, mode):
                 return ind
 
             if(fibM_minus_1 and index < (len(lys)-1) and lys[index+1].get_packcost() == val):
-                ind[index+1] = lys[index+1]
+                index += 1
+                ind[index] = lys[index]
+                while (True):
+                    index += 1
+                    if lys[index].get_packcost() == val:
+                        ind[index] = lys[index]
+                    else:
+                        break
                 return ind
     
     return ind
