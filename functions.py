@@ -1462,7 +1462,7 @@ def search(db, mode):
     valid = 1
     choice = inputValue("Which category would you like to search in? ",valid, menu(4))
     if (choice == 'X'):
-        return choice
+        return 1
     #Choices 1 and 2 deal with String Inputs while 3 and 4 deal with numeric input
     elif (choice < 3):
         if (mode > 1) and (mode != 6): #Binary search tree is option 6, not needed sorting
@@ -1589,13 +1589,13 @@ def search(db, mode):
 def sorting(db, valid, mode):
     asc = inputValue("Ascending or Descending? ", valid, menu("asc"))
     if (asc == "X"):
-        return asc
+        return
     if(mode == 6):
         choice = inputValue("What would you like to sort by? ",valid, menu(3.1))
     else:
         choice = inputValue("What would you like to sort by? ",valid, menu(3))
     if (choice == "X"):
-        return choice
+        return
 
     if (mode == 1):
         bubbleSort(db,choice, asc)
