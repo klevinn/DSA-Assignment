@@ -1,5 +1,3 @@
-#modules
-from tabulate import tabulate
 
 from records import Records
 from general.functions import *
@@ -26,9 +24,9 @@ def main():
     choice = ''
     while (choice != 'X'):
         db = open_pickles()
+        logs = menu(1)
         while (True):
-            logs = menu(1)
-            choice = input("What would you like to do? ")
+            choice = input("\u001b[7m What would you like to do? \u001b[0m ")
             try: 
                 choice = int(choice)
                 if (choice not in logs):
@@ -47,34 +45,34 @@ def main():
         if (choice == 1):
             display_records(db)
             valid = 1
-            secChoice = inputValue("What would you like to do? ", valid, menu(5))
+            secChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(5))
 
             #To Sort
             if (secChoice == 1):
                 display_records(db)
-                tertChoice = inputValue("What would you like to do? ", valid, menu(2))
+                tertChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(2))
                 if tertChoice != 'X':
                     sorting(db, valid, tertChoice)
 
             #To Search
             if (secChoice == 2):
                 display_records(db)
-                tertChoice = inputValue("What would you like to do? ", valid, menu(2.1))
+                tertChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(2.1))
                 if tertChoice != 'X':
                     search(db,tertChoice)
 
             #To List
             if (secChoice == 3):
                 display_records(db)
-                tertChoice = inputValue("What would you like to do? ", valid, menu(2.2))
+                tertChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(2.2))
                 if (tertChoice == 1):
-                    listBy = inputValue("What would you like to do? ", valid, menu("list"))
+                    listBy = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu("list"))
                     if (listBy != "X"):
                         listingFunc(db,valid,listBy)
 
         elif (choice == 2):
             valid = 1
-            secChoice = inputValue("What would you like to do? ", valid, menu(1.1))
+            secChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(1.1))
 
             #Adding a Record
             if (secChoice == 1):
@@ -83,7 +81,7 @@ def main():
                 while (valid):
                     addmenu()
                     try:
-                        package = int(input("\nChoose 1 of the packages: "))
+                        package = int(input("\u001b[7m Choose One Of the Packages: \u001b[0m "))
                         if (1 > package) or (package > 4):
                             print("Please enter a valid option")
                         else:
@@ -95,7 +93,7 @@ def main():
 
                 while (valid):
                     try:
-                        paxnum = int(input("\nHow many people?: "))
+                        paxnum = int(input("\u001b[7m How many people: \u001b[0m "))
                         break
                     except:
                         print("Please enter a valid number")
@@ -116,7 +114,7 @@ def main():
                 valid = 1
                 while (valid):
                     try:
-                        num = int(input("Which record would you like to update? "))
+                        num = int(input("\u001b[7m Which record would you like to update? \u001b[0m "))
                         if (num > len(db)):
                             print("Please enter an EXISTING record")
                         else:
@@ -128,19 +126,19 @@ def main():
 
                 #Name Update
                 print("Name : %s" %(new.get_name()))
-                upd = update_input(valid, "Would you like to update the name?(Y/N) ")
+                upd = update_input(valid, "\u001b[7m Would you like to update the Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     name = input("Enter the new name of this record: ")
                     new.set_name(name)
 
                 #Package Name Update
                 print("Package Name : %s" %(new.get_packname()))
-                upd = update_input(valid, "Would you like to update the Package Name?(Y/N) ")
+                upd = update_input(valid, "\u001b[7m Would you like to update the Package Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
                         addmenu()
                         try:
-                            package = int(input("\nChoose 1 of the packages: "))
+                            package = int(input("\u001b[7m Choose one of the Packages: \u001b[0m "))
                             if (package > 4) or (package < 1):
                                 print("Please enter a valid option")
                             else:
@@ -154,11 +152,11 @@ def main():
 
                 #Pax Number Update
                 print("Pax Number : %d" %(new.get_paxnum()))
-                upd = update_input(valid, "Would you like to update the Pax Number?(Y/N) ")
+                upd = update_input(valid, "\u001b[7m Would you like to update the Pax Number?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
                         try:
-                            paxnum = int(input("\nHow many people?: "))
+                            paxnum = int(input("\u001b[7m How many people? \u001b[0m "))
                             break
                         except:
                             print("Please enter a valid number")
@@ -169,7 +167,7 @@ def main():
                 #Cost Per Pax Update
                 if (update):
                     packcost = get_packs_cost(package, new.get_paxnum())
-                    print("\n== There has been an update that affects the Cost per pax ==\n")
+                    print("== There has been an update that affects the Cost per pax ==")
                     print("New Cost Per Pax : %.2f" %(packcost))
                     new.set_packcost(packcost)
                 else:
@@ -186,7 +184,7 @@ def main():
                 valid = 1
                 while (valid):
                     try:
-                        num = int(input("Which record would you like to delete? "))
+                        num = int(input("\u001b[7m Which record would you like to update? \u001b[0m "))
                         if (num > len(db)):
                             print("Please enter an EXISTING record")
                         else:
@@ -194,7 +192,7 @@ def main():
                     except:
                         print("Please enter a valid number")
 
-                upd = update_input(valid, "Are you sure?(Y/N) ")
+                upd = update_input(valid, "\u001b[7m Are you sure?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     db.pop(num-1)
                     rewrite_pickles(db)
@@ -204,10 +202,10 @@ def main():
         elif (choice == "EasterEgg"):
             display_records(db)
             valid = 1
-            secChoice = inputValue("What would you like to do? ", valid, menu(5.1))
+            secChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(5.1))
             if (secChoice == 1):
                 display_records(db)
-                tertChoice = inputValue("What would you like to do? ", valid, menu(6))
+                tertChoice = inputValue("\u001b[7m What would you like to do? \u001b[0m ", valid, menu(6))
                 if tertChoice != 'X':
                     slow_sorting(db, valid, tertChoice)
 
