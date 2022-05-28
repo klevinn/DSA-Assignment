@@ -53,31 +53,23 @@ def main():
             if (secChoice == 1):
                 display_records(db)
                 tertChoice = inputValue("What would you like to do? ", valid, menu(2))
-                if tertChoice == 'X':
-                    break
-                else:
+                if tertChoice != 'X':
                     sorting(db, valid, tertChoice)
 
             #To Search
             if (secChoice == 2):
                 display_records(db)
                 tertChoice = inputValue("What would you like to do? ", valid, menu(2.1))
-                if tertChoice == 'X':
-                    break
-                else:
+                if tertChoice != 'X':
                     search(db,tertChoice)
 
             #To List
             if (secChoice == 3):
                 display_records(db)
                 tertChoice = inputValue("What would you like to do? ", valid, menu(2.2))
-                if (tertChoice == 'X'):
-                    break
-                elif (tertChoice == 1):
+                if (tertChoice == 1):
                     listBy = inputValue("What would you like to do? ", valid, menu("list"))
-                    if (listBy == "X"):
-                        continue
-                    else:
+                    if (listBy != "X"):
                         listingFunc(db,valid,listBy)
 
         elif (choice == 2):
@@ -216,9 +208,7 @@ def main():
             if (secChoice == 1):
                 display_records(db)
                 tertChoice = inputValue("What would you like to do? ", valid, menu(6))
-                if tertChoice == 'X':
-                    break
-                else:
+                if tertChoice != 'X':
                     slow_sorting(db, valid, tertChoice)
 
 if __name__ == "__main__":

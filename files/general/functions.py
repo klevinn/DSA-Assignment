@@ -95,7 +95,7 @@ def menu(stage):
     #Additional functions for staff members
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
-    menu = [["Display all Records", "Records Settings", "Exit Application"],
+    menu = [["Display all Records", "Records Settings", "Exit Application", "Return To Main Menu"],
 
     ["Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort"],
 
@@ -132,13 +132,13 @@ def menu(stage):
         print("1.", additional[0])
         print("2.", additional[1])
         print("3.", additional[2])
-        print("X.", menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
-        return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nDeleting a Record...\n"}
+        return {1:"\nAdding Records...\n", "X":"\nExitting Application...\n", 2:"\nUpdating a Record...\n", 3:"\nReturning To Main Menu...\n"}
 
     #Stage 2 : Displays all usable sorting algorithms
     elif (stage == 2):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n========= Menu Of Sorts =========\n")
         menunum = 1
         for i in menu[1]:
@@ -147,14 +147,14 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.", menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     #Stage 2.1 : Displays all Searching Algorithms
     elif (stage == 2.1):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n========= Menu Of Searches =========\n")
         menunum = 1
         for i in menu[2]:
@@ -163,27 +163,27 @@ def menu(stage):
 
             menunum += 1
         
-        print("X.",menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     #Stage 2.2: Displays all listing algorithms
     elif (stage == 2.2):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n========= Menu Of Listing =========\n")
 
         print("1.", menu[3][0])
         logs[1] = "\nListing...\n"
         
-        print("X.", menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
     
     #Stage 3 : Displays the 4 ways of sorting (Name, Packname, Paxnum, packcost)
     elif (stage == 3):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n====== Sorting... ======\n")
         menunum = 1
         for i in submenu:
@@ -199,14 +199,14 @@ def menu(stage):
             
             menunum += 1
 
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     #Stage 3.1 = For Counting Sort, since they only deal with numbers, give them a menu that only shows the Number related options
     elif (stage == 3.1):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n====== Sorting... ======\n")
         menunum = 1
         for i in submenu[2:]:
@@ -219,7 +219,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
@@ -227,7 +227,7 @@ def menu(stage):
     #Similar to stage 3
     #Stage 4 : Displays the 4 ways of searching (Name, Packname, Paxnum, packcost)
     elif (stage == 4):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n====== Searching... ======\n")
         menunum = 1
         for i in submenu2:
@@ -244,13 +244,13 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     elif (stage == 4.1):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu..\n"}
         print("\n====== Searching... ======\n")
         menunum = 1
         for i in submenu2[2:]:
@@ -263,7 +263,7 @@ def menu(stage):
             menunum += 1
 
         # print("B.", "Return to Main Records Page")
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
@@ -274,21 +274,21 @@ def menu(stage):
         print("1.", submenu0[0])
         print("2.", submenu0[1])
         print("3.", submenu0[2])
-        print("X.", menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
-        return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nExitting Application...\n"}
+        return {1:"\nDisplaying Sorting Records Options...\n", 2:"\Displaying Searching Records Options...\n", 3:"\Displaying Listing Records Options...\n", "X":"\nReturning To Main Menu...\n"}
 
     #Special : For Easter egg Functions : never use ineffective sorts for listing
     elif (stage == 5.1):
         print("\n========= Menu =========\n")
         print("1.", submenu0[0])
-        print("X.", menu[0][2])
+        print("X.", menu[0][3])
         print("\n========================\n")
-        return {1:"\nDisplaying Sorting Records Options...\n", "X":"\nExitting Application...\n"}
+        return {1:"\nDisplaying Sorting Records Options...\n", "X":"\nReturning To Main Menu...\n"}
 
     #Special : Displaying of the ineffective sort options
     elif (stage == 6):
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n========= Menu =========\n")
         menunum = 1
         for i in slowmenu:
@@ -297,14 +297,14 @@ def menu(stage):
 
             menunum += 1
         
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     #For listing, displays the ways can list by
     elif stage == "list":
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n====== Listing... ======\n")
         menunum = 1
         for i in submenu3:
@@ -312,14 +312,14 @@ def menu(stage):
             logs[menunum] = "Listing..."
             menunum += 1
         
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
 
     #Stage asc is to display the menu asking if the user wants it to bve descending or ascending order
     elif stage == "asc":
-        logs = {"X":"\nExitting Application...\n"}
+        logs = {"X":"\nReturning To Main Menu...\n"}
         print("\n====== Sorting... ======\n")
         submenu = ["By Ascending Order", "By Descending Order"]
         menunum =1
@@ -329,7 +329,7 @@ def menu(stage):
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
-        print("X. Return to Main Menu")
+        print("X.", menu[0][3])
         print("\n========================\n")
 
         return logs
