@@ -9,17 +9,17 @@ def bubbleSort(arr, mode, rev):
         for i in range(n-1): #Helping the singular element compare with the rest and bubble up
             if (mode == 1):
                 if (rev == 1):
-                    if (arr[i].get_name() > arr[i+1].get_name()): #if previous variable greater than next variable  swap the 2
+                    if (arr[i].get_name().upper() > arr[i+1].get_name().upper()): #if previous variable greater than next variable  swap the 2
                         arr[i], arr[i+1] = arr[i+1], arr[i] #no need of storing temp variable
                 else:
-                    if (arr[i].get_name() < arr[i+1].get_name()):
+                    if (arr[i].get_name().upper() < arr[i+1].get_name().upper()):
                         arr[i], arr[i+1] = arr[i+1], arr[i]    
             elif (mode == 2):
                 if (rev == 1):
-                    if (arr[i].get_packname() > arr[i+1].get_packname()):
+                    if (arr[i].get_packname().upper() > arr[i+1].get_packname().upper()):
                         arr[i], arr[i+1] = arr[i+1], arr[i]
                 else:
-                    if (arr[i].get_packname() < arr[i+1].get_packname()):
+                    if (arr[i].get_packname().upper() < arr[i+1].get_packname().upper()):
                         arr[i], arr[i+1] = arr[i+1], arr[i]
             elif (mode == 3):
                 if (rev == 1):
@@ -43,17 +43,17 @@ def selectionSort(arr, mode, rev):
         for j in range(i+1,n): #To compare through all the elements. If the lowest is greater than the element its compared with. The index of the element is stored in the lowest variable instead and the loop continues
             if (mode == 1):
                 if (rev == 1):
-                    if (arr[j].get_name() < arr[lowest].get_name()):
+                    if (arr[j].get_name().upper() < arr[lowest].get_name().upper()):
                         lowest = j
                 else:
-                    if (arr[j].get_name() > arr[lowest].get_name()):
+                    if (arr[j].get_name().upper() > arr[lowest].get_name().upper()):
                         lowest = j
             if (mode == 2):
                 if (rev == 1):
-                    if (arr[j].get_packname() < arr[lowest].get_packname()):
+                    if (arr[j].get_packname().upper() < arr[lowest].get_packname().upper()):
                         lowest = j
                 else:
-                    if (arr[j].get_packname() > arr[lowest].get_packname()):
+                    if (arr[j].get_packname().upper() > arr[lowest].get_packname().upper()):
                         lowest = j
             if (mode == 3):
                 if (rev == 1):
@@ -81,20 +81,20 @@ def insertionSort(arr, mode, rev):
 
         if (mode == 1):
             if (rev == 1):
-                while (current > 0) and (arr[current-1].get_name() > value.get_name()):
+                while (current > 0) and (arr[current-1].get_name().upper() > value.get_name().upper()):
                     arr[current] = arr[current-1] #Swaps the 2
                     current -= 1 #As the while loop goes on, it keeps checking if value is smaller and swaps with the backwards
             else:
-                while (current > 0) and (arr[current-1].get_name() < value.get_name()):
+                while (current > 0) and (arr[current-1].get_name().upper() < value.get_name().upper()):
                     arr[current] = arr[current-1] 
                     current -= 1 
         elif (mode == 2):
             if (rev == 1):
-                while (current > 0) and (arr[current-1].get_packname() > value.get_packname()):
+                while (current > 0) and (arr[current-1].get_packname().upper() > value.get_packname().upper()):
                     arr[current] = arr[current-1] 
                     current -= 1 
             else:
-                while (current > 0) and (arr[current-1].get_packname() < value.get_packname()):
+                while (current > 0) and (arr[current-1].get_packname().upper() < value.get_packname().upper()):
                     arr[current] = arr[current-1] 
                     current -= 1 
         elif (mode == 3):
@@ -219,12 +219,12 @@ def shellSort(array, mode, rev):
             j = i
             if (rev == 1):
                 if (mode == 1):
-                    while (j >= interval) and (array[j - interval].get_name() > temp.get_name()):
+                    while (j >= interval) and (array[j - interval].get_name().upper() > temp.get_name().upper()):
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif (mode == 2):
-                    while (j >= interval) and (array[j - interval].get_packname() > temp.get_packname()):
+                    while (j >= interval) and (array[j - interval].get_packname().upper() > temp.get_packname().upper()):
                         array[j] = array[j - interval]
                         j -= interval
 
@@ -240,12 +240,12 @@ def shellSort(array, mode, rev):
             
             else:
                 if (mode == 1):
-                    while (j >= interval) and (array[j - interval].get_name() < temp.get_name()):
+                    while (j >= interval) and (array[j - interval].get_name().upper() < temp.get_name().upper()):
                         array[j] = array[j - interval]
                         j -= interval
 
                 elif (mode == 2):
-                    while (j >= interval) and (array[j - interval].get_packname() < temp.get_packname()):
+                    while (j >= interval) and (array[j - interval].get_packname().upper() < temp.get_packname().upper()):
                         array[j] = array[j - interval]
                         j -= interval
 
@@ -293,11 +293,11 @@ def combsort(arr, mode, rev):
 
             if (rev == 1):
                 if (mode == 1):
-                    if (arr[i].get_name() > arr[j].get_name()):
+                    if (arr[i].get_name().upper() > arr[j].get_name().upper()):
                         arr[i], arr[j] = arr[j], arr[i]
                         swaps = True
                 elif (mode == 2):
-                    if (arr[i].get_packname() > arr[j].get_packname()):
+                    if (arr[i].get_packname().upper() > arr[j].get_packname().upper()):
                         arr[i], arr[j] = arr[j], arr[i]
                         swaps = True
                 elif (mode == 3):
@@ -310,11 +310,11 @@ def combsort(arr, mode, rev):
                         swaps = True
             else:
                 if (mode == 1):
-                    if (arr[i].get_name() < arr[j].get_name()):
+                    if (arr[i].get_name().upper() < arr[j].get_name().upper()):
                         arr[i], arr[j] = arr[j], arr[i]
                         swaps = True
                 elif (mode == 2):
-                    if (arr[i].get_packname() < arr[j].get_packname()):
+                    if (arr[i].get_packname().upper() < arr[j].get_packname().upper()):
                         arr[i], arr[j] = arr[j], arr[i]
                         swaps = True
                 elif (mode == 3):
@@ -333,23 +333,23 @@ def cocktail_shaker_sort(nums, mode, rev):
         if (rev == 1):
             if (mode == 1):
                 for j in range(i, 0, -1): #Moving from right to left
-                    if (nums[j].get_name() < nums[j-1].get_name()):
+                    if (nums[j].get_name().upper() < nums[j-1].get_name().upper()):
                         nums[j], nums[j-1] = nums[j-1], nums[j]
                         is_swapped = True
 
                 for j in range(i): #moving from left to right
-                    if (nums[j].get_name() > nums[j+1].get_name()):
+                    if (nums[j].get_name().upper() > nums[j+1].get_name().upper()):
                         nums[j], nums[j+1] = nums[j+1], nums[j]
                         is_swapped = True
 
             elif (mode == 2):
                 for j in range(i, 0, -1):
-                    if (nums[j].get_packname() < nums[j-1].get_packname()):
+                    if (nums[j].get_packname().upper() < nums[j-1].get_packname().upper()):
                         nums[j], nums[j-1] = nums[j-1], nums[j]
                         is_swapped = True
 
                 for j in range(i):
-                    if (nums[j].get_packname() > nums[j+1].get_packname()):
+                    if (nums[j].get_packname().upper() > nums[j+1].get_packname().upper()):
                         nums[j], nums[j+1] = nums[j+1], nums[j]
                         is_swapped = True
 
@@ -378,23 +378,23 @@ def cocktail_shaker_sort(nums, mode, rev):
         else:
             if (mode == 1):
                 for j in range(i, 0, -1):
-                    if (nums[j].get_name() > nums[j-1].get_name()):
+                    if (nums[j].get_name().upper() > nums[j-1].get_name().upper()):
                         nums[j], nums[j-1] = nums[j-1], nums[j]
                         is_swapped = True
 
                 for j in range(i):
-                    if (nums[j].get_name() < nums[j+1].get_name()):
+                    if (nums[j].get_name().upper() < nums[j+1].get_name().upper()):
                         nums[j], nums[j+1] = nums[j+1], nums[j]
                         is_swapped = True
 
             elif (mode == 2):
                 for j in range(i, 0, -1):
-                    if (nums[j].get_packname() > nums[j-1].get_packname()):
+                    if (nums[j].get_packname().upper() > nums[j-1].get_packname().upper()):
                         nums[j], nums[j-1] = nums[j-1], nums[j]
                         is_swapped = True
 
                 for j in range(i):
-                    if (nums[j].get_packname() < nums[j+1].get_packname()):
+                    if (nums[j].get_packname().upper() < nums[j+1].get_packname().upper()):
                         nums[j], nums[j+1] = nums[j+1], nums[j]
                         is_swapped = True
 

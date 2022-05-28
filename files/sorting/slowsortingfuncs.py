@@ -22,12 +22,12 @@ def stalinSort(arr, mode, rev):
     for i in arr:
         if (rev == 1):
             if (mode == 1):
-                if (i.get_name() >= val.get_name()):
+                if (i.get_name().upper() >= val.get_name().upper()):
                     newarr.append(i)
                     val = i
 
             elif (mode == 2):
-                if (i.get_packname() >= val.get_packname()):
+                if (i.get_packname().upper() >= val.get_packname().upper()):
                     newarr.append(i)
                     val = i
 
@@ -42,12 +42,12 @@ def stalinSort(arr, mode, rev):
                     val = i
         else:
             if (mode == 1):
-                if (i.get_name() <= val.get_name()):
+                if (i.get_name().upper() <= val.get_name().upper()):
                     newarr.append(i)
                     val = i
 
             elif (mode == 2):
-                if (i.get_packname() <= val.get_packname()):
+                if (i.get_packname().upper() <= val.get_packname().upper()):
                     newarr.append(i)
                     val = i
 
@@ -79,11 +79,11 @@ def slow_sort(A, i, j, mode, rev):
     if (rev == 1):
     #Swap first and second ele if First < than secon
         if (mode == 1):
-            if (A[j].get_name() < A[m].get_name()):
+            if (A[j].get_name().upper() < A[m].get_name().upper()):
                 A[m] , A[j] = A[j], A[m]
         
         elif (mode == 2):
-            if (A[j].get_packname() < A[m].get_packname()):
+            if (A[j].get_packname().upper() < A[m].get_packname().upper()):
                 A[m] , A[j] = A[j], A[m]
 
         elif (mode == 3):
@@ -96,11 +96,11 @@ def slow_sort(A, i, j, mode, rev):
     
     else:
         if (mode == 1):
-            if (A[j].get_name() > A[m].get_name()):
+            if (A[j].get_name().upper() > A[m].get_name().upper()):
                 A[m] , A[j] = A[j], A[m]
         
         elif (mode == 2):
-            if (A[j].get_packname() > A[m].get_packname()):
+            if (A[j].get_packname().upper() > A[m].get_packname().upper()):
                 A[m] , A[j] = A[j], A[m]
 
         elif (mode == 3):
@@ -152,13 +152,13 @@ def gnomeSort(arr, mode , rev):
 
         if (rev == 1):
             if (mode == 1):
-                if (arr[index].get_name() >= arr[index - 1].get_name()):
+                if (arr[index].get_name().upper() >= arr[index - 1].get_name().upper()):
                     index += 1
                 else:
                     arr[index], arr[index-1] = arr[index-1], arr[index]
                     index -= 1
             elif (mode == 2):
-                if (arr[index].get_packname() >= arr[index - 1].get_packname()):
+                if (arr[index].get_packname().upper() >= arr[index - 1].get_packname().upper()):
                     index += 1
                 else:
                     arr[index], arr[index-1] = arr[index-1], arr[index]
@@ -177,13 +177,13 @@ def gnomeSort(arr, mode , rev):
                     index -= 1
         else:
             if (mode == 1):
-                if (arr[index].get_name() <= arr[index - 1].get_name()):
+                if (arr[index].get_name().upper() <= arr[index - 1].get_name().upper()):
                     index += 1
                 else:
                     arr[index], arr[index-1] = arr[index-1], arr[index]
                     index -= 1
             elif (mode == 2):
-                if (arr[index].get_packname() <= arr[index - 1].get_packname()):
+                if (arr[index].get_packname().upper() <= arr[index - 1].get_packname().upper()):
                     index += 1
                 else:
                     arr[index], arr[index-1] = arr[index-1], arr[index]

@@ -33,7 +33,7 @@ def mergeSortedList(left, right, mode, rev):
     if (rev == 1):
         if (mode == 1):
             while (leftInd < len(left)) and (rightInd < len(right)): 
-                if (left[leftInd].get_name() < right[rightInd].get_name()):
+                if (left[leftInd].get_name().upper() < right[rightInd].get_name().upper()):
                     result.append(left[leftInd])
                     leftInd += 1
                 else:
@@ -41,7 +41,7 @@ def mergeSortedList(left, right, mode, rev):
                     rightInd += 1
         elif (mode == 2):
             while (leftInd < len(left)) and (rightInd < len(right)): 
-                if (left[leftInd].get_packname() < right[rightInd].get_packname()):
+                if (left[leftInd].get_packname().upper() < right[rightInd].get_packname().upper()):
                     result.append(left[leftInd])
                     leftInd += 1
                 else:
@@ -67,7 +67,7 @@ def mergeSortedList(left, right, mode, rev):
     else:
         if (mode == 1):
             while (leftInd < len(left)) and (rightInd < len(right)): 
-                if (left[leftInd].get_name() > right[rightInd].get_name()):
+                if (left[leftInd].get_name().upper() > right[rightInd].get_name().upper()):
                     result.append(left[leftInd])
                     leftInd += 1
                 else:
@@ -75,7 +75,7 @@ def mergeSortedList(left, right, mode, rev):
                     rightInd += 1
         elif (mode == 2):
             while (leftInd < len(left)) and (rightInd < len(right)):
-                if (left[leftInd].get_packname() > right[rightInd].get_packname()):
+                if (left[leftInd].get_packname().upper() > right[rightInd].get_packname().upper()):
                     result.append(left[leftInd])
                     leftInd += 1
                 else:
@@ -110,11 +110,11 @@ def partition(array, low, high, mode, rev):
     for j in range(low, high): #comparing all list elements between the pivot
         if (rev == 1):
             if (mode == 1):
-                if (array[j].get_name() <= pivot.get_name()):  #if element is smaller, swap with the greater element
+                if (array[j].get_name().upper() <= pivot.get_name().upper()):  #if element is smaller, swap with the greater element
                     i += 1
                     array[i], array[j] = array[j], array[i]
             elif (mode == 2):
-                if (array[j].get_packname() <= pivot.get_packname()):  
+                if (array[j].get_packname().upper() <= pivot.get_packname().upper()):  
                     i += 1
                     array[i], array[j] = array[j], array[i]
             elif (mode == 3):
@@ -127,11 +127,11 @@ def partition(array, low, high, mode, rev):
                     array[i], array[j] = array[j], array[i]
         else:
             if (mode == 1):
-                if (array[j].get_name() >= pivot.get_name()): 
+                if (array[j].get_name().upper() >= pivot.get_name().upper()): 
                     i += 1
                     array[i], array[j] = array[j], array[i]
             elif (mode == 2):
-                if (array[j].get_packname() >= pivot.get_packname()):  
+                if (array[j].get_packname().upper() >= pivot.get_packname().upper()):  
                     i += 1
                     array[i], array[j] = array[j], array[i]
             elif (mode == 3):
@@ -167,18 +167,18 @@ def heapify(arr, n, i, mode, rev):
         if mode == 1:
         #checking if the element suppsoed to be in the left tree exists, if more than len means doesnt exist
         #checking if the subtree node is greater, if greater the element number takes the largest
-            if l < n and arr[i].get_name() < arr[l].get_name():
+            if l < n and arr[i].get_name().upper() < arr[l].get_name().upper():
                 largest = l
 
             #checkign right element if exists, and checking if right element is greater than the left element if exists
-            if r < n and arr[largest].get_name() < arr[r].get_name():
+            if r < n and arr[largest].get_name().upper() < arr[r].get_name().upper():
                 largest = r
 
         elif mode == 2:
-            if l < n and arr[i].get_packname() < arr[l].get_packname():
+            if l < n and arr[i].get_packname().upper() < arr[l].get_packname().upper():
                 largest = l
 
-            if r < n and arr[largest].get_packname() < arr[r].get_packname():
+            if r < n and arr[largest].get_packname().upper() < arr[r].get_packname().upper():
                 largest = r
         
         elif mode == 3:
@@ -198,18 +198,18 @@ def heapify(arr, n, i, mode, rev):
         if mode == 1:
         #checking if the element suppsoed to be in the left tree exists, if more than len means doesnt exist
         #checking if the subtree node is lesser, if lesser the element number takes the largest
-            if l < n and arr[i].get_name() > arr[l].get_name():
+            if l < n and arr[i].get_name().upper() > arr[l].get_name().upper():
                 largest = l
 
             #checkign right element if exists, and checking if right element is lesser than the left element if exists
-            if r < n and arr[largest].get_name() > arr[r].get_name():
+            if r < n and arr[largest].get_name().upper() > arr[r].get_name().upper():
                 largest = r
 
         elif mode == 2:
-            if l < n and arr[i].get_packname() > arr[l].get_packname():
+            if l < n and arr[i].get_packname().upper() > arr[l].get_packname().upper():
                 largest = l
 
-            if r < n and arr[largest].get_packname() > arr[r].get_packname():
+            if r < n and arr[largest].get_packname().upper() > arr[r].get_packname().upper():
                 largest = r
         
         elif mode == 3:
@@ -247,10 +247,10 @@ def findMax(arr, n, mode, rev):
     for i in range(0,n):
         if (rev == 1):
             if (mode == 1):
-                if (arr[i].get_name() > arr[maxindex].get_name()):
+                if (arr[i].get_name().upper() > arr[maxindex].get_name().upper()):
                     maxindex = i
             elif (mode == 2):
-                if (arr[i].get_packname() > arr[maxindex].get_packname()):
+                if (arr[i].get_packname().upper() > arr[maxindex].get_packname().upper()):
                     maxindex = i
             elif (mode == 3):
                 if (arr[i].get_paxnum() > arr[maxindex].get_paxnum()):
@@ -260,10 +260,10 @@ def findMax(arr, n, mode, rev):
                     maxindex = i
         else:
             if (mode == 1):
-                if (arr[i].get_name() < arr[maxindex].get_name()):
+                if (arr[i].get_name().upper() < arr[maxindex].get_name().upper()):
                     maxindex = i
             elif (mode == 2):
-                if (arr[i].get_packname() < arr[maxindex].get_packname()):
+                if (arr[i].get_packname().upper() < arr[maxindex].get_packname().upper()):
                     maxindex = i
             elif (mode == 3):
                 if (arr[i].get_paxnum() < arr[maxindex].get_paxnum()):
