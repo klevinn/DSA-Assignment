@@ -1,22 +1,19 @@
 import math
+from sorting.shortenfuncs import *
 #Searching Functions
 
 def linearSearch(arr, target, mode):
+    method = determine_type(mode)
     ind = {} #common sense search : looking through each of the items and comparing
     for i in range(len(arr)):
-        if (mode == 1):
-            if (arr[i].get_name().upper() == target.upper()):
-                ind[i] = arr[i] #Accomodate for duplicates, however sacrifice on time complexity as needs to go through the entire list
-        elif (mode == 2):
-            if (arr[i].get_packname().upper() == target.upper()):
+        if (mode < 3):
+            if (method(arr[i]) == target.upper()):
                 ind[i] = arr[i]
-        elif (mode == 3):
-            if (arr[i].get_paxnum() == target):
-                ind[i] = arr[i]
-        elif (mode == 4):
-            if (arr[i].get_packcost() == target):
-                ind[i] = arr[i]            
-        elif (mode == 'listNum1'):
+        else:
+            if (method(arr[i]) == target):
+                ind[i] = arr[i]          
+        
+        if (mode == 'listNum1'):
             if (arr[i].get_paxnum() > target):
                 ind[i] = arr[i]
                 return ind
@@ -36,6 +33,7 @@ def linearSearch(arr, target, mode):
     return ind
 
 def binarySearch(arr,target,mode):
+    method = determine_type(mode)
     ind = {}
 
     low = 0 # first index (pointer 1)
