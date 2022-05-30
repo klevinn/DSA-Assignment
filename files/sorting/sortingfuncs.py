@@ -106,6 +106,23 @@ def insertionSort(arr, mode, rev):
         
         arr[current] = value
 
+"""
+Merge Sort Function
+
+Merge Sort breaks the list into 2 halves, then recursively calls itself on the 2 halves until the list is 1 element
+Then we merge the 2 halves together all the way till the list is sorted
+
+Demonstration
+
+Initial = [5,1,2,4]
+First Split = [5,1] & [2,4]
+Second Split = [5], [1], [2], [4]
+
+Merge together = [1,5] , [2,4]
+Merge Together = [1,2,4,5]
+
+Keeps going through all elements of the list
+""" 
 def mergeSort(arr, mode, rev):
     if (len(arr) <= 1):
         return arr
@@ -119,24 +136,68 @@ def mergeSort(arr, mode, rev):
 
         return newList
 
+"""
+Quick Sort Function
+
+Quick sort is a divide and conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot.
+Finds pivot where left side is smaller and right side is greater
+
+Demonstration
+***
+""" 
 def quickSort(array, low, high, mode, rev):
     if (low < high):
-        pi = partition(array, low, high, mode, rev) #find pivot where left side is smaller and ride side is greater
+        pi = partition(array, low, high, mode, rev)
 
-        #sorting left side and right side again respectively
-        quickSort(array, low, pi - 1, mode, rev) #left side
-        quickSort(array, pi + 1, high, mode, rev) #right side
+        quickSort(array, low, pi - 1, mode, rev)
+        quickSort(array, pi + 1, high, mode, rev) 
 
-#better time complexity, though space complexity may be sacrificed when dealing with larger numbers
+"""
+Counting Sort Function
+better time complexity, though space complexity may be sacrificed when dealing with larger numbers
+
+Counting Sort counts the number of occurences of each number
+Length of count list will be the greatest number in the list
+
+store cumulative count in the count list
+Index = value. Then the number in that index will be where its placed in the new list
+Minus one after using
+
+Initialize count array
+count = [0] * (greatest + 1)
+
+for i in range(0, size) helps Store the count of each elements in count array
+
+Stores the cummulative count
+for i in range(1, len(count)):
+    count[i] += count[i - 1]
+
+Find the index of each element of the original array in count array
+place the elements in output array
+i = size - 1
+
+demonstration
+
+arr = [2,5,4,1]
+count = [0,0,0,0,0]
+after counting:
+[0,1,1,0,1,1]
+
+Cumulative:
+[0,1,2,2,3,4]
+
+For element 2, we look at index 2
+The value is 2. The index of where 2 is placed is 2-1 = 1
+[x,2,x,x]
+
+For element 5, we look at index 5
+the value is 4. the index of where 5 is placed is 4-1 =3
+[x,2,x,5]
+
+Done till sorted: 
+[1,2,4,5]
+"""
 def countingSort(array, mode, rev):
-
-    #Counting Sort counts the number of occurences of each number
-    #Length of count list will be the greatest number in the list
-
-    #store cumulative count in the count list
-    #Index = value. Then the number in that index will be where its placed in the new list
-    #Minus one after using
-
     size = len(array)
     output = [0] * size
     newarr = []
@@ -147,26 +208,18 @@ def countingSort(array, mode, rev):
             newarr.append(array[i].get_packcost())
     greatest = max(newarr)
 
-    # Initialize count array
     count = [0] * (greatest + 1)
 
-    # Store the count of each elements in count array
     for i in range(0, size):
         if (mode == 1):
             count[array[i].get_paxnum()] += 1
         else:
             count[array[i].get_packcost()] += 1
-    
 
-    # Store the cummulative count
     for i in range(1, len(count)):
         count[i] += count[i - 1]
 
-
-    # Find the index of each element of the original array in count array
-    # place the elements in output array
     i = size - 1
-
     #Ascending
     if (rev == 1):
         while (i >= 0):
@@ -193,235 +246,152 @@ def countingSort(array, mode, rev):
 
     return output
 
-#not as many comparisons as using intervals, better time complexity than the first 3, where compares with all
+"""
+Shell Sort (not as many comparisons as using intervals, better time complexity than the first 3, where compares with all)
+
+Rearrange elements at each n/2, n/4, n/8, ... intervals
+Compare using intervals , divide the intervals by 2 after completion of for loop with first interval
+
+"""
 def shellSort(array, mode, rev):
-
+    method = determine_type(mode)
     n = len(array)
-
-    # Rearrange elements at each n/2, n/4, n/8, ... intervals
-    #Compare using intervals , divide the intervals by 2 after completion of for loop with first interval
     interval = n // 2
+
     while (interval > 0):
-        for i in range(interval, n):          
+        for i in range(interval, n):
             temp = array[i]
             j = i
             if (rev == 1):
-                if (mode == 1):
-                    while (j >= interval) and (array[j - interval].get_name().upper() > temp.get_name().upper()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 2):
-                    while (j >= interval) and (array[j - interval].get_packname().upper() > temp.get_packname().upper()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 3):
-                    while (j >= interval) and (array[j - interval].get_paxnum() > temp.get_paxnum()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 4):
-                    while (j >= interval) and (array[j - interval].get_packcost() > temp.get_packcost()):
-                        array[j] = array[j - interval]
-                        j -= interval
-            
+                while (j >= interval) and (method(array[j-interval]) > method(temp)):
+                    array[j] = array[j-interval]
+                    j-= interval
             else:
-                if (mode == 1):
-                    while (j >= interval) and (array[j - interval].get_name().upper() < temp.get_name().upper()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 2):
-                    while (j >= interval) and (array[j - interval].get_packname().upper() < temp.get_packname().upper()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 3):
-                    while (j >= interval) and (array[j - interval].get_paxnum() < temp.get_paxnum()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-                elif (mode == 4):
-                    while (j >= interval) and (array[j - interval].get_packcost() < temp.get_packcost()):
-                        array[j] = array[j - interval]
-                        j -= interval
-
-            array[j] = temp
+                while (j >= interval) and (method(array[j-interval]) < method(temp)):
+                    array[j] = array[j-interval]
+                    j -= interval   
+            
+            array[j] = temp    
 
         interval //= 2
 
+"""
+Pancake Sort 
+
+Using Findmax, find index of the greatest value
+
+make the highest number the first index
+the flips second argument being the maxind meaning the list flipped would be [element, element, element with maxind]
+
+Then places the highest number at the end, by flipping the whole list
+
+Size -= 1 : minus 1 to not touch the last element of the list
+
+Demonstration
+
+"""
 def pancakeSort(arr, mode, rev):
     size = len(arr)
     while (size > 1):
-        #find index of the greatest value
         maxind = findMax(arr,size, mode , rev)
         
         if (maxind != size-1):
-            #make the highest number the first index
-            #the flips second argument being the maxind meaning the list flipped would be [element, element, element with maxind]
             flip(arr,maxind)
 
-            #Then places the highest number at the end, by flipping the whole list
             flip(arr,size-1)
-        
-        #minus 1 to not touch the last element of the list
+
         size -= 1
 
-def combsort(arr, mode, rev):
-    #optimised Shell sort?
 
+"""
+Comb Sort (Optimised Shell Sort Deals with gaps)
+
+Creates the gap
+while (gap > 1) or (swaps):
+    gap = max(1, int(gap / 1.25))  # minimum gap is 1
+    swaps = False
+    for i in range(len(arr) - gap):
+        j = i+gap
+
+Demonstration
+
+"""
+def combsort(arr, mode, rev):
+    method = determine_type(mode)
     gap = len(arr)
     swaps = True
     while (gap > 1) or (swaps):
-        gap = max(1, int(gap / 1.25))  # minimum gap is 1
+        gap = max(1, int(gap / 1.25))
         swaps = False
         for i in range(len(arr) - gap):
             j = i+gap
-
             if (rev == 1):
-                if (mode == 1):
-                    if (arr[i].get_name().upper() > arr[j].get_name().upper()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 2):
-                    if (arr[i].get_packname().upper() > arr[j].get_packname().upper()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 3):
-                    if (arr[i].get_paxnum() > arr[j].get_paxnum()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 4):
-                    if (arr[i].get_packcost() > arr[j].get_packcost()):
-                        arr[i], arr[j] = arr[j], arr[i]   
-                        swaps = True
+                if (method(arr[i]) > method(arr[j])):
+                    arr[i], arr[j] = arr[j], arr[i]
+                    swaps = True
             else:
-                if (mode == 1):
-                    if (arr[i].get_name().upper() < arr[j].get_name().upper()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 2):
-                    if (arr[i].get_packname().upper() < arr[j].get_packname().upper()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 3):
-                    if (arr[i].get_paxnum() < arr[j].get_paxnum()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
-                elif (mode == 4):
-                    if (arr[i].get_packcost() < arr[j].get_packcost()):
-                        arr[i], arr[j] = arr[j], arr[i]
-                        swaps = True
+                if (method(arr[i]) < method(arr[j])):
+                    arr[i], arr[j] = arr[j], arr[i]
+                    swaps = True
 
+"""
+Cocktail Shaker Sort 
+
+
+
+Demonstration
+
+"""
 def cocktail_shaker_sort(nums, mode, rev):
+    method = determine_type(mode)
     for i in range(len(nums)-1, 0, -1):
         is_swapped = False
-        
         if (rev == 1):
-            if (mode == 1):
-                for j in range(i, 0, -1): #Moving from right to left
-                    if (nums[j].get_name().upper() < nums[j-1].get_name().upper()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
+            for j in range(i, 0, -1):
+                if (method(nums[j] < method(nums[j-1]))):
+                    nums[j], nums[j-1] = nums[j-1], nums[j]
+                    is_swapped = True
 
-                for j in range(i): #moving from left to right
-                    if (nums[j].get_name().upper() > nums[j+1].get_name().upper()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-
-            elif (mode == 2):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_packname().upper() < nums[j-1].get_packname().upper()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_packname().upper() > nums[j+1].get_packname().upper()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-
-            elif (mode == 3):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_paxnum() < nums[j-1].get_paxnum()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_paxnum() > nums[j+1].get_paxnum()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-
-            elif (mode == 4):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_packcost() < nums[j-1].get_packcost()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_packcost() > nums[j+1].get_packcost()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-        
+            for j in range(i):
+                if (method(nums[j] > method(nums[j+1]))):
+                    nums[j], nums[j+1] = nums[j+1], nums[j]
+                    is_swapped = True
         else:
-            if (mode == 1):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_name().upper() > nums[j-1].get_name().upper()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
+            for j in range(i, 0, -1):
+                if (method(nums[j] > method(nums[j-1]))):
+                    nums[j], nums[j-1] = nums[j-1], nums[j]
+                    is_swapped = True
 
-                for j in range(i):
-                    if (nums[j].get_name().upper() < nums[j+1].get_name().upper()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
+            for j in range(i):
+                if (method(nums[j] < method(nums[j+1]))):
+                    nums[j], nums[j+1] = nums[j+1], nums[j]
+                    is_swapped = True
 
-            elif (mode == 2):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_packname().upper() > nums[j-1].get_packname().upper()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_packname().upper() < nums[j+1].get_packname().upper()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-
-            elif (mode == 3):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_paxnum() > nums[j-1].get_paxnum()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_paxnum() < nums[j+1].get_paxnum()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-
-            elif (mode == 4):
-                for j in range(i, 0, -1):
-                    if (nums[j].get_packcost() > nums[j-1].get_packcost()):
-                        nums[j], nums[j-1] = nums[j-1], nums[j]
-                        is_swapped = True
-
-                for j in range(i):
-                    if (nums[j].get_packcost() < nums[j+1].get_packcost()):
-                        nums[j], nums[j+1] = nums[j+1], nums[j]
-                        is_swapped = True
-        
         if (not is_swapped):
             return nums
 
+"""
+Heap Sort 
+
+Complete binary tree
+
+Build max heap, its // 2 because any more would result in useless loops 
+
+Swap last element with first element (should be greatest due to maxheap)
+arr[i], arr[0] = arr[0], arr[i]
+
+Heapify new root element then redo the whole process
+heapify(arr, i, 0, mode, rev)
+
+Demonstration
+
+"""
 def heapSort(arr, mode, rev):
-    #complete binary tree
     n = len(arr)
 
-    # Build max heap, its // 2 because any more would result in useless loops 
     for i in range(n//2, -1, -1):
         heapify(arr, n, i, mode, rev)
 
     for i in range(n-1, 0, -1):
-        # Swap last element with first element (should be greatest due to maxheap)
         arr[i], arr[0] = arr[0], arr[i]
-
-        # Heapify new root element then redo the whole process
         heapify(arr, i, 0, mode, rev)
