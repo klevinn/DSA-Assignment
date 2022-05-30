@@ -1,122 +1,110 @@
 from sorting.sortingfuncsplus import *
+from sorting.shortenfuncs import *
 
 #Sorting Functions
+"""
+Bubble Sort Function
 
+Greater Element Bubbles up to the top
+First we check through all the elements using the for _ in range(n) loop
+Then we check through all the elements using the for i in range(n-1) loop
+For rev == 1: Meaning we sort in ascending order, if the element is greater than the next element swap the 2
+For rev == 2: Descending order, we just swap the sign
+
+Demonstration
+
+Initial : [5,1,2]
+First Loop : [1,5,2]
+Second Loop : [1,2,5]
+"""
 def bubbleSort(arr, mode, rev):
-    #Greater element bubbles up to the top
+    method = determine_type(mode)
     n = len(arr)
-    for _ in range(n): #Checks through all the elements
-        for i in range(n-1): #Helping the singular element compare with the rest and bubble up
-            if (mode == 1):
-                if (rev == 1):
-                    if (arr[i].get_name().upper() > arr[i+1].get_name().upper()): #if previous variable greater than next variable  swap the 2
-                        arr[i], arr[i+1] = arr[i+1], arr[i] #no need of storing temp variable
-                else:
-                    if (arr[i].get_name().upper() < arr[i+1].get_name().upper()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]    
-            elif (mode == 2):
-                if (rev == 1):
-                    if (arr[i].get_packname().upper() > arr[i+1].get_packname().upper()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]
-                else:
-                    if (arr[i].get_packname().upper() < arr[i+1].get_packname().upper()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]
-            elif (mode == 3):
-                if (rev == 1):
-                    if (arr[i].get_paxnum() > arr[i+1].get_paxnum()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]
-                else:
-                    if (arr[i].get_paxnum() < arr[i+1].get_paxnum()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]                   
-            elif (mode == 4):
-                if (rev == 1):
-                    if (arr[i].get_packcost() > arr[i+1].get_packcost()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]
-                else:
-                    if (arr[i].get_packcost() < arr[i+1].get_packcost()):
-                        arr[i], arr[i+1] = arr[i+1], arr[i]
-    
+
+    for _ in range(n):
+        for i in range(n-1):
+            if (rev == 1):
+                if (method(arr[i]) > method(arr[i+1])):
+                    arr[i], arr[i+1] = arr[i+1], arr[i]
+            else:
+                if (method(arr[i]) < method(arr[i+1])):
+                    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+"""
+Selection Sort Function
+
+Compare element with all elements till lowest is found and swaps with the first index
+First to ensure we check through all the elements, we use the for i in range(n) loop:
+Then we check through the rest of the elements using the for j in range(i+1,n) loop
+For rev == 1: Meaning we sort in ascending order, if the element is greater than the next element we assign the next index as lowest, we keep doing till we are through all the elements of the list. After that we swap the first element and the lowest element (based of lowest index)
+For rev == 2: Descending order, we just swap the sign to make it so that the index of the highest value is stored in the lowest
+
+Demonstration
+
+Initial = [5,1,2]
+First Loop : 
+    lowest variable is assigned to index 1 or the value 5
+    Since 1 is lesserr than 5, the index 2 is assigned to the lowest variable
+Second Loop : 
+    lowest variable stays assigned to index 2 as 1 is lesser than 2
+After all comparisons with rest of the elements:
+The element at index 1 (lowest variable) swaps with the first index:
+[1,5,2]
+
+This goes on for all elements
+"""
 def selectionSort(arr, mode, rev):
+    method = determine_type(mode)
     n = len(arr)
-    for i in range(n): #Checking for all elements
+    for i in range(n):
         lowest = i
-        for j in range(i+1,n): #To compare through all the elements. If the lowest is greater than the element its compared with. The index of the element is stored in the lowest variable instead and the loop continues
-            if (mode == 1):
-                if (rev == 1):
-                    if (arr[j].get_name().upper() < arr[lowest].get_name().upper()):
-                        lowest = j
-                else:
-                    if (arr[j].get_name().upper() > arr[lowest].get_name().upper()):
-                        lowest = j
-            if (mode == 2):
-                if (rev == 1):
-                    if (arr[j].get_packname().upper() < arr[lowest].get_packname().upper()):
-                        lowest = j
-                else:
-                    if (arr[j].get_packname().upper() > arr[lowest].get_packname().upper()):
-                        lowest = j
-            if (mode == 3):
-                if (rev == 1):
-                    if (arr[j].get_paxnum() < arr[lowest].get_paxnum()):
-                        lowest = j
-                else:
-                    if (arr[j].get_paxnum() > arr[lowest].get_paxnum()):
-                        lowest = j
-            if (mode == 4):
-                if (rev == 1):
-                    if (arr[j].get_packcost() < arr[lowest].get_packcost()):
-                        lowest = j
-                else:
-                    if (arr[j].get_packcost() > arr[lowest].get_packcost()):
-                        lowest = j
-    
-        arr[i], arr[lowest] = arr[lowest], arr[i] #After comparison, the lowest varibale should have the index of the element with the lowest value, swap with the element that originally had the lowest title
-    
+        for j in range(i+1,n):
+            if (rev == 1):
+                if (method(arr[j]) < method(arr[lowest])):
+                    lowest = j
+            else:
+                if (method(arr[j]) > method(arr[lowest])):
+                    lowest = j
+        
+        arr[i], arr[lowest] = arr[lowest], arr[i]
+
+"""
+Insertion Sort Function
+
+Similar to Selection, in terms of comparing through all elements in the list. However, Insertion works backwards and instead of storing the index, swaps the element with the previous element if the previous element is greater
+The for i in range (1,n) starts from 1 due to us minusing the index by 1 if swap, hence if start from 0 will return index error / redundent code as the while loop will never be entered
+The while loop basically checks the current element with the previous element, if the previous element is greater than the current element, we replace the current element with the previous element. The -= 1 is to continuously move down the list
+arr[current] = value places the replaced value in the current index
+
+Demonstration
+
+Initial = [5,1,2]
+First loop : 
+    current = 1
+    1 is greater than 5, so the current element gets replaced
+    [5,5,2]
+    The current value minuses one so = 0, exitting the loop
+    Replacing the current with the replaced element
+    [1,5,2]
+
+Keeps going through all elements of the list
+""" 
 def insertionSort(arr, mode, rev):
-    #Similar to selection, where compares through all but it swaps instead of storing the index and swapping at the end
+    method = determine_type(mode)
     n = len(arr)
-    for i in range(1, n): #start from 1 due to checking with previous value and -1 will return the wrong number
+    for i in range(1,n):
         value = arr[i]
         current = i
-
-        if (mode == 1):
-            if (rev == 1):
-                while (current > 0) and (arr[current-1].get_name().upper() > value.get_name().upper()):
-                    arr[current] = arr[current-1] #Swaps the 2
-                    current -= 1 #As the while loop goes on, it keeps checking if value is smaller and swaps with the backwards
-            else:
-                while (current > 0) and (arr[current-1].get_name().upper() < value.get_name().upper()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-        elif (mode == 2):
-            if (rev == 1):
-                while (current > 0) and (arr[current-1].get_packname().upper() > value.get_packname().upper()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-            else:
-                while (current > 0) and (arr[current-1].get_packname().upper() < value.get_packname().upper()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-        elif (mode == 3):
-            if (rev == 1):
-                while (current > 0) and (arr[current-1].get_paxnum() > value.get_paxnum()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-            else:
-                while (current > 0) and (arr[current-1].get_paxnum() < value.get_paxnum()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-        elif (mode == 4):
-            if (rev == 1):
-                while (current > 0) and (arr[current-1].get_packcost() > value.get_packcost()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
-            else:
-                while (current > 0) and (arr[current-1].get_packcost() < value.get_packcost()):
-                    arr[current] = arr[current-1] 
-                    current -= 1 
+        if (rev == 1):
+            while (current > 0 and (method(arr[current-1]) > method(value))):
+                arr[current] = arr[current-1]
+                current -= 1
+        else:
+            while (current > 0 and (method(arr[current-1]) < method(value))):
+                arr[current] = arr[current-1]
+                current -= 1
         
-        arr[current] = value #When the loop stops running, places the value at its correct index
+        arr[current] = value
 
 def mergeSort(arr, mode, rev):
     if (len(arr) <= 1):

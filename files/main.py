@@ -162,6 +162,7 @@ def main():
                             print("Please enter a valid number")
                     
                     update = 1
+                    package = new.get_packname()
                     new.set_paxnum(paxnum)
 
                 #Cost Per Pax Update

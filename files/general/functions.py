@@ -398,8 +398,11 @@ def listing(valid):
         choice = input("\u001b[7m Enter FIRST number for the range: \u001b[0m ")
         try:
             choice = int(choice)
-            rang.append(choice)
-            break
+            if choice > 0:
+                rang.append(choice)
+                break
+            else:
+                print("\u001b[31mPlease enter a positive number \u001b[0m")
         except:
             print("\u001b[31mPlease enter a number. \u001b[0m")
         
