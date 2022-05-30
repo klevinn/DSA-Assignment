@@ -1,4 +1,5 @@
 import random
+from sorting.shortenfuncs import *
 
 #To check if array is sorted or Not
 def is_sorted(a, mode, rev):
