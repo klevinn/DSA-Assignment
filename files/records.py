@@ -1,3 +1,20 @@
+"""
+Dealing with List Of Objects
+
+Object Class:
+    with setter and getter methods
+    initialising the attributes
+
+Available Names (Romance Package, Girls Getaway Package, Rest & Relaxation Package, Staycation Package)
+Package Names are taken from https://www.socialtables.com/blog/hotel-sales/creative-hotel-packages/
+
+Respective Costs:
+Romance Package:300, 
+The Girls Getaway Package:500, 
+The Rest & Relaxation Package:325, 
+Staycation Package:250
+"""
+
 class Records:
 
     def __init__(self):
@@ -9,13 +26,10 @@ class Records:
     #Setter Methods
     def set_name(self, name):
         self.__name = name
-    #Package names (Romance Package, The Girls Getaway Package, The Rest & Relaxation Package, Staycation Package)
-    #Taken from https://www.socialtables.com/blog/hotel-sales/creative-hotel-packages/
     def set_packname(self, packname):
         self.__packname = packname
     def set_paxnum(self, paxnum):
         self.__paxnum = paxnum
-    #Package Costs (Romance Package:300, The Girls Getaway Package:500, The Rest & Relaxation Package:325, Staycation Package:250)
     def set_packcost(self, packcost):
         self.__packcost = packcost
 

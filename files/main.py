@@ -4,21 +4,51 @@ from general.functions import *
 from tree.binarysearchtree import *
 from sorting.slowsortingfuncs import *
 
-#Extras to be done : Design (Color Codes)
+"""
+Comments
 
-#Functions to be done : Table Algorithm, must be useful (so check for time complexity), Do the return to previous page, Fix up UI
+Done Functions;
+- All Required Functions
+- Advanced Sorts
+    -Counting Sort Function
+    -Shell Sort Function
+    -Comb Sort Function
+    -Heap Sort Function
+    -Pancake Sort Function
+    -Tree Sort Function
+    -Gnome Sort Function
+    -Stalin Sort Function
+    -Bozo Sort Function
+    -Sleep Sort Function
+    -Slow Sort Function
+    -Cocktail Shaker Sort Function
+- Advanced Search (https://stackabuse.com/search-algorithms-in-python/)
+    -Jump Search Function
+    -Exponential Search Function
+    -Binary Tree Search Function
+    -Fibonacci Search Function
+- Additional Features for Admins
+    - Add Record Function
+    - Delete Record Function
+    - Update Record Function
+- Extras 
+    - UI (Coloring)
+- Dropped Features
+    -Raditz Sort.
+        -Only good time complexity for large amount of data
+    -Interpolation Search.
+        -Similar to another search function (No use of implementation)
+    -Tim Sort.
+        -Algorithm for .sort() in Python
+        -Involves Searches Learnt in Syllabus (Merely just combining the two)
+    -Intra Sort
+        -Involves Searches Learnt in Syllabus (Merely just combining the two)
 
-#Search Funcs: https://stackabuse.com/search-algorithms-in-python/
-#Possible :
-
-#Maybe Functions : CubeSort O(n log n)
-
-#Fun Functions : Bogo Sort / Bozo Sort : o(infinity), slow sort, sleep sort, stalin sort, bogo search
-
-#Dropped, Why : RaditzSort (Only good time complexity when large amount of data), shell sort (overall bad time complexity), Intrapolation Search (No use of implementation),  Tim Sort, Intra Sort, (Involves merge / quick / insertion no extra marks involved, probably have but not as much as new algoritms)
-
-#Done: All Basic Features to get a passing grade, Counting Sort, Additonal Features for administrators (Add, Remove, Update), Jump Search, Exponential Search, Shell Sort, Gnome Sort, comb sort, cocktail shaker sort. Binary Tree Search, Tree Sort, Fibo search (Single Occurence), Heap Sort, Fibonnachi Search, Binary Search Tree, Pancake Sort
-
+Error Handling :
+All menus - Disallow any input that is not an available option
+All sorts - Ascending & Descending Function Works
+All Search - Properly Working
+"""
 
 def main():
     choice = ''
@@ -30,7 +60,7 @@ def main():
             try: 
                 choice = int(choice)
                 if (choice not in logs):
-                    print("\u001b[31mPlease enter either a valid option\u001b[0m")
+                    print("\n\u001b[31mPlease enter either a valid option\u001b[0m\n")
                 else:
                     print(logs[choice])
                     break
@@ -40,7 +70,7 @@ def main():
                     print(logs[choice.upper()])
                     return choice.upper()
                 else:
-                    print("\u001b[31mPlease enter a valid option\u001b[0m")
+                    print("\n\u001b[31mPlease enter a valid option\u001b[0m\n")
         
         if (choice == 1):
             display_records(db)
@@ -83,11 +113,11 @@ def main():
                     try:
                         package = int(input("\u001b[7mChoose One Of the Packages: \u001b[0m "))
                         if (1 > package) or (package > 4):
-                            print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                            print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                         else:
                             break
                     except:
-                        print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                        print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                 
                 package = get_packs_index(package)
 
@@ -96,7 +126,7 @@ def main():
                         paxnum = int(input("\u001b[31mHow many people: \u001b[0m "))
                         break
                     except:
-                        print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                        print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
 
                 packcost = get_packs_cost(package, paxnum)
                 obj.set_name(name)
@@ -116,11 +146,11 @@ def main():
                     try:
                         num = int(input("\u001b[7mWhich record would you like to update? \u001b[0m "))
                         if (num > len(db)):
-                            print("\u001b[31mPlease enter an EXISTING record \u001b[0m ")
+                            print("\n\u001b[31mPlease enter an EXISTING record \u001b[0m\n ")
                         else:
                             break
                     except:
-                        print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                        print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
 
                 new = db[num-1]
 
@@ -140,11 +170,11 @@ def main():
                         try:
                             package = int(input("\u001b[7mChoose one of the Packages: \u001b[0m "))
                             if (package > 4) or (package < 1):
-                                print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                                print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                             else:
                                 break
                         except:
-                            print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                            print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
             
                     package = get_packs_index(package)
                     new.set_packname(package)
@@ -159,7 +189,7 @@ def main():
                             paxnum = int(input("\u001b[7mHow many people? \u001b[0m "))
                             break
                         except:
-                            print("\u001b[31mPlease enter a valid option \u001b[0m ")
+                            print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                     
                     update = 1
                     package = new.get_packname()
@@ -187,11 +217,11 @@ def main():
                     try:
                         num = int(input("\u001b[7mWhich record would you like to update? \u001b[0m "))
                         if (num > len(db)):
-                            print("\u001b[31mPlease enter an EXISTING record\u001b[0m")
+                            print("\n\u001b[31mPlease enter an EXISTING record\u001b[0m\n")
                         else:
                             break
                     except:
-                        print("\u001b[31mPlease enter a valid number\u001b[0m")
+                        print("\n\u001b[31mPlease enter a valid number\u001b[0m\n")
 
                 upd = update_input(valid, "\u001b[7mAre you sure?(Y/N): \u001b[0m ")
                 if (upd == "Y"):

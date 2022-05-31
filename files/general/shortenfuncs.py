@@ -1,4 +1,6 @@
 def determine_type(mode):
+    method = '' #Just to avoid unbound local
+    
     if (mode == 1):
         method = lambda x: x.get_name().upper()
     elif (mode == 2):

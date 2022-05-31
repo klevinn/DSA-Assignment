@@ -96,11 +96,11 @@ def insertionSort(arr, mode, rev):
         value = arr[i]
         current = i
         if (rev == 1):
-            while (current > 0 and (method(arr[current-1]) > method(value))):
+            while (current > 0) and (method(arr[current-1]) > method(value)):
                 arr[current] = arr[current-1]
                 current -= 1
         else:
-            while (current > 0 and (method(arr[current-1]) < method(value))):
+            while (current > 0) and (method(arr[current-1]) < method(value)):
                 arr[current] = arr[current-1]
                 current -= 1
         
@@ -205,7 +205,7 @@ def countingSort(array, mode, rev):
         if (mode == 1):
             newarr.append(array[i].get_paxnum())
         else:
-            newarr.append(array[i].get_packcost())
+            newarr.append(round(array[i].get_packcost()))
     greatest = max(newarr)
 
     count = [0] * (greatest + 1)
@@ -214,7 +214,7 @@ def countingSort(array, mode, rev):
         if (mode == 1):
             count[array[i].get_paxnum()] += 1
         else:
-            count[array[i].get_packcost()] += 1
+            count[round(array[i].get_packcost())] += 1
 
     for i in range(1, len(count)):
         count[i] += count[i - 1]
@@ -227,8 +227,8 @@ def countingSort(array, mode, rev):
                 output[count[array[i].get_paxnum()] - 1] = array[i]
                 count[array[i].get_paxnum()] -= 1
             else:
-                output[count[array[i].get_packcost()] - 1] = array[i]
-                count[array[i].get_packcost()] -= 1
+                output[count[round(array[i].get_packcost())] - 1] = array[i]
+                count[round(array[i].get_packcost())] -= 1
 
             i -= 1
 
@@ -239,8 +239,8 @@ def countingSort(array, mode, rev):
                 output[-(count[array[i].get_paxnum()])] = array[i]
                 count[array[i].get_paxnum()] -= 1
             else:
-                output[-(count[array[i].get_packcost()])] = array[i]
-                count[array[i].get_packcost()] -= 1
+                output[-(count[round(array[i].get_packcost())])] = array[i]
+                count[round(array[i].get_packcost())] -= 1
             
             i -= 1
 
@@ -348,22 +348,22 @@ def cocktail_shaker_sort(nums, mode, rev):
         is_swapped = False
         if (rev == 1):
             for j in range(i, 0, -1):
-                if (method(nums[j] < method(nums[j-1]))):
+                if (method(nums[j]) < method(nums[j-1])):
                     nums[j], nums[j-1] = nums[j-1], nums[j]
                     is_swapped = True
 
             for j in range(i):
-                if (method(nums[j] > method(nums[j+1]))):
+                if (method(nums[j]) > method(nums[j+1])):
                     nums[j], nums[j+1] = nums[j+1], nums[j]
                     is_swapped = True
         else:
             for j in range(i, 0, -1):
-                if (method(nums[j] > method(nums[j-1]))):
+                if (method(nums[j]) > method(nums[j-1])):
                     nums[j], nums[j-1] = nums[j-1], nums[j]
                     is_swapped = True
 
             for j in range(i):
-                if (method(nums[j] < method(nums[j+1]))):
+                if (method(nums[j]) < method(nums[j+1])):
                     nums[j], nums[j+1] = nums[j+1], nums[j]
                     is_swapped = True
 

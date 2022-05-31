@@ -18,7 +18,8 @@ def create_random_record():
     user = Records()
     user.set_name(selectedName)
     user.set_paxnum(paxNum)
-    user.set_packcost(round(packs[selectedPack]/paxNum))
+    costperpax = float("%.2f" %(packs[selectedPack]/paxNum))
+    user.set_packcost(costperpax)
     user.set_packname(selectedPack)
 
     return user
@@ -30,7 +31,8 @@ def get_packs_index(n):
 #Using the key obtained, putting it into the packs dictionary to get the cost associated with the name
 #Do the math based of the number of people to get cost per pax
 def get_packs_cost(pack, num):
-    return round(packs[pack] / num)
+    cost = float("%.2f" %(packs[pack] / num))
+    return cost
 
 #Persistent Storage Data
 #Opening the Storage File
@@ -67,11 +69,11 @@ def display_records(db):
         var.append(i.get_name())
         var.append(i.get_packname())
         var.append(i.get_paxnum())
-        var.append(round(i.get_packcost()))
+        var.append(i.get_packcost())
         data.append(var)
         num += 1
     
-    print(tabulate(data, headers=headers, tablefmt="grid"))
+    print(tabulate(data, headers=headers, tablefmt="grid", floatfmt=".2f"))
 
 #Same algorithm but changes due to the fact that Search results deal with dictionaries instead of lists
 def display_records_search(results):
@@ -84,11 +86,11 @@ def display_records_search(results):
         var.append(i.get_name())
         var.append(i.get_packname())
         var.append(i.get_paxnum())
-        var.append(round(i.get_packcost()))
+        var.append(i.get_packcost())
         data.append(var)
         num += 1
 
-    print(tabulate(data, headers=headers, tablefmt="grid"))
+    print(tabulate(data, headers=headers, tablefmt="grid", floatfmt=".2f"))
 
 #Menu
 def menu(stage): 
@@ -350,10 +352,12 @@ def menu(stage):
 #Displays the menu of Packages and their respective cost
 def addmenu():
     menunum = 1
-    print("==== Packages ====")
+    message = "\n========= Packages =========\n"
+    print(message)
     for i in packs:
         print("%d. %s : $%.2f" %(menunum, i, packs[i]))
         menunum += 1
+    print("\n" + "=" * len(message) + "\n")
 
 #Repeated Codes
 def inputValue(question ,valid, logs):
@@ -367,11 +371,11 @@ def inputValue(question ,valid, logs):
                 print(logs[choice])
                 
             else:
-                print("\u001b[31mPlease enter either one of the options available \u001b[0m")
+                print("\n\u001b[31mPlease enter either one of the options available \u001b[0m\n")
 
         except:
             if (choice.upper() not in logs):
-                print("\u001b[31mPlease enter either one of the options \u001b[0m")
+                print("\n\u001b[31mPlease enter either one of the options \u001b[0m\n")
             else:
                 print(logs[choice.upper()])
                 return choice.upper()
@@ -390,7 +394,7 @@ def question(question, valid, itype):
         except:
             if (itype == "int"):
                 return ''
-            print("\u001b[31mInvalid Input \u001b[0m")
+            print("\n\u001b[31mInvalid Input \u001b[0m\n")
 
 def listing(valid):
     rang = []
@@ -402,9 +406,9 @@ def listing(valid):
                 rang.append(choice)
                 break
             else:
-                print("\u001b[31mPlease enter a positive number \u001b[0m")
+                print("\n\u001b[31mPlease enter a positive number \u001b[0m\n")
         except:
-            print("\u001b[31mPlease enter a number. \u001b[0m")
+            print("\n\u001b[31mPlease enter a number. \u001b[0m\n")
         
 
     while (valid):
@@ -412,12 +416,12 @@ def listing(valid):
         try:
             choice2 = int(choice2)
             if (choice2 < choice):
-                print("\u001b[31mPlease enter a number that is greater than the first number. \u001b[0m")
+                print("\n\u001b[31mPlease enter a number that is greater than the first number. \u001b[0m\n")
             else:
                 rang.append(choice2)
                 break
         except:
-            print("\u001b[31mPlease enter a number. \u001b[0m")
+            print("\n\u001b[31mPlease enter a number. \u001b[0m\n")
 
     print("\u001b[33mEntered Range: %d-%d\u001b[0m" %(rang[0], rang[1]))
     return rang
@@ -464,10 +468,10 @@ def listingFunc(db,valid, tertChoice):
             var.append(i.get_name())
             var.append(i.get_packname())
             var.append(i.get_paxnum())
-            var.append(round(i.get_packcost()))
+            var.append(i.get_packcost())
             data.append(var)
         
-        print(tabulate(data, headers=headers, tablefmt="grid"))
+        print(tabulate(data, headers=headers, tablefmt="grid", floatfmt=".2f"))
         
         print("\u001b[32mThere are %d results found! \u001b[0m" %(len(data)))
         print("\n\u001b[33mReturning to Main Page... \u001b[0m ")
@@ -478,7 +482,7 @@ def update_input(valid, question):
         if (update.upper() == "Y") or (update.upper() == "N"):
             return update.upper()
         else:
-            print("\u001b[31mPlease enter either (Y/N) \u001b[0m ")
+            print("\n\u001b[31mPlease enter either (Y/N) \u001b[0m\n ")
 
 def search(db, mode):
     valid = 1
@@ -492,8 +496,22 @@ def search(db, mode):
             print("\u001b[1mThis Search Requires Sorting!")
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
-
-        keyword = question("\u001b[7mEnter keyword: \u001b[0m ", valid, "str")
+        
+        if (choice == 1):
+            keyword = question("\n\u001b[7mEnter keyword: \u001b[0m ", valid, "str")
+        else:
+            addmenu()
+            while True:
+                try:
+                    package = int(input("\u001b[7mChoose one of the Packages: \u001b[0m "))
+                    if (package > 4) or (package < 1):
+                        print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+                    else:
+                        break
+                except:
+                    print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+            
+            keyword = get_packs_index(package)
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
@@ -515,7 +533,27 @@ def search(db, mode):
 
             if (len(results) == 1):
                 valid = 1
-                update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+                if (choice == 1):
+                    update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+                else:
+                    addmenu()
+                    update = ''
+                    while True:
+                        try:
+                            package = int(input("\u001b[7mWhat would you like to update the Package To (Leave blank if not wanted): \u001b[0m "))
+                            if (package > 4) or (package < 1):
+                                print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+                            else:
+                                update = "Valid"
+                                break
+                        except:
+                            if (package == 1): #returns 1 when left blank
+                                break
+                            print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+                    
+                    if (update):
+                        update = get_packs_index(package)
+                
                 if (len(update) != 0):
                     if (choice == 1):
                         db[list(results.keys())[0]].set_name(update)
@@ -523,6 +561,7 @@ def search(db, mode):
                         
                     elif (choice ==2):
                         db[list(results.keys())[0]].set_packname(update)
+                        db[list(results.keys())[0]].set_packcost(get_packs_cost(update, db[list(results.keys())[0]].get_paxnum()))
                         rewrite_pickles(db)
 
 
@@ -531,7 +570,28 @@ def search(db, mode):
                 num = question("\u001b[7mUse which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (num == ''):
                     return 1
-                update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+
+                if (choice == 1):
+                    update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+                else:
+                    addmenu()
+                    update = ''
+                    while True:
+                        try:
+                            package = int(input("\u001b[7mWhat would you like to update the Package To (Leave blank if not wanted): \u001b[0m "))
+                            if (package > 4) or (package < 1):
+                                print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+                            else:
+                                update = "Valid"
+                                break
+                        except:
+                            if (package == 1): #returns 1 when left blank
+                                break
+                            print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
+                    
+                    if (update):
+                        update = get_packs_index(package)
+
                 if (len(update) != 0):
                     if (choice == 1):
                         db[list(results.keys())[num-1]].set_name(update)
@@ -539,12 +599,13 @@ def search(db, mode):
 
                     elif (choice == 2):
                         db[list(results.keys())[num-1]].set_packname(update)
+                        db[list(results.keys())[num-1]].set_packcost(get_packs_cost(update, db[list(results.keys())[num-1]].get_paxnum()))
                         rewrite_pickles(db)
 
         else:
-            print("\033[31;1m No Results Found")
-            print("Keywords need to be exact. Entered Keyword: %s\033[0m" %(keyword))
-            print("Returning to main page...")
+            print("\n\033[31;1mNo Results Found")
+            print("Keywords need to be exact. Entered Keyword: %s\033[0m\n" %(keyword))
+            print("\033[33mReturning to main page...\033[0m")
 
     else:
         if (mode > 1) and (mode != 6):
@@ -553,7 +614,7 @@ def search(db, mode):
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
 
-        keyword = question("\u001b[7mEnter keyword: \u001b[0m  ", valid, "int1")
+        keyword = question("\n\u001b[7mEnter keyword: \u001b[0m  ", valid, "int1")
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
@@ -575,35 +636,38 @@ def search(db, mode):
 
             if (len(results) == 1):
                 valid = 1
-                update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
-                if (update != ''):
-                    if (choice == 3):
+                if (choice == 3):
+                    update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                    if (update != ''):
                         db[list(results.keys())[0]].set_paxnum(update)
+                        db[list(results.keys())[0]].set_packcost(get_packs_cost(db[list(results.keys())[0]].get_packname(),update))
                         rewrite_pickles(db)
-
-                    elif (choice == 4):
-                        db[list(results.keys())[0]].set_packcost(update)
-                        rewrite_pickles(db)
+                else:
+                    print("\n\033[31;1mNot Allowed to Update")
+                    print("Cost Per Pax is By The Package and Number of Pax!")
+                    print("If you want to update the respective record, search for the pax number / package name and edit the respective record\u001b[0m\n")
 
             else:
                 valid = 1
                 num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (num == ''):
                     return 1
-                update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
-                if (update != ''):
-                    if (choice == 3):
+                if (choice == 3):
+                    update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                    if (update != ''):
                         db[list(results.keys())[num-1]].set_paxnum(update)
+                        db[list(results.keys())[num-1]].set_packcost(get_packs_cost(db[list(results.keys())[0]].get_packname(),update))
                         rewrite_pickles(db)
 
-                    elif (choice == 4):
-                        db[list(results.keys())[num-1]].set_packcost(update)
-                        rewrite_pickles(db)
+                else:
+                    print("\n\033[31;1mNot Allowed to Update")
+                    print("Cost Per Pax is By The Package and Number of Pax!")
+                    print("If you want to update the respective record, search for the pax number / package name and edit the respective record\u001b[0m\n")
 
         else:
-            print("\033[31;1m No Results Found")
-            print("Keywords need to be exact. Entered Keyword: %s\033[0m" %(keyword))
-            print("Returning to main page...")
+            print("\n\033[31;1mNo Results Found")
+            print("Keywords need to be exact. Entered Keyword: %s\033[0m\n" %(keyword))
+            print("\033[33mReturning to main page...\033[0m")
                     
                     
     return 1
@@ -663,10 +727,10 @@ def slow_sorting(db, valid, mode):
         try:
             bogoSort(db,choice, asc)
         except (KeyboardInterrupt):
-            print("\n\u001b[31mTook too long to Sort. Welcome to O(Infinity)\u001b[0m")
+            print("\n\u001b[31mTook too long to Sort. Welcome to O(Infinity)\u001b[0m\n")
 
     elif (mode == 2):
-        upd = update_input(valid, "\u001b[31mThis sort may remove elements from the list. Are you sure you want to do this? (Y/N)\u001b[0m")
+        upd = update_input(valid, "\n\u001b[31mThis sort may remove elements from the list. Are you sure you want to do this? (Y/N)\u001b[0m\n")
         if (upd == "X"):
             return
     

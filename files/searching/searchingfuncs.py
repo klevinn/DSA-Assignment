@@ -2,16 +2,22 @@ import math
 from general.shortenfuncs import *
 #Searching Functions
 
+"""
+Linear Search
+
+
+"""
 def linearSearch(arr, target, mode):
     method = determine_type(mode)
     ind = {} #common sense search : looking through each of the items and comparing
     for i in range(len(arr)):
-        if (mode < 3):
-            if (method(arr[i]) == target.upper()):
-                ind[i] = arr[i]
-        else:
-            if (method(arr[i]) == target):
-                ind[i] = arr[i]          
+        if (isinstance(mode, int)):
+            if (mode < 3):
+                if (method(arr[i]) == target.upper()):
+                    ind[i] = arr[i]
+            else:
+                if (method(arr[i]) == target):
+                    ind[i] = arr[i]
         
         if (mode == 'listNum1'):
             if (arr[i].get_paxnum() > target):
@@ -32,6 +38,11 @@ def linearSearch(arr, target, mode):
     
     return ind
 
+"""
+Binary Search
+
+
+"""
 def binarySearch(arr,target,mode):
     method = determine_type(mode)
     ind = {}
@@ -151,6 +162,8 @@ def FibonacciSearch(lys, val, mode):
             original = lys[i]
             while (True):
                 i += 1
+                if (i > len(lys)):
+                    break
                 if (method(lys[i]) == method(original)):
                     ind[i] = lys[i]
                 else:
@@ -158,6 +171,8 @@ def FibonacciSearch(lys, val, mode):
             
             while (True):
                 j -= 1
+                if (j < 0):
+                    break
                 if (method(lys[j]) == method(original)):
                     ind[j] = lys[j]
                 else:
@@ -170,6 +185,8 @@ def FibonacciSearch(lys, val, mode):
             ind[index] = lys[index]
             while (True):
                 index += 1
+                if (index > len(lys)):
+                    break
                 if (method(lys[index]) == val):
                     ind[index] = lys[index]
                 else:
