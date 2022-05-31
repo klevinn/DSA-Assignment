@@ -126,7 +126,7 @@ def menu(stage):
         print("2.", menu[0][1])
         print("X.", menu[0][2])
         print("\n========================\n")
-        return {1:"\n\u001b[33mDisplaying Records... \u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\n\u001b[33mRecords Settings... \u001b[0m", "EasterEgg":"\n\u001b[33mDisplaying Easter Egg Sorts... \u001b[0m"}
+        return {1:"\n\u001b[33mDisplaying Records... \u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\n\u001b[33mRecords Settings... \u001b[0m", "EASTEREGG":"\n\u001b[33mDisplaying Easter Egg Sorts... \u001b[0m"}
     
     #Stage 1.1 : The records settings menu , deals with adding records, update records & Deletion of records
     elif (stage == 1.1):
@@ -137,7 +137,7 @@ def menu(stage):
         print("3.", additional[2])
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
-        return {1:"Adding Records...", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\u001b[33mUpdating a Record...\u001b[0m", 3:"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
+        return {1:"\n\u001b[33mAdding Records...\u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\u001b[33mUpdating a Record...\u001b[0m", 3:"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
 
     #Stage 2 : Displays all usable sorting algorithms
     elif (stage == 2):

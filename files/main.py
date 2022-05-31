@@ -68,7 +68,7 @@ def main():
             except:
                 if (choice.upper() in logs):
                     print(logs[choice.upper()])
-                    return choice.upper()
+                    break
                 else:
                     print("\n\u001b[31mPlease enter a valid option\u001b[0m\n")
         
@@ -107,11 +107,11 @@ def main():
             #Adding a Record
             if (secChoice == 1):
                 obj = Records()
-                name = input("Name: ")
+                name = input("\n\u001b[7mName:\u001b[0m ")
                 while (valid):
                     addmenu()
                     try:
-                        package = int(input("\u001b[7mChoose One Of the Packages: \u001b[0m "))
+                        package = int(input("\n\u001b[7mChoose One Of the Packages: \u001b[0m "))
                         if (1 > package) or (package > 4):
                             print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                         else:
@@ -123,7 +123,7 @@ def main():
 
                 while (valid):
                     try:
-                        paxnum = int(input("\u001b[31mHow many people: \u001b[0m "))
+                        paxnum = int(input("\n\u001b[7mHow many people: \u001b[0m "))
                         break
                     except:
                         print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
@@ -144,7 +144,7 @@ def main():
                 valid = 1
                 while (valid):
                     try:
-                        num = int(input("\u001b[7mWhich record would you like to update? \u001b[0m "))
+                        num = int(input("\n\u001b[7mWhich record would you like to update? \u001b[0m "))
                         if (num > len(db)):
                             print("\n\u001b[31mPlease enter an EXISTING record \u001b[0m\n ")
                         else:
@@ -155,20 +155,20 @@ def main():
                 new = db[num-1]
 
                 #Name Update
-                print("Name : %s" %(new.get_name()))
-                upd = update_input(valid, "\u001b[7mWould you like to update the Name?(Y/N): \u001b[0m ")
+                print("\n\u001b[1mName : %s\u001b[0m" %(new.get_name()))
+                upd = update_input(valid, "\n\u001b[7mWould you like to update the Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
-                    name = input("\u001b[7mEnter the new name of this record: \u001b[0m")
+                    name = input("\n\u001b[7mEnter the new name of this record: \u001b[0m")
                     new.set_name(name)
 
                 #Package Name Update
-                print("Package Name : %s" %(new.get_packname()))
-                upd = update_input(valid, "\u001b[7mWould you like to update the Package Name?(Y/N): \u001b[0m ")
+                print("\n\u001b[1mPackage Name : %s\u001b[0m" %(new.get_packname()))
+                upd = update_input(valid, "\n\u001b[7mWould you like to update the Package Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
                         addmenu()
                         try:
-                            package = int(input("\u001b[7mChoose one of the Packages: \u001b[0m "))
+                            package = int(input("\n\u001b[7mChoose one of the Packages: \u001b[0m "))
                             if (package > 4) or (package < 1):
                                 print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                             else:
@@ -181,12 +181,12 @@ def main():
                     update = 1
 
                 #Pax Number Update
-                print("Pax Number : %d" %(new.get_paxnum()))
-                upd = update_input(valid, "\u001b[7mWould you like to update the Pax Number?(Y/N): \u001b[0m ")
+                print("\n\u001b[1mPax Number : %d\u001b[0m" %(new.get_paxnum()))
+                upd = update_input(valid, "\n\u001b[7mWould you like to update the Pax Number?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
                         try:
-                            paxnum = int(input("\u001b[7mHow many people? \u001b[0m "))
+                            paxnum = int(input("\n\u001b[7mHow many people? \u001b[0m "))
                             break
                         except:
                             print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
@@ -198,14 +198,14 @@ def main():
                 #Cost Per Pax Update
                 if (update):
                     packcost = get_packs_cost(package, new.get_paxnum())
-                    print("\u001b[33m== There has been an update that affects the Cost per pax ==\u001b[0m")
+                    print("\n\u001b[33m== There has been an update that affects the Cost per pax ==\u001b[0m")
                     print("\u001b[33mNew Cost Per Pax : %.2f\u001b[0m" %(packcost))
                     new.set_packcost(packcost)
                 else:
-                    print("\u001b[33mCurrent Cost Per Pax : %.2f\u001b[0m" %(new.get_packcost()))
+                    print("\n\u001b[33mCurrent Cost Per Pax : %.2f\u001b[0m" %(new.get_packcost()))
                 
                 
-                print("\u001b[33mUpdating Records...\u001b[0m")
+                print("\n\u001b[33mUpdating Records...\u001b[0m")
                 db[num-1] = new
                 rewrite_pickles(db)
 
@@ -215,7 +215,7 @@ def main():
                 valid = 1
                 while (valid):
                     try:
-                        num = int(input("\u001b[7mWhich record would you like to update? \u001b[0m "))
+                        num = int(input("\n\u001b[7mWhich record would you like to delete? \u001b[0m "))
                         if (num > len(db)):
                             print("\n\u001b[31mPlease enter an EXISTING record\u001b[0m\n")
                         else:
@@ -223,20 +223,20 @@ def main():
                     except:
                         print("\n\u001b[31mPlease enter a valid number\u001b[0m\n")
 
-                upd = update_input(valid, "\u001b[7mAre you sure?(Y/N): \u001b[0m ")
+                upd = update_input(valid, "\n\u001b[7mAre you sure?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     db.pop(num-1)
                     rewrite_pickles(db)
                 else:
-                    print("\u001b[33mReturning to main menu...\u001b[0m")
+                    print("\n\u001b[33mReturning to main menu...\u001b[0m")
 
         elif (choice == "EasterEgg"):
             display_records(db)
             valid = 1
-            secChoice = inputValue("\u001b[7mWhat would you like to do? \u001b[0m ", valid, menu(5.1))
+            secChoice = inputValue("\n\u001b[7mWhat would you like to do? \u001b[0m ", valid, menu(5.1))
             if (secChoice == 1):
                 display_records(db)
-                tertChoice = inputValue("\u001b[7mWhat would you like to do? \u001b[0m ", valid, menu(6))
+                tertChoice = inputValue("\n\u001b[7mWhat would you like to do? \u001b[0m ", valid, menu(6))
                 if tertChoice != 'X':
                     slow_sorting(db, valid, tertChoice)
 
