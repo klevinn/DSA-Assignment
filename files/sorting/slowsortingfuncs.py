@@ -2,7 +2,7 @@ import random
 from time import sleep
 from threading import Timer
 from sorting.slowsortingfuncsplus import *
-from sorting.shortenfuncs import *
+from general.shortenfuncs import *
 
 """
 Bad Sorts : Bogo Sort

@@ -124,7 +124,7 @@ def menu(stage):
         print("2.", menu[0][1])
         print("X.", menu[0][2])
         print("\n========================\n")
-        return {1:"\n\u001b[33m Displaying Records... \u001b[0m", "X":"\n\u001b[31m Exitting Application... \u001b[0m\n", 2:"\n\u001b[33m Records Settings... \u001b[0m", "EasterEgg":"\n\u001b[33m Displaying Easter Egg Sorts... \u001b[0m"}
+        return {1:"\n\u001b[33mDisplaying Records... \u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\n\u001b[33mRecords Settings... \u001b[0m", "EasterEgg":"\n\u001b[33mDisplaying Easter Egg Sorts... \u001b[0m"}
     
     #Stage 1.1 : The records settings menu , deals with adding records, update records & Deletion of records
     elif (stage == 1.1):
@@ -135,17 +135,17 @@ def menu(stage):
         print("3.", additional[2])
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
-        return {1:"Adding Records...", "X":"\n\u001b[31m Exitting Application... \u001b[0m\n", 2:"Updating a Record...", 3:"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        return {1:"Adding Records...", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\u001b[33mUpdating a Record...\u001b[0m", 3:"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
 
     #Stage 2 : Displays all usable sorting algorithms
     elif (stage == 2):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n========= Menu Of Sorts =========\n"
         print(message)
         menunum = 1
         for i in menu[1]:
             print("%d." %(menunum) ,i)
-            logs[menunum] = "\n\u001b[33m Sorting... \u001b[0m "
+            logs[menunum] = "\n\u001b[33mSorting... \u001b[0m "
 
             menunum += 1
         
@@ -156,13 +156,13 @@ def menu(stage):
 
     #Stage 2.1 : Displays all Searching Algorithms
     elif (stage == 2.1):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n========= Menu Of Searches =========\n"
         print(message)
         menunum = 1
         for i in menu[2]:
             print("%d." %(menunum) ,i)
-            logs[menunum] = "\n\u001b[33m Searching... \u001b[0m"
+            logs[menunum] = "\n\u001b[33mSearching... \u001b[0m"
 
             menunum += 1
         
@@ -173,12 +173,12 @@ def menu(stage):
 
     #Stage 2.2: Displays all listing algorithms
     elif (stage == 2.2):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n========= Menu Of Listing =========\n"
         print(message)
 
         print("1.", menu[3][0])
-        logs[1] = "\n\u001b[33m Listing... \u001b[0m"
+        logs[1] = "\n\u001b[33mListing... \u001b[0m"
         
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
@@ -187,20 +187,20 @@ def menu(stage):
     
     #Stage 3 : Displays the 4 ways of sorting (Name, Packname, Paxnum, packcost)
     elif (stage == 3):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Sorting... ======\n"
         print(message)
         menunum = 1
         for i in submenu:
             print("%d." %(menunum), i)
             if (menunum == 1):
-                logs[menunum] = "\n\u001b[33m By Customer Name...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Customer Name...\u001b[0m"
             elif (menunum == 2):
-                logs[menunum] = "\n\u001b[33m By Package Name...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Package Name...\u001b[0m"
             elif (menunum == 3):
-                logs[menunum] = "\n\u001b[33m By Number Of Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 4):
-                logs[menunum] = "\n\u001b[33m By Cost Per Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Cost Per Pax...\u001b[0m"
             
             menunum += 1
 
@@ -211,16 +211,16 @@ def menu(stage):
 
     #Stage 3.1 = For Counting Sort, since they only deal with numbers, give them a menu that only shows the Number related options
     elif (stage == 3.1):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Sorting... ======\n"
         print(message)
         menunum = 1
         for i in submenu[2:]:
             print("%d." %(menunum), i)
             if (menunum == 1):
-                logs[menunum] = "\n\u001b[33m By Number Of Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 2):
-                logs[menunum] = "\n\u001b[33m By Cost Per Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Cost Per Pax...\u001b[0m"
             
             menunum += 1
 
@@ -233,20 +233,20 @@ def menu(stage):
     #Similar to stage 3
     #Stage 4 : Displays the 4 ways of searching (Name, Packname, Paxnum, packcost)
     elif (stage == 4):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Searching... ======\n"
         print(message)
         menunum = 1
         for i in submenu2:
             print("%d." %(menunum), i)
             if (menunum == 1):
-                logs[menunum] = "\n\u001b[33m By Customer Name...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Customer Name...\u001b[0m"
             elif (menunum == 2):
-                logs[menunum] = "\n\u001b[33m By Package Name...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Package Name...\u001b[0m"
             elif (menunum == 3):
-                logs[menunum] = "\n\u001b[33m By Number Of Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 4):
-                logs[menunum] = "\n\u001b[33m By Cost Per Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Cost Per Pax...\u001b[0m"
             
             menunum += 1
 
@@ -257,16 +257,16 @@ def menu(stage):
         return logs
 
     elif (stage == 4.1):
-        logs = {"X":"Returning To Main Menu.."}
+        logs = {"X":"\u001b[33mReturning To Main Menu..\u001b[0m"}
         message = "\n====== Searching... ======\n"
         print(message)
         menunum = 1
         for i in submenu2[2:]:
             print("%d." %(menunum), i)
             if (menunum == 1):
-                logs[menunum] = "\n\u001b[33m By Number Of Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 2):
-                logs[menunum] = "\n\u001b[33m By Cost Per Pax...\u001b[0m"
+                logs[menunum] = "\n\u001b[33mBy Cost Per Pax...\u001b[0m"
             
             menunum += 1
 
@@ -285,7 +285,7 @@ def menu(stage):
         print("3.", submenu0[2])
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
-        return {1:"\n\u001b[33m Displaying Sorting Records Options...\u001b[0m", 2:"\n\u001b[33m Displaying Searching Records Options...\u001b[0m", 3:"\n\u001b[33m Displaying Listing Records Options...\u001b[0m", "X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        return {1:"\n\u001b[33mDisplaying Sorting Records Options...\u001b[0m", 2:"\n\u001b[33mDisplaying Searching Records Options...\u001b[0m", 3:"\n\u001b[33mDisplaying Listing Records Options...\u001b[0m", "X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
 
     #Special : For Easter egg Functions : never use ineffective sorts for listing
     elif (stage == 5.1):
@@ -294,17 +294,17 @@ def menu(stage):
         print("1.", submenu0[0])
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
-        return {1:"\n\u001b[33m Displaying Sorting Records Options...\u001b[0m", "X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        return {1:"\n\u001b[33mDisplaying Sorting Records Options...\u001b[0m", "X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
 
     #Special : Displaying of the ineffective sort options
     elif (stage == 6):
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n========= Menu =========\n"
         print(message)
         menunum = 1
         for i in slowmenu:
             print("%d." %(menunum) ,i)
-            logs[menunum] = "\n\u001b[33m Sorting BUT SLOWLY... \u001b[0m"
+            logs[menunum] = "\n\u001b[33mSorting BUT SLOWLY... \u001b[0m"
 
             menunum += 1
         
@@ -315,13 +315,13 @@ def menu(stage):
 
     #For listing, displays the ways can list by
     elif stage == "list":
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Listing... ======\n"
         print(message)
         menunum = 1
         for i in submenu3:
             print("%d. %s" %(menunum, i))
-            logs[menunum] = "\n\u001b[33m Listing... \u001b[0m"
+            logs[menunum] = "\n\u001b[33mListing... \u001b[0m"
             menunum += 1
         
         print("X.", menu[0][3])
@@ -331,14 +331,14 @@ def menu(stage):
 
     #Stage asc is to display the menu asking if the user wants it to bve descending or ascending order
     elif stage == "asc":
-        logs = {"X":"\n\u001b[33m Returning to Main Menu... \u001b[0m"}
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Sorting... ======\n"
         print(message)
         submenu = ["By Ascending Order", "By Descending Order"]
         menunum =1
         for i in submenu:
             print("%d. %s" %(menunum, i))
-            logs[menunum] = "\n\u001b[33m %s... \u001b[0m" %(i)
+            logs[menunum] = "\n\u001b[33m%s... \u001b[0m" %(i)
             menunum += 1
         
         # print("B.", "Return to Main Records Page")
@@ -395,7 +395,7 @@ def question(question, valid, itype):
 def listing(valid):
     rang = []
     while (valid):
-        choice = input("\u001b[7m Enter FIRST number for the range: \u001b[0m ")
+        choice = input("\u001b[7mEnter FIRST number for the range: \u001b[0m ")
         try:
             choice = int(choice)
             if choice > 0:
@@ -408,7 +408,7 @@ def listing(valid):
         
 
     while (valid):
-        choice2 = input("\u001b[7m Enter SECOND number for the range: \u001b[0m ")
+        choice2 = input("\u001b[7mEnter SECOND number for the range: \u001b[0m ")
         try:
             choice2 = int(choice2)
             if (choice2 < choice):
@@ -482,7 +482,7 @@ def update_input(valid, question):
 
 def search(db, mode):
     valid = 1
-    choice = inputValue("\u001b[7m Which category would you like to search in? \u001b[0m ",valid, menu(4))
+    choice = inputValue("\u001b[7mWhich category would you like to search in? \u001b[0m ",valid, menu(4))
     if (choice == 'X'):
         return 1
     #Choices 1 and 2 deal with String Inputs while 3 and 4 deal with numeric input
@@ -493,7 +493,7 @@ def search(db, mode):
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
 
-        keyword = question("\u001b[7m Enter keyword: \u001b[0m ", valid, "str")
+        keyword = question("\u001b[7mEnter keyword: \u001b[0m ", valid, "str")
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
@@ -515,7 +515,7 @@ def search(db, mode):
 
             if (len(results) == 1):
                 valid = 1
-                update = question("\u001b[7m What would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+                update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
                 if (len(update) != 0):
                     if (choice == 1):
                         db[list(results.keys())[0]].set_name(update)
@@ -528,10 +528,10 @@ def search(db, mode):
 
             else:
                 valid = 1
-                num = question("\u001b[7m Use which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                num = question("\u001b[7mUse which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (num == ''):
                     return 1
-                update = question("\u001b[7m What would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
+                update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
                 if (len(update) != 0):
                     if (choice == 1):
                         db[list(results.keys())[num-1]].set_name(update)
@@ -553,7 +553,7 @@ def search(db, mode):
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
 
-        keyword = question("\u001b[7m Enter keyword: \u001b[0m  ", valid, "int1")
+        keyword = question("\u001b[7mEnter keyword: \u001b[0m  ", valid, "int1")
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
@@ -575,7 +575,7 @@ def search(db, mode):
 
             if (len(results) == 1):
                 valid = 1
-                update = question("\u001b[7m What would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (update != ''):
                     if (choice == 3):
                         db[list(results.keys())[0]].set_paxnum(update)
@@ -587,10 +587,10 @@ def search(db, mode):
 
             else:
                 valid = 1
-                num = question("\u001b[7m Who would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
+                num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (num == ''):
                     return 1
-                update = question("\u001b[7m What would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                 if (update != ''):
                     if (choice == 3):
                         db[list(results.keys())[num-1]].set_paxnum(update)
@@ -609,13 +609,13 @@ def search(db, mode):
     return 1
 
 def sorting(db, valid, mode):
-    asc = inputValue("\u001b[7m Ascending or Descending? \u001b[0m ", valid, menu("asc"))
+    asc = inputValue("\u001b[7mAscending or Descending? \u001b[0m ", valid, menu("asc"))
     if (asc == "X"):
         return
     if(mode == 6):
-        choice = inputValue("\u001b[7m What would you like to sort by? \u001b[0m ",valid, menu(3.1))
+        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.1))
     else:
-        choice = inputValue("\u001b[7m What would you like to sort by? \u001b[0m ",valid, menu(3))
+        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3))
     if (choice == "X"):
         return
 
@@ -649,13 +649,13 @@ def sorting(db, valid, mode):
     rewrite_pickles(db)
 
 def slow_sorting(db, valid, mode):
-    asc = inputValue("\u001b[7m Ascending or Descending? \u001b[0m ", valid, menu("asc"))
+    asc = inputValue("\u001b[7mAscending or Descending? \u001b[0m ", valid, menu("asc"))
     if (asc == "X"):
         return
     if(mode == 4):
-        choice = inputValue("\u001b[7m What would you like to sort by? \u001b[0m ",valid, menu(3.1))
+        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.1))
     else:
-        choice = inputValue("\u001b[7m What would you like to sort by? \u001b[0m ",valid, menu(3))
+        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3))
     if (choice == "X"):
         return
 

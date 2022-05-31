@@ -1,5 +1,5 @@
 from sorting.sortingfuncsplus import *
-from sorting.shortenfuncs import *
+from general.shortenfuncs import *
 
 #Sorting Functions
 """

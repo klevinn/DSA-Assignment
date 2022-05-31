@@ -1,4 +1,4 @@
-from sorting.shortenfuncs import *
+from general.shortenfuncs import *
 
 #File for extra functions needed in Sort Functions
 
