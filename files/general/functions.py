@@ -401,7 +401,7 @@ def listing(valid):
     while (valid):
         choice = input("\u001b[7mEnter FIRST number for the range: \u001b[0m ")
         try:
-            choice = int(choice)
+            choice = float(choice)
             if choice > 0:
                 rang.append(choice)
                 break
@@ -414,7 +414,7 @@ def listing(valid):
     while (valid):
         choice2 = input("\u001b[7mEnter SECOND number for the range: \u001b[0m ")
         try:
-            choice2 = int(choice2)
+            choice2 = float(choice2)
             if (choice2 < choice):
                 print("\n\u001b[31mPlease enter a number that is greater than the first number. \u001b[0m\n")
             else:
@@ -423,7 +423,7 @@ def listing(valid):
         except:
             print("\n\u001b[31mPlease enter a number. \u001b[0m\n")
 
-    print("\u001b[33mEntered Range: %d-%d\u001b[0m" %(rang[0], rang[1]))
+    print("\u001b[33mEntered Range: %.2f-%.2f\u001b[0m" %(rang[0], rang[1]))
     return rang
 
 def listingFunc(db,valid, tertChoice):

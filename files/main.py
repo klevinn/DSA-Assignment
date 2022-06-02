@@ -109,7 +109,11 @@ def main():
             #Adding a Record
             if (secChoice == 1):
                 obj = Records()
-                name = input("\n\u001b[7mName:\u001b[0m ")
+                while (True):
+                    name = input("\n\u001b[7mName:\u001b[0m ").strip()
+                    if len(name) != 0:
+                        break
+                    print("\n\u001b[31mPlease enter something into the name \u001b[0m")
                 while (valid):
                     addmenu()
                     try:
@@ -160,7 +164,11 @@ def main():
                 print("\n\u001b[1mName : %s\u001b[0m" %(new.get_name()))
                 upd = update_input(valid, "\n\u001b[7mWould you like to update the Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
-                    name = input("\n\u001b[7mEnter the new name of this record: \u001b[0m")
+                    while (True):
+                        name = input("\n\u001b[7mEnter the new name of this record: \u001b[0m").strip()
+                        if len(name) != 0:
+                            break
+                        print("\n\u001b[31mPlease enter something into the name \u001b[0m")
                     new.set_name(name)
 
                 #Package Name Update
