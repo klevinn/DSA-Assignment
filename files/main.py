@@ -52,7 +52,7 @@ All Search - Properly Working
 
 def main():
     choice = ''
-    while (choice.upper() != 'X'):
+    while (choice != 'X') and (choice != 'x'):
         db = open_pickles()
         logs = menu(1)
         while (True):

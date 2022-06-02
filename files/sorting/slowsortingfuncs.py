@@ -86,27 +86,22 @@ def sleep_sort(arr, mode, rev):
 
     ind = arr[0]
     for i in arr:
-        if (rev == 1):
-            if (mode == 1):
-                if (ind.get_paxnum() < i.get_paxnum()): ind = i
-                Timer(i.get_paxnum(), add1, [i]).start()
-            else:
-                if (ind.get_packcost() < i.get_packcost()): ind = i
-                Timer(i.get_packcost(), add1, [i]).start()
+        if (mode == 1):
+            if (ind.get_paxnum() < i.get_paxnum()): ind = i
+            Timer(i.get_paxnum(), add1, [i]).start()
         else:
-            if (mode == 1):
-                if (ind.get_paxnum() > i.get_paxnum()): ind = i
-                Timer(i.get_paxnum(), add1, [i]).start()
-            else:
-                if (ind.get_packcost() > i.get_packcost()): ind = i
-                Timer(i.get_packcost(), add1, [i]).start()
+            if (ind.get_packcost() < i.get_packcost()): ind = i
+            Timer(i.get_packcost(), add1, [i]).start()
 
     if (mode == 1):
         sleep(ind.get_paxnum()+1)
     elif (mode == 2):
         sleep(ind.get_packcost()+1)
     
-    return result
+    if (rev == 1):
+        return result
+    else:
+        return result[::-1]
 
 """
 Bad Sorts : Gnome Sort
