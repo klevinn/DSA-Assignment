@@ -41,7 +41,7 @@ Done Functions;
     -Tim Sort.
         -Algorithm for .sort() in Python
         -Involves Searches Learnt in Syllabus (Merely just combining the two)
-    -Intra Sort
+    -Intro Sort
         -Involves Searches Learnt in Syllabus (Merely just combining the two)
 
 Error Handling :
@@ -52,7 +52,7 @@ All Search - Properly Working
 
 def main():
     choice = ''
-    while (choice != 'X'):
+    while (choice.upper() != 'X'):
         db = open_pickles()
         logs = menu(1)
         while (True):
