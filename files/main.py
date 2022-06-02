@@ -6,6 +6,8 @@ from sorting.slowsortingfuncs import *
 
 """
 Comments
+#Formatting 
+#Range dont allow decimal for package cost
 
 Done Functions;
 - All Required Functions
