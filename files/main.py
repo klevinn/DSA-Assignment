@@ -7,7 +7,6 @@ from sorting.slowsortingfuncs import *
 """
 Comments
 #Formatting 
-#Range dont allow decimal for package cost
 
 Done Functions;
 - All Required Functions
@@ -161,7 +160,7 @@ def main():
                 new = db[num-1]
 
                 #Name Update
-                print("\n\u001b[1mName : %s\u001b[0m" %(new.get_name()))
+                print(f"\n\u001b[1mName : {new.get_name()} \u001b[0m")
                 upd = update_input(valid, "\n\u001b[7mWould you like to update the Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (True):
