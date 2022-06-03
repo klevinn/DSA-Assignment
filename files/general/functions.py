@@ -46,7 +46,8 @@ def open_pickles():
         recordsList = []
         for i in range(11):
             recordsList.append(create_random_record())
-            rewrite_pickles(recordsList)
+        
+        rewrite_pickles(recordsList)
         
 
     return recordsList

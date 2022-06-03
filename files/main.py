@@ -1,8 +1,6 @@
 
 from records import Records
 from general.functions import *
-from tree.binarysearchtree import *
-from sorting.slowsortingfuncs import *
 
 """
 Comments
