@@ -146,3 +146,64 @@ def findMax(arr, n, mode, rev):
                 maxindex = i
 
     return maxindex
+
+"""
+Raditz Sort Functions : Counting Sort by Place
+
+"""
+def countingSort_raditz(array,place):
+    size = len(array)
+    output = [0] * size
+    newarr = [] 
+    for i in range(len(array)):
+        # if (mode == 1):
+        newarr.append(array[i].get_paxnum())
+        # else:
+        #     newarr.append(array[i].get_packcost())
+    
+    greatest = round(max(newarr))
+    count = [0] * (greatest + 1)
+
+    for i in range(0, size):
+        # if (mode == 1):
+        index = array[i].get_paxnum() // place
+        # else:
+        #     index = array[i].get_packcost() // place
+
+        count[index % 10] += 1
+    
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+    
+    i = size - 1
+    #Ascending
+    # if (rev == 1):
+    while (i >= 0):
+        # if (mode == 1):
+        index = array[i].get_paxnum() // place
+        output[count[index % 10] - 1] = array[i]
+        count[index % 10] -= 1
+        # else:
+        #     index = array[i].get_packcost() // place
+        #     output[count[index % 10] - 1] = array[i]
+        #     count[index % 10] -= 1
+
+        i -= 1
+        
+
+    # else:
+    #     #Descending
+    #     while (i >= 0):
+    #         if (mode == 1):
+    #             index = array[i].get_paxnum() // place
+    #             output[-(count[index % 10])] = array[i]
+    #             count[index % 10] -= 1
+    #         else:
+    #             index = array[i].get_packcost() // place
+    #             output[-(count[index % 10])] = array[i]
+    #             count[index % 10] -= 1
+            
+    #         i -= 1
+
+    for i in range(0, size):
+        array[i] = output[i]

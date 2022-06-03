@@ -395,3 +395,74 @@ def heapSort(arr, mode, rev):
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]
         heapify(arr, i, 0, mode, rev)
+
+"""
+Bucket Sort (Maybe no put) (Temporarily Implemented)
+size variable determines the groups per buket (for example if size = 4, numbers stored in a bucket = 1-4)
+"""
+def bucketSort(array, mode, rev):
+    length = len(array)
+    largestInd = findMax(array, length, mode+2, 1)
+
+    largest = array[largestInd].get_packcost()
+    if (mode == 1):
+        largest = array[largestInd].get_paxnum()
+
+    size = largest/length
+    buckets = []
+
+    # Create Buckets
+    for i in range(length):
+        buckets.append([])
+    # buckets = [[] for i in range(length)]
+
+    # Bucket Sorting   
+    for i in range(length):
+        value = array[i].get_packcost()
+        if (mode == 1):
+            value = array[i].get_paxnum()
+
+
+        index = int(value/size)
+        if (rev == 1):
+            if (index != length):
+                buckets[index].append(array[i])
+            else:
+                buckets[length - 1].append(array[i])
+        
+        else:
+            if (index != length):
+                buckets[-(index+1)].append(array[i])
+            else:
+                buckets[0].append(array[i])
+
+
+    # Sorting Individual Buckets  
+    for i in range(len(array)):
+        if (len(buckets[i]) != 0):
+            buckets[i] = countingSort(buckets[i],mode, rev)
+
+
+    # Flattening the Array
+    result = []
+    for i in range(length):
+        result += buckets[i]
+
+    return result
+
+"""
+RaditzSort (Might not implement)
+"""
+def radixSort(array, mode, rev):
+    # Get maximum element
+    maxElemInd = findMax(array, len(array), mode+2, 1)
+    maxElement = array[maxElemInd].get_paxnum()
+
+    # Apply counting sort to sort elements based on place value.
+    place = 1
+    while (maxElement // place > 0):
+        countingSort_raditz(array, place)
+        place *= 10
+    
+    if (rev != 1):
+        array.reverse()

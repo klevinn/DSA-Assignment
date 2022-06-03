@@ -100,7 +100,7 @@ def menu(stage):
 
     menu = [["Display all Records", "Records Settings", "Exit Application", "Return To Main Menu"],
 
-    ["Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort"],
+    ["Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Sort Records using Bucket Sort(Only Integers)", "Sort Records using Radix Sort (Only Pax number)"],
 
     ["Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record"],
 
@@ -226,6 +226,21 @@ def menu(stage):
                 logs[menunum] = "\n\u001b[33mBy Cost Per Pax...\u001b[0m"
             
             menunum += 1
+
+        # print("B.", "Return to Main Records Page")
+        print("X.", menu[0][3])
+        print("\n" + "=" * len(message) + "\n")
+
+        return logs
+
+    elif (stage == 3.2):
+        logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
+        message = "\n====== Sorting... ======\n"
+        print(message)
+        print("%d." %(1), submenu[2])
+
+        logs[1] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
+            
 
         # print("B.", "Return to Main Records Page")
         print("X.", menu[0][3])
@@ -679,8 +694,10 @@ def sorting(db, valid, mode):
     asc = inputValue("\u001b[7mAscending or Descending? \u001b[0m ", valid, menu("asc"))
     if (asc == "X"):
         return
-    if(mode == 6):
+    if(mode == 6) or (mode == 13):
         choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.1))
+    elif (mode == 14):
+        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.2))
     else:
         choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3))
     if (choice == "X"):
@@ -711,6 +728,10 @@ def sorting(db, valid, mode):
         db = treeSort(tree,[], asc)
     elif (mode == 12):
         heapSort(db, choice, asc)
+    elif (mode == 13):
+        db = bucketSort(db, choice, asc)
+    elif (mode == 14):
+        radixSort(db, choice, asc)
 
     print("\n\u001b[32mSort Successful!\u001b[0m")
     rewrite_pickles(db)
