@@ -149,6 +149,7 @@ def findMax(arr, n, mode, rev):
 
 """
 Raditz Sort Functions : Counting Sort by Place
+Just Counting Sort algo, but divides it by the place to get the numbers in the ones, tens, hundreds
 
 """
 def countingSort_raditz(array,place):

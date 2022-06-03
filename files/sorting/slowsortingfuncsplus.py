@@ -1,6 +1,10 @@
 import random
 from general.shortenfuncs import *
 
+"""
+Functions used by Slow Sorting Functions
+"""
+
 #To check if array is sorted or Not
 def is_sorted(a, mode, rev):
     method = determine_type(mode)

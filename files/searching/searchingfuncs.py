@@ -4,7 +4,9 @@ from general.shortenfuncs import *
 
 """
 Linear Search
-
+    Best time complexity: O(n)
+    Worst time complexity: O(n)
+    Average time complexity: O(n)
 
 """
 def linearSearch(arr, target, mode):
@@ -40,7 +42,9 @@ def linearSearch(arr, target, mode):
 
 """
 Binary Search
-
+    Best time complexity: O(1)
+    Worst time complexity: O(log(n))
+    Average time complexity: O(log(n))
 
 """
 def binarySearch(arr,target,mode):
@@ -123,6 +127,12 @@ def JumpSearch(arr, val, mode):
 
     return ind
 
+"""
+Expo Search:
+    Best time complexity: O(log(n))
+    Worst time complexity: O(log(n))
+    Average time complexity: O(log(n))
+"""
 def ExponentialSearch(arr, val, mode):
     method = determine_type(mode)
     if (mode < 3):
@@ -140,6 +150,9 @@ def ExponentialSearch(arr, val, mode):
 
 """
 Fibonacci Search
+    Best case: O(1) when the element to be found is the first element to be compared
+    Worst case: O(log(n))
+    Average case: O(log(n))
 
 involves fibonacci sequence, the 3rd number is the sum of the 1st and second
 uses fibonacci numbers to determine the block it searches

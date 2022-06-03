@@ -1,11 +1,25 @@
 from sorting.sortingfuncsplus import *
 from general.shortenfuncs import *
 
-#Sorting Functions
+"""
+All Sorting Functions 
+
+All functions require the arguments : arr, mode, rev
+
+arr = the array of objects to be sorted
+mode = the type of sorting to be done (Customer Name, Package Name, Number of Pax , Cost Per Pax)
+rev = 1 if ascending, 2 if descending
+
+method() function basically gets the value from the object see in shortenfunc.py in the general folder
+"""
 """
 Bubble Sort Function
+    Best time complexity: O(n)
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n^2)
 
 Greater Element Bubbles up to the top
+
 First we check through all the elements using the for _ in range(n) loop
 Then we check through all the elements using the for i in range(n-1) loop
 For rev == 1: Meaning we sort in ascending order, if the element is greater than the next element swap the 2
@@ -32,8 +46,12 @@ def bubbleSort(arr, mode, rev):
 
 """
 Selection Sort Function
+    Best time complexity: O(n^2)
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n^2)
 
 Compare element with all elements till lowest is found and swaps with the first index
+
 First to ensure we check through all the elements, we use the for i in range(n) loop:
 Then we check through the rest of the elements using the for j in range(i+1,n) loop
 For rev == 1: Meaning we sort in ascending order, if the element is greater than the next element we assign the next index as lowest, we keep doing till we are through all the elements of the list. After that we swap the first element and the lowest element (based of lowest index)
@@ -70,8 +88,12 @@ def selectionSort(arr, mode, rev):
 
 """
 Insertion Sort Function
+    Best time complexity: O(n)
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n^2)
 
 Similar to Selection, in terms of comparing through all elements in the list. However, Insertion works backwards and instead of storing the index, swaps the element with the previous element if the previous element is greater
+
 The for i in range (1,n) starts from 1 due to us minusing the index by 1 if swap, hence if start from 0 will return index error / redundent code as the while loop will never be entered
 The while loop basically checks the current element with the previous element, if the previous element is greater than the current element, we replace the current element with the previous element. The -= 1 is to continuously move down the list
 arr[current] = value places the replaced value in the current index
@@ -108,6 +130,9 @@ def insertionSort(arr, mode, rev):
 
 """
 Merge Sort Function
+    Best time complexity: O(n log n)
+    Worst time complexity: O(n log n)
+    Average time complexity: O(n log n)
 
 Merge Sort breaks the list into 2 halves, then recursively calls itself on the 2 halves until the list is 1 element
 Then we merge the 2 halves together all the way till the list is sorted
@@ -138,12 +163,31 @@ def mergeSort(arr, mode, rev):
 
 """
 Quick Sort Function
+    Best time complexity: O(n log n)
+    Worst time complexity: O(n log n)
+    Average time complexity: O(n^2)
 
 Quick sort is a divide and conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot.
 Finds pivot where left side is smaller and right side is greater
 
 Demonstration
-***
+Initial = [7,2,1,6]
+Pointer set at 6 (last element)
+Then compares with the first element if greater, set as second pointer, in the above example, 7 will be set as the second pointer
+
+Now initial pointer compares with the element after the first element, since the element is greater than the pointer (6>2), swap the 6 and the 2, if not check with the next element
+Next List = [2,7,1,6].
+
+The second pointer will then switch to the second element(still 7)
+6 compares with 1, its greater (6>1), swap occurs again
+Next List = [2,1,7,6]
+
+So now we reach the second last element we swap the first pointer with the last pointer
+Next list = [2,1,6,7]
+Now look at the list into 2 where the pointer is the middle:
+Pretend the list is like this = [2,1,6] & [7]
+
+Run quicksort on both to sort them
 """ 
 def quickSort(array, low, high, mode, rev):
     if (low < high):
@@ -154,15 +198,23 @@ def quickSort(array, low, high, mode, rev):
 
 """
 Counting Sort Function
-better time complexity, though space complexity may be sacrificed when dealing with larger numbers
+    Best time complexity: O(n + k)
+    Worst time complexity: O(n + k)
+    Average time complexity: O(n + k)
+
+Why use Counting Sort:
+    better time complexity 
+    though space complexity may be sacrificed when dealing with larger numbers
+        Worst Space Complexity : O(MAX)
 
 Counting Sort counts the number of occurences of each number
 Length of count list will be the greatest number in the list
-
 store cumulative count in the count list
 Index = value. Then the number in that index will be where its placed in the new list
 Minus one after using
 
+
+What lines are for:
 Initialize count array
 count = [0] * (greatest + 1)
 
@@ -220,7 +272,6 @@ def countingSort(array, mode, rev):
         count[i] += count[i - 1]
 
     i = size - 1
-    #Ascending
     if (rev == 1):
         while (i >= 0):
             if (mode == 1):
@@ -233,7 +284,6 @@ def countingSort(array, mode, rev):
             i -= 1
 
     else:
-        #Descending
         while (i >= 0):
             if (mode == 1):
                 output[-(count[array[i].get_paxnum()])] = array[i]
@@ -247,11 +297,69 @@ def countingSort(array, mode, rev):
     return output
 
 """
-Shell Sort (not as many comparisons as using intervals, better time complexity than the first 3, where compares with all)
+Shell Sort 
+    Best Time Complexity: O(n log n)
+    Average Time Complexity: O(n log n)
+    Worst Time Complexity: O(n^2)
+
+Why Shell Sort:
+    Better Time Complexity, Not as many comparisons.
+
+Similar logic to Insertion but uses intervals to deal with element further apart, and the intervals get smaller & smaller
 
 Rearrange elements at each n/2, n/4, n/8, ... intervals
 Compare using intervals , divide the intervals by 2 after completion of for loop with first interval
 
+What lines are for:
+for i in range(interval, n): loop through the elements in the array in intervals of the gap
+
+temp = array[i] Storing of variable for swapping later
+
+while (j >= interval) and (method(array[j-interval]) > method(temp)):
+    OR
+while (j >= interval) and (method(array[j-interval]) < method(temp)):
+
+While loop goes on as long as the index being used (j) greater than the interval
+Basically checks if greater than or lesser than, then swaps the elements
+
+interval //= 2 = halving the interval
+
+Demonstration:
+Initial List = [10,2,7,9,1,4,7]
+
+interval will be 3 cause len is 7
+temp stores the 3rd element : 9
+and j stores the index : 3
+
+first while loop:
+will compare array[0] > array[3]
+since its true, the 2 elements will swap 
+
+next pass = [9,2,7,10,1,4,7]
+
+the j value will then minus 3 and become 0
+since its no longer greater than/equal to the interval
+
+it will swap array[j] and temp which is still 9 so no chanegs to list
+
+the while loop ends and goes to the next for loop
+
+where i = 4
+so it will now compare array[1] > array[4]
+since its true, the 2 elements will swap 
+
+next pass = [9,1,7,10,2,4,7]
+the j value then minuses the interval and becomes 1
+breaking the while loop since lesser than the interval and swaps arr[1] with the previous arr[4], 1
+meaning no changes
+
+this goes on untill the for loop ends where i = 6.
+
+from there the interval will be halved again becoming 1 (floor division)
+the whole process goes again 
+untill the interval becomes 0: 
+
+where the array SHOULD look like [1,2,4,7,7,9,10]
 """
 def shellSort(array, mode, rev):
     method = determine_type(mode)
@@ -277,6 +385,13 @@ def shellSort(array, mode, rev):
 
 """
 Pancake Sort 
+    Best time complexity: O(n) only when array is already sorted
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n^2)
+
+Finds the index of the greatest element, flips the list [beginning:index of max element]
+bringing the greatest number to the front and flips the whole list to the end.
+then locks the last element
 
 Using Findmax, find index of the greatest value
 
@@ -288,7 +403,18 @@ Then places the highest number at the end, by flipping the whole list
 Size -= 1 : minus 1 to not touch the last element of the list
 
 Demonstration
+Initial : [2,5,10,9,3]
+use find max on the list and its index : 10, index=2
 
+flips the list up to index 2
+first flip: [10,5,2,9,3]
+then flips the whole list, putting the greatest element at the end
+second flip = [3,9,2,5,10]
+
+then the size they deal with will then minus 1 to no longer touch the last element
+It keeps doing this untill fully sorted 
+
+Final list : [2,3,5,9,10]
 """
 def pancakeSort(arr, mode, rev):
     size = len(arr)
@@ -305,6 +431,9 @@ def pancakeSort(arr, mode, rev):
 
 """
 Comb Sort (Optimised Shell Sort Deals with gaps)
+    Best time complexity: O(n log n)
+    Worst time complexity: O(n^2/2^p) (p is a number of increment)
+    Average time complexity: O(n^2)
 
 Creates the gap
 while (gap > 1) or (swaps):
@@ -314,7 +443,7 @@ while (gap > 1) or (swaps):
         j = i+gap
 
 Demonstration
-
+***
 """
 def combsort(arr, mode, rev):
     method = determine_type(mode)
@@ -336,11 +465,27 @@ def combsort(arr, mode, rev):
 
 """
 Cocktail Shaker Sort 
+    Best time complexity: O(n) already sorteed
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n^2)
 
-
+Goes from one end of the list to the other, then starts from the end and goes back to another end , swapping any elements that are not sorted, however its one by one.
 
 Demonstration
+Initial list = [2,1,5,4]
+Starts from end to beginning, comparing if greater than swaps
+for example, 5 is greater than 4 so they swap them
+First pass =  [2,1,4,5]
+Since 1 is not greater than 4 , no swapping
+Second pass = list stays the same
 
+then comparing next 2 is greater than 1, so they swap:
+third pass = [1,2,4,5]
+
+In this case, its sorted so since now its going from beginning to end with no changes to the list. 
+Then since is_swapped stays True it goes to the next pass of the original for loop
+
+It will compare through the list the same way again, however, its already sorted, so the is_swapped variable will stay False, and it will break the for loop and  return the sorted list
 """
 def cocktail_shaker_sort(nums, mode, rev):
     method = determine_type(mode)
@@ -372,6 +517,9 @@ def cocktail_shaker_sort(nums, mode, rev):
 
 """
 Heap Sort 
+    Best time complexity: O(nlog n)
+    Worst time complexity: O(nlog n)
+    Average time complexity: O(nlog n)
 
 Complete binary tree
 
@@ -384,7 +532,7 @@ Heapify new root element then redo the whole process
 heapify(arr, i, 0, mode, rev)
 
 Demonstration
-
+***
 """
 def heapSort(arr, mode, rev):
     n = len(arr)
@@ -398,7 +546,15 @@ def heapSort(arr, mode, rev):
 
 """
 Bucket Sort (Maybe no put) (Temporarily Implemented)
+    Best time complexity: O(n+k)
+    Worst time complexity: O(n^2)
+    Average time complexity: O(n)
+
 size variable determines the groups per buket (for example if size = 4, numbers stored in a bucket = 1-4)
+Stores the numbers in buckets, sorts the bucket and concatenate the list into one
+
+Demonstration:
+***
 """
 def bucketSort(array, mode, rev):
     length = len(array)
@@ -452,6 +608,15 @@ def bucketSort(array, mode, rev):
 
 """
 RaditzSort (Might not implement)
+    Best time complexity: O(n+k)
+    Worst time complexity: O(n+k)
+    Average time complexity: O(n+k)
+
+
+Counting Sort using Places, such as ones, tens, hundreds
+
+Demonstration:
+***
 """
 def radixSort(array, mode, rev):
     # Get maximum element

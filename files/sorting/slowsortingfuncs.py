@@ -6,9 +6,11 @@ from general.shortenfuncs import *
 
 """
 Bad Sorts : Bogo Sort
+    Best Time Complexity: O(n)
+    Worst Time Complexity: O(inf) as this algorithm has no upper bound
+    Average Time Complexity: O(n*n!)
 
 Randomly Shuffles the list untill it gets sorted. High chance of never sorting
-
 """
 def bogoSort(arr, mode, rev):
     i = 1
@@ -21,9 +23,13 @@ def bogoSort(arr, mode, rev):
 
 """
 Bad Sorts : Stalin Sort
+    Best Time Complexity: O(n)
+    Worst Time Complexity: O(n)
+    Average Time Complexity: O(n)
+
+VERY EFFICIENT!!!
 
 Removes Elements that are unsorted.
-
 """
 def stalinSort(arr, mode, rev):
     method = determine_type(mode)
@@ -45,9 +51,13 @@ def stalinSort(arr, mode, rev):
 
 """
 Bad Sorts : Slow Sort
+    Best Time Complexity: O(n^2.709)
+    Worst Time Complexity: O(n^2.709)
+    Average Time Complexity: O(n^2.709)
 
+Greater than O(n^2)
 
-
+Multiply & Surrender Algorithm
 """
 def slow_sort(A, i, j, mode, rev):
     method = determine_type(mode)
@@ -75,9 +85,11 @@ def slow_sort(A, i, j, mode, rev):
 
 """
 Bad Sorts : Sleep Sort
+    Best Time Complexity: O(max(arr))
+    Worst Time Complexity: O(max(arr))
+    Average Time Complexity: O(max(arr))
 
 Code sleeps based of the number and is appended after that amount of time
-
 """
 def sleep_sort(arr, mode, rev):
     result = []
@@ -105,8 +117,12 @@ def sleep_sort(arr, mode, rev):
 
 """
 Bad Sorts : Gnome Sort
+    Best Time Complexity: O(n)
+    Worst Time Complexity: O(n^2)
+    Average Time Complexity: O(n^2)
 
-
+Gnome sort is a sorting algorithm that works by  comparing the current element with the previous element
+They swap if not correctly ordered
 
 """
 def gnomeSort(arr, mode , rev):
