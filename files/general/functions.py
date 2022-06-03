@@ -435,15 +435,18 @@ def listingFunc(db,valid, tertChoice):
 
     for i in range(len(ranje)):
         results = binarySearch(db,ranje[i],tertChoice+2)
-        if (len(results) == 0) and (i == 0): #To find nearest number -- Using Linear Search to retrieve the next nearest index
-            if tertChoice == 1:
-                results = linearSearch(db, ranje[i],'listNum1')
-            else:
+        if (i == 0):
+            if (len(results) == 0): #To find nearest number -- Using Linear Search to retrieve the next nearest index
+                if (tertChoice == 1):
+                    results = linearSearch(db, ranje[i],'listNum1')
+
                 results = linearSearch(db, ranje[i],'listCost1')
-        elif (len(results) == 0) and (i == 1):
-            if tertChoice == 1:
-                results = linearSearch(db, ranje[i],'listNum2')
-            else:
+
+        else:
+            if(len(results) == 0):
+                if (tertChoice == 1):
+                    results = linearSearch(db, ranje[i],'listNum2')
+
                 results = linearSearch(db, ranje[i],'listCost2')
 
             if (len(results) == 0):
@@ -451,7 +454,6 @@ def listingFunc(db,valid, tertChoice):
                 print("Entered Range: %d-%d\u001b[0m" %(ranje[0], ranje[1]))
                 invalid = 1
             
-            #Validate if results not present    
         resultslist.append(results)
 
     if (not invalid):

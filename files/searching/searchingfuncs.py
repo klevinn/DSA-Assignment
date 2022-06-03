@@ -57,7 +57,27 @@ def binarySearch(arr,target,mode):
 
         if (method(arr[mid]) == target): #if mid is the target
             ind[mid] = arr[mid]
-            low = mid + 1
+            j = mid
+            while (True):
+                mid += 1
+                if (mid > len(arr)):
+                    break
+                if (method(arr[mid]) == target):
+                    ind[mid] = arr[mid]
+                else:
+                    break
+            
+            while (True):
+                j -= 1
+                if (j < 0):
+                    break
+                if (method(arr[j]) == target):
+                    ind[j] = arr[j]
+                else:
+                    break
+                
+            return ind
+
         elif (method(arr[mid]) < target):
             low = mid + 1
         else:
