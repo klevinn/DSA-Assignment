@@ -100,7 +100,7 @@ def BSTsearch(root, val):
 def BSTCreate(db, mode):
     for i in range(len(db)):
         #Highest Node
-        if i == 0:
+        if (i == 0):
             tree = Node(db[i], mode, i)
         else:
             tree = insert(tree, db[i], mode, i)
@@ -115,9 +115,9 @@ Uses Inorder traversal of the tree to get a sorted list
 Inorder is All elements of Left Subtree, root, then all elements of right subtree
 """
 def treeSort(root, arr, inv):
-    if root is not None:
+    if (root is not None):
         # Traverse left
-        if inv == 1:
+        if (inv == 1):
             treeSort(root.left, arr, inv)
         else:
             treeSort(root.right, arr, inv)
@@ -126,7 +126,7 @@ def treeSort(root, arr, inv):
             arr.append(root.elements[i])
 
         # Traverse right
-        if inv == 1:
+        if (inv == 1):
             treeSort(root.right, arr, inv)
         else:
             treeSort(root.left, arr, inv)
