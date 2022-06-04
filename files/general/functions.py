@@ -474,7 +474,7 @@ def listingFunc(db,valid, tertChoice):
         resultslist.append(results)
     
     if (invalid):
-        print("\u001b[31m0 Results found!")
+        print("\u001b[31;1m0 Results found!")
         print("Entered Range: %d-%d\u001b[0m" %(ranje[0], ranje[1]))
 
     else:

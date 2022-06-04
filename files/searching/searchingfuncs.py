@@ -64,7 +64,7 @@ def binarySearch(arr,target,mode):
             j = mid
             while (True):
                 mid += 1
-                if (mid > len(arr)):
+                if (mid >= len(arr)):
                     break
                 if (method(arr[mid]) == target):
                     ind[mid] = arr[mid]
@@ -195,7 +195,7 @@ def FibonacciSearch(lys, val, mode):
             original = lys[i]
             while (True):
                 i += 1
-                if (i > len(lys)):
+                if (i >= len(lys)):
                     break
                 if (method(lys[i]) == method(original)):
                     ind[i] = lys[i]
