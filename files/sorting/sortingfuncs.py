@@ -607,7 +607,7 @@ def bucketSort(array, mode, rev):
     return result
 
 """
-RaditzSort (Might not implement)
+RaditzSort (Only paxnum is implemented, and reverse uses .reverse())
     Best time complexity: O(n+k)
     Worst time complexity: O(n+k)
     Average time complexity: O(n+k)
