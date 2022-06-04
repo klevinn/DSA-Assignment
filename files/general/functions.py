@@ -418,7 +418,7 @@ def listing(valid):
         choice = input("\u001b[7mEnter FIRST number for the range: \u001b[0m ")
         try:
             choice = float(choice)
-            if choice > 0:
+            if choice >= 0:
                 rang.append(choice)
                 break
             else:
@@ -452,24 +452,32 @@ def listingFunc(db,valid, tertChoice):
         results = binarySearch(db,ranje[i],tertChoice+2)
         if (i == 0):
             if (len(results) == 0): #To find nearest number -- Using Linear Search to retrieve the next nearest index
-                results = linearSearch(db, ranje[i],'listCost1')
                 if (tertChoice == 1):
                     results = linearSearch(db, ranje[i],'listNum1')
+                else:
+                    results = linearSearch(db, ranje[i],'listCost1')
+            
+            if (len(results) == 0):
+                invalid = 1
 
         else:
             if(len(results) == 0):
-                results = linearSearch(db, ranje[i],'listCost2')
                 if (tertChoice == 1):
                     results = linearSearch(db, ranje[i],'listNum2')
+                else:
+                    results = linearSearch(db, ranje[i],'listCost2')
+                
+                if (len(results) == 0):
+                    invalid = 1
 
-            if (len(results) == 0):
-                print("\u001b[31m;1m0 Results found!")
-                print("Entered Range: %d-%d\u001b[0m" %(ranje[0], ranje[1]))
-                invalid = 1
-            
+        
         resultslist.append(results)
+    
+    if (invalid):
+        print("\u001b[31m0 Results found!")
+        print("Entered Range: %d-%d\u001b[0m" %(ranje[0], ranje[1]))
 
-    if (not invalid):
+    else:
         lowestInd = min(resultslist[0])
         highestInd = max(resultslist[1])
         if (highestInd > 0):
