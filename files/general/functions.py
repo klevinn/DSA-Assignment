@@ -138,7 +138,7 @@ def menu(stage):
         print("3.", additional[2])
         print("X.", menu[0][3])
         print("\n" + "=" * len(message) + "\n")
-        return {1:"\n\u001b[33mAdding Records...\u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\u001b[33mUpdating a Record...\u001b[0m", 3:"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
+        return {1:"\n\u001b[33mAdding Records...\u001b[0m", "X":"\n\u001b[33mReturning to Main Menu...  \u001b[0m\n", 2:"\u001b[33mUpdating a Record...\u001b[0m", 3:"\n\u001b[33mDeleting a Record... \u001b[0m"}
 
     #Stage 2 : Displays all usable sorting algorithms
     elif (stage == 2):
@@ -147,7 +147,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in menu[1]:
-            print("%d." %(menunum) ,i)
+            print(f"{menunum}. {i}")
             logs[menunum] = "\n\u001b[33mSorting... \u001b[0m "
 
             menunum += 1
@@ -164,7 +164,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in menu[2]:
-            print("%d." %(menunum) ,i)
+            print(f"{menunum}. {i}")
             logs[menunum] = "\n\u001b[33mSearching... \u001b[0m"
 
             menunum += 1
@@ -195,7 +195,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in submenu:
-            print("%d." %(menunum), i)
+            print(f"{menunum}. {i}")
             if (menunum == 1):
                 logs[menunum] = "\n\u001b[33mBy Customer Name...\u001b[0m"
             elif (menunum == 2):
@@ -219,7 +219,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in submenu[2:]:
-            print("%d." %(menunum), i)
+            print(f"{menunum}. {i}")
             if (menunum == 1):
                 logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 2):
@@ -237,7 +237,7 @@ def menu(stage):
         logs = {"X":"\n\u001b[33mReturning to Main Menu... \u001b[0m"}
         message = "\n====== Sorting... ======\n"
         print(message)
-        print("%d." %(1), submenu[2])
+        print(f"1. {submenu[2]}")
 
         logs[1] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             
@@ -256,7 +256,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in submenu2:
-            print("%d." %(menunum), i)
+            print(f"{menunum}. {i}")
             if (menunum == 1):
                 logs[menunum] = "\n\u001b[33mBy Customer Name...\u001b[0m"
             elif (menunum == 2):
@@ -280,7 +280,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in submenu2[2:]:
-            print("%d." %(menunum), i)
+            print(f"{menunum}. {i}")
             if (menunum == 1):
                 logs[menunum] = "\n\u001b[33mBy Number Of Pax...\u001b[0m"
             elif (menunum == 2):
@@ -321,7 +321,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in slowmenu:
-            print("%d." %(menunum) ,i)
+            print(f"{menunum}. {i}")
             logs[menunum] = "\n\u001b[33mSorting BUT SLOWLY... \u001b[0m"
 
             menunum += 1
@@ -338,7 +338,7 @@ def menu(stage):
         print(message)
         menunum = 1
         for i in submenu3:
-            print("%d. %s" %(menunum, i))
+            print(f"{menunum}. {i}")
             logs[menunum] = "\n\u001b[33mListing... \u001b[0m"
             menunum += 1
         
@@ -355,7 +355,7 @@ def menu(stage):
         submenu = ["By Ascending Order", "By Descending Order"]
         menunum =1
         for i in submenu:
-            print("%d. %s" %(menunum, i))
+            print(f"{menunum}. {i}")
             logs[menunum] = "\n\u001b[33m%s... \u001b[0m" %(i)
             menunum += 1
         
@@ -371,7 +371,7 @@ def addmenu():
     message = "\n========= Packages =========\n"
     print(message)
     for i in packs:
-        print("%d. %s : $%.2f" %(menunum, i, packs[i]))
+        print(f"{menunum}. {i} : ${packs[i]}")
         menunum += 1
     print("\n" + "=" * len(message) + "\n")
 
@@ -408,12 +408,16 @@ def question(question, valid, itype):
             if (itype == "str"):
                 x = input(question)
                 return x
-            elif (itype == "int" or itype == "int1"):
-                x = int(input(question))
+            elif (itype == "int"):
+                x = input(question)
+                x = int(x)
+                return x
+            elif (itype == "float"):
+                x = float(input(question))
                 return x
         except:
             if (itype == "int"):
-                return ''
+                return x
             print("\n\u001b[31mInvalid Input \u001b[0m\n")
 
 """
@@ -445,8 +449,8 @@ def listing(valid):
                 break
         except:
             print("\n\u001b[31mPlease enter a number. \u001b[0m\n")
-
-    print("\u001b[33mEntered Range: %.2f-%.2f\u001b[0m" %(rang[0], rang[1]))
+    
+    print(f"\u001b[33mEntered Range: {rang[0]}-{rang[1]}\u001b[0m")
     return rang
 
 """
@@ -488,15 +492,15 @@ def listingFunc(db,valid, tertChoice):
         resultslist.append(results)
     
     if (invalid):
-        print("\u001b[31;1m0 Results found!")
-        print("Entered Range: %d-%d\u001b[0m" %(ranje[0], ranje[1]))
+        print("\n\u001b[31;1m0 Results found!")
+        print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
 
     else:
         lowestInd = min(resultslist[0])
         highestInd = max(resultslist[1])
         if (highestInd > 0):
             highestInd += 1
-        elif (highestInd < 0):
+        elif (highestInd == -1):
             highestInd = None
 
         headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
@@ -509,9 +513,15 @@ def listingFunc(db,valid, tertChoice):
             var.append(i.get_packcost())
             data.append(var)
         
+        #Safety Net Error Handling
+        if (len(data) == 0):
+            print("\n\u001b[31;1m0 Results found!")
+            print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
+            return
+        
         print(tabulate(data, headers=headers, tablefmt="grid", floatfmt=".2f"))
         
-        print("\u001b[32mThere are %d results found! \u001b[0m" %(len(data)))
+        print(f"\u001b[32mThere are {len(data)} results found! \u001b[0m")
         print("\n\u001b[33mReturning to Main Page... \u001b[0m ")
 
 """
@@ -590,7 +600,7 @@ def search(db, mode):
                 else:
                     addmenu()
                     update = ''
-                    while True:
+                    while (True):
                         try:
                             package = int(input("\u001b[7mWhat would you like to update the Package To (Leave blank if not wanted): \u001b[0m "))
                             if (package > 4) or (package < 1):
@@ -619,9 +629,14 @@ def search(db, mode):
 
             else:
                 valid = 1
-                num = question("\u001b[7mUse which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
-                if (num == ''):
-                    return 1
+                while (valid):
+                    num = question("\u001b[7mUse which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
+                    if (num != '') and (not isinstance(num, int)):
+                        print("\n\u001b[31mInvalid Input\u001b[0m\n")
+                    elif (num == ''):
+                        return
+                    else:
+                        break
 
                 if (choice == 1):
                     update = question("\u001b[7mWhat would you like to update the name to? (Leave blank if not wanted): \u001b[0m ", valid, "str")
@@ -656,7 +671,7 @@ def search(db, mode):
 
         else:
             print("\n\033[31;1mNo Results Found")
-            print("Keywords need to be exact. Entered Keyword: %s\033[0m\n" %(keyword))
+            print(f"Keywords need to be exact. Entered Keyword: {keyword}\033[0m\n")
             print("\033[33mReturning to main page...\033[0m")
 
     else:
@@ -666,7 +681,7 @@ def search(db, mode):
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
 
-        keyword = question("\n\u001b[7mEnter keyword: \u001b[0m  ", valid, "int1")
+        keyword = question("\n\u001b[7mEnter keyword: \u001b[0m  ", valid, "float")
 
         if (mode == 1):
             results = linearSearch(db,keyword,choice)
@@ -701,9 +716,14 @@ def search(db, mode):
 
             else:
                 valid = 1
-                num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
-                if (num == ''):
-                    return 1
+                while (valid):
+                    num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
+                    if (num != ''):
+                        print("\n\u001b[31mInvalid Input\u001b[0m\n")
+                    elif (num == ''):
+                        return
+                    else:
+                        break
                 if (choice == 3):
                     update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                     if (update != ''):
@@ -718,7 +738,7 @@ def search(db, mode):
 
         else:
             print("\n\033[31;1mNo Results Found")
-            print("Keywords need to be exact. Entered Keyword: %s\033[0m\n" %(keyword))
+            print(f"Keywords need to be exact. Entered Keyword: {keyword}\033[0m\n")
             print("\033[33mReturning to main page...\033[0m")
                     
                     

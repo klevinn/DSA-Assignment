@@ -168,7 +168,7 @@ def main():
                     new.set_name(name)
 
                 #Package Name Update
-                print("\n\u001b[1mPackage Name : %s\u001b[0m" %(new.get_packname()))
+                print(f"\n\u001b[1mPackage Name : {new.get_packname()}\u001b[0m")
                 upd = update_input(valid, "\n\u001b[7mWould you like to update the Package Name?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
@@ -187,7 +187,7 @@ def main():
                     update = 1
 
                 #Pax Number Update
-                print("\n\u001b[1mPax Number : %d\u001b[0m" %(new.get_paxnum()))
+                print(f"\n\u001b[1mPax Number : {new.get_paxnum()}\u001b[0m")
                 upd = update_input(valid, "\n\u001b[7mWould you like to update the Pax Number?(Y/N): \u001b[0m ")
                 if (upd == "Y"):
                     while (valid):
@@ -205,10 +205,10 @@ def main():
                 if (update):
                     packcost = get_packs_cost(package, new.get_paxnum())
                     print("\n\u001b[33m== There has been an update that affects the Cost per pax ==\u001b[0m")
-                    print("\u001b[33mNew Cost Per Pax : %.2f\u001b[0m" %(packcost))
+                    print(f"\u001b[33mNew Cost Per Pax : {packcost:.2f}\u001b[0m")
                     new.set_packcost(packcost)
                 else:
-                    print("\n\u001b[33mCurrent Cost Per Pax : %.2f\u001b[0m" %(new.get_packcost()))
+                    print(f"\n\u001b[33mCurrent Cost Per Pax : {new.get_packcost():.2f}\u001b[0m")
                 
                 
                 print("\n\u001b[33mUpdating Records...\u001b[0m")
