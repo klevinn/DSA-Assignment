@@ -310,6 +310,8 @@ Similar logic to Insertion but uses intervals to deal with element further apart
 Rearrange elements at each n/2, n/4, n/8, ... intervals
 Compare using intervals , divide the intervals by 2 after completion of for loop with first interval
 
+Compares backwards and swaps when necessary
+
 What lines are for:
 for i in range(interval, n): loop through the elements in the array in intervals of the gap
 
@@ -430,20 +432,62 @@ def pancakeSort(arr, mode, rev):
 
 
 """
-Comb Sort (Optimised Shell Sort Deals with gaps)
+Comb Sort (Similar to Shell Sort, Deals with gaps)
     Best time complexity: O(n log n)
     Worst time complexity: O(n^2/2^p) (p is a number of increment)
     Average time complexity: O(n^2)
+
+Comb sort does a single "bubbling" pass (ala bubble sort) over each set for each gap or increment, whereas Shell sort completely sorts each set
+
+Comb sort is less effective than shell sort. 
+Comb sort also deals with gap however its very similar to bubble sort where it compares upwards and swaps when necessary (Bubbling Up but with caps this time)
 
 Creates the gap
 while (gap > 1) or (swaps):
     gap = max(1, int(gap / 1.25))  # minimum gap is 1
     swaps = False
+    
+Ensures no index error.
     for i in range(len(arr) - gap):
         j = i+gap
 
 Demonstration
-***
+Initial List = [10,2,3,5,8]
+
+Gap will be 4 (Len of 5 / 1.25)
+
+So compares 10 and 8, since 10 > 8, swaps the 2
+Firs pass = [8,2,3,5,10]
+
+Then runs the next while loop since the range is 1 (5-4), each comparison is one iteration of the for loop
+The next gap will be 3 (4/1.25)
+
+Compares 8 and 5, since 8 > 5 , swaps the 2
+Second pass = [5,2,3,8,10]
+
+Then compares 2 and 10, since 2 < 10, no swapping
+
+Then runs the next while loop since the range is 2 (5-3)
+The next gap will be 2 (3/1.25)
+
+Compares 5 and 3, 5 > 3, swaps the 2
+Fourth pass = [3,2,5,8,10]
+
+The rest of the comparisons will not lead to swaps since 2 and 5 is not greater than 8 and 10
+
+Runs the next while loop. However the gap is 1 so we look at the other condition of the while loop and since there was a swap in the previous while loop interation, its currently set to True, so it will still run the loop with a gap of 1
+
+It will compare the first 2 elements, and since 3 > 2, it will swap the 2.
+
+Seventh pass = [2,3,5,8,10]
+
+As u can see its already sorted, so it will compare through it all again but no swaps will occur.
+
+However, 1 more while loop will run because a swap did occur in the beginning of the while loop. So the variable sill set to True. However since its already sorted, it will go through the whole list without swapping anything so the swaps variable will now stay False.
+
+Thus breaking the while loop and ending the sorting algorithm with the list
+
+[2,3,5,8,10]
 """
 def combsort(arr, mode, rev):
     method = determine_type(mode)
@@ -521,9 +565,20 @@ Heap Sort
     Worst time complexity: O(nlog n)
     Average time complexity: O(nlog n)
 
-Complete binary tree
+Complete binary tree, visualise the List as a binary tree.
+Where the array can be derived after level order traversal of the binary tree
+[1,2,3,4,5]
 
-Build max heap, its // 2 because any more would result in useless loops 
+1 root node, 2 is left subtree, 3 is right subtree, 4 is left subtree of left subtree and 5 is right subtree of the left subtree
+
+Heap sort follows, swap, remove & heapify
+
+Max heap is swapped to the last element of level order traversal, then removed from tree (placed into array at the last index), then heapify (make it max heap again). Then it will repeat the process until the array is sorted. / Tree is empty
+
+Build max heap, (root node being the highest)
+its // 2 because any more would result in useless loops 
+Taking the //2 element as root node
+Is a loop to ensure the elements deemed as root node is always max heap
 
 Swap last element with first element (should be greatest due to maxheap)
 arr[i], arr[0] = arr[0], arr[i]
@@ -545,16 +600,49 @@ def heapSort(arr, mode, rev):
         heapify(arr, i, 0, mode, rev)
 
 """
-Bucket Sort (Maybe no put) (Temporarily Implemented)
+Bucket Sort
     Best time complexity: O(n+k)
     Worst time complexity: O(n^2)
     Average time complexity: O(n)
 
-size variable determines the groups per buket (for example if size = 4, numbers stored in a bucket = 1-4)
+size = largest/length : size variable determines the groups per buket (for example if size = 4, numbers stored in a bucket = 1-4)
 Stores the numbers in buckets, sorts the bucket and concatenate the list into one
 
+index = int(value/size) (determines the index based of the size of each bucket)
+
+For descending, we just flip which bucket its placed in
+And for the counting sort used, i have already coded in the reverse function so it can just be used
+
 Demonstration:
-***
+Initial list = [2,1,5,4,10]
+Using largest / length, we can determine the size of each bucket, in this case its 2
+Hence the values for the first bucket will be 0-1, second bucket will be 2-3 and et cetera
+
+Initialise the bucket list same length as the initial list 
+
+Bucket list = [[],[],[],[],[]]
+
+Then goes through each element of the list, using the index, derived by dividing value and size to determine which bucket to add it to
+
+For example, the first value is 2 and the size is 2. So the index derived will be 1.
+Placing the value 2 into the bucket at index 1:
+
+Bucket List = [[],[2],[],[],[]]
+
+It goes through the list but when it reaches the greatest number , the index derived it will always be the length of the list, so the index will be the last one, cause we use its value to derive the size.
+In this example it will be 10, and 10/2 = 5 and thats the length of the list 
+so minus 1 from the supposed index and put it in the last bucket.
+
+Bucket List (when it reaches 10) : [[1],[2],[5,4],[],[10]]
+
+Then just sort each bucket, in actual code it uses the built in sort function
+However, since counting sort is already implemented, we can just use it (One of the better sorts involving integers)
+
+Sorted Bucket List = [[1],[2],[4,5],[],[10]]
+
+Then afterwards just concatenate the list together to form the final list
+
+Final List = [1,2,4,5,10]
 """
 def bucketSort(array, mode, rev):
     length = len(array)
@@ -612,11 +700,11 @@ RaditzSort (Only paxnum is implemented, and reverse uses .reverse())
     Worst time complexity: O(n+k)
     Average time complexity: O(n+k)
 
-
 Counting Sort using Places, such as ones, tens, hundreds
 
 Demonstration:
-***
+Same as Counting Sort , but this time occurs multiple time for each place present
+So we look at ones place first, create a count list based on that, then sort the array, then we look at the tens place, create a count list and sort the array, and so on.
 """
 def radixSort(array, mode, rev):
     # Get maximum element

@@ -59,27 +59,8 @@ def binarySearch(arr,target,mode):
         if (mode < 3):
             target = target.upper()
 
-        if (method(arr[mid]) == target): #if mid is the target
-            ind[mid] = arr[mid]
-            j = mid
-            while (True):
-                mid += 1
-                if (mid >= len(arr)):
-                    break
-                if (method(arr[mid]) == target):
-                    ind[mid] = arr[mid]
-                else:
-                    break
-            
-            while (True):
-                j -= 1
-                if (j < 0):
-                    break
-                if (method(arr[j]) == target):
-                    ind[j] = arr[j]
-                else:
-                    break
-                
+        if (method(arr[mid]) == target):
+            ind = find_all_occurences(ind, mid, target, arr, method) #returns all occurences of target                
             return ind
 
         elif (method(arr[mid]) < target):
@@ -96,7 +77,8 @@ If left > length == index error , if arr[left] > val meaning the element you are
 
 if (arr[left].get_name().upper() <= val.upper()) and (arr[right].get_name().upper() >= val.upper()):
     break 
-Break because the number would be in between the 2 
+Break because the number should be in between the 2 but its not
+
 left += jump 
 else keep going untill its inbetween or the loop stops
 """
@@ -110,7 +92,6 @@ def JumpSearch(arr, val, mode):
     left, right = 0, 0
     if (mode < 3):
         val = val.upper()
-        print(val)
 
     while (left < length) and (method(arr[left]) <= val):
         right = min(length - 1, left + jump)
@@ -122,7 +103,7 @@ def JumpSearch(arr, val, mode):
     i = left
     while (i <= right) and (method(arr[i]) <= val):
         if (method(arr[i]) == val):
-            ind[i] = arr[i]
+            ind = find_all_occurences(ind, i, val, arr, method)
         i += 1
 
     return ind
@@ -132,6 +113,11 @@ Expo Search:
     Best time complexity: O(log(n))
     Worst time complexity: O(log(n))
     Average time complexity: O(log(n))
+
+Helps find the range to use in Binary Search
+Exponentially increases the index until the moment the index will return a value greater than the value
+
+Then it will use binary search to find the item
 """
 def ExponentialSearch(arr, val, mode):
     method = determine_type(mode)
@@ -150,7 +136,7 @@ def ExponentialSearch(arr, val, mode):
 
 """
 Fibonacci Search
-    Best case: O(1) when the element to be found is the first element to be compared
+    Best case: O(1) when the element to be found is the first element
     Worst case: O(log(n))
     Average case: O(log(n))
 
@@ -158,10 +144,13 @@ involves fibonacci sequence, the 3rd number is the sum of the 1st and second
 uses fibonacci numbers to determine the block it searches
 similar to binary search == divide and concur, but not equal split arrays and uses the +, - which is less costly on the cpu
 
+What lines are for:
 else :
     ind[i] = lys[i]
     Accomodate for duplicates, though does not really follow the Fibonnachi Search Logic.
     It basically loops and checks the left and right elements because its a sorted list and when its no longer what we want it breaks
+
+i = min(index + fibM_minus_2, (len(lys)-1)) #avoiding index error using min()
 
 """
 def FibonacciSearch(lys, val, mode):
@@ -178,8 +167,14 @@ def FibonacciSearch(lys, val, mode):
     if (mode < 3):
         val = val.upper()
     while (fibM > 1):
-        i = min(index + fibM_minus_2, (len(lys)-1))
+        i = min(index + fibM_minus_2, (len(lys)-1)) #avoiding index error using min()
 
+        '''
+        if target is greater than element found, we move the index we start with in i to the one we just checked
+        And check the elements afterwards, by changing the fibo numbers, so that we only deal with elements afterwards
+
+        If target is lesser, we just lower the fibonacci numbers, so that we only deal with elements before the one we just checked
+        '''
         if (method(lys[i]) < val):
             fibM = fibM_minus_1
             fibM_minus_1 = fibM_minus_2
@@ -190,40 +185,25 @@ def FibonacciSearch(lys, val, mode):
             fibM_minus_1 = fibM_minus_1 - fibM_minus_2
             fibM_minus_2 = fibM - fibM_minus_1
         else :
-            ind[i] = lys[i]
-            j = i
-            original = lys[i]
-            while (True):
-                i += 1
-                if (i >= len(lys)):
-                    break
-                if (method(lys[i]) == method(original)):
-                    ind[i] = lys[i]
-                else:
-                    break
-            
-            while (True):
-                j -= 1
-                if (j < 0):
-                    break
-                if (method(lys[j]) == method(original)):
-                    ind[j] = lys[j]
-                else:
-                    break
-                
+            ind = find_all_occurences(ind, i, val, lys, method)                
             return ind
         
-        if(fibM_minus_1 and index < (len(lys)-1) and method(lys[index+1]) == val):
-            index += 1
+        """
+        To check last element, because while loop will break if fibM = 1
+        """
+        if (fibM_minus_1) and (method(lys[len(lys)-1]) == val):
+            index = len(lys) - 1
             ind[index] = lys[index]
+
             while (True):
-                index += 1
-                if (index > len(lys)):
+                index -= 1
+                if (index < 0):
                     break
                 if (method(lys[index]) == val):
                     ind[index] = lys[index]
                 else:
                     break
-            return ind    
+
+            return ind 
 
     return ind

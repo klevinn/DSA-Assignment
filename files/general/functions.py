@@ -376,6 +376,10 @@ def addmenu():
     print("\n" + "=" * len(message) + "\n")
 
 #Repeated Codes
+
+"""
+Validates input for the menu
+"""
 def inputValue(question ,valid, logs):
     #Loop to ask questions till a valid response is stored
     while (valid):
@@ -412,6 +416,9 @@ def question(question, valid, itype):
                 return ''
             print("\n\u001b[31mInvalid Input \u001b[0m\n")
 
+"""
+Validates the input for the list menu
+"""
 def listing(valid):
     rang = []
     while (valid):
@@ -442,6 +449,13 @@ def listing(valid):
     print("\u001b[33mEntered Range: %.2f-%.2f\u001b[0m" %(rang[0], rang[1]))
     return rang
 
+"""
+Uses binary search to find the results if its existing in the list
+
+If not existing uses Linear search to find the closest element to the number found, altered the algo so that instead of only exact we return lesser than and greater than the results
+
+Then we derive the index and display the list from the 2 indexes derived
+"""
 def listingFunc(db,valid, tertChoice):
     ranje = listing(valid)
     insertionSort(db,tertChoice+2,1)
@@ -500,6 +514,9 @@ def listingFunc(db,valid, tertChoice):
         print("\u001b[32mThere are %d results found! \u001b[0m" %(len(data)))
         print("\n\u001b[33mReturning to Main Page... \u001b[0m ")
 
+"""
+Validates for Y and N
+"""
 def update_input(valid, question):
     while (valid):
         update = input(question)
@@ -508,6 +525,17 @@ def update_input(valid, question):
         else:
             print("\n\u001b[31mPlease enter either (Y/N) \u001b[0m\n ")
 
+"""
+Search Function:
+
+First asks you what category you want to search in,
+
+Uses the respective search selected to search in said category
+
+Then provide you results & the necessary input for updating the records
+
+Assumption : whatever u search in is what you want to update
+"""
 def search(db, mode):
     valid = 1
     choice = inputValue("\u001b[7mWhich category would you like to search in? \u001b[0m ",valid, menu(4))
@@ -696,6 +724,13 @@ def search(db, mode):
                     
     return 1
 
+"""
+Sorting & Slow Sorting
+
+Basically asks what category to search by, if ascending or descending
+
+Sort based of respective sort selected
+"""
 def sorting(db, valid, mode):
     asc = inputValue("\u001b[7mAscending or Descending? \u001b[0m ", valid, menu("asc"))
     if (asc == "X"):

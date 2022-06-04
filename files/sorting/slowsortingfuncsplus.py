@@ -5,7 +5,10 @@ from general.shortenfuncs import *
 Functions used by Slow Sorting Functions
 """
 
-#To check if array is sorted or Not
+"""
+Checks if an array is sorted
+Compares if one element is greater than the next one, returns False immediately, else goes through all elements and returns True
+"""
 def is_sorted(a, mode, rev):
     method = determine_type(mode)
     n = len(a)
@@ -19,7 +22,9 @@ def is_sorted(a, mode, rev):
 
     return True
 
-#To generate permutation of an array
+"""
+Randomises the array
+"""
 def shuffle(arr):
     n = len(arr)
     for i in range(0,n):
