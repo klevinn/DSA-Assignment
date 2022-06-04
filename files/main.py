@@ -38,9 +38,8 @@ Done Functions;
         -Similar to another search function (No use of implementation)
     -Tim Sort.
         -Algorithm for .sort() in Python
-        -Involves Searches Learnt in Syllabus (Merely just combining the two)
-    -Intro Sort
-        -Involves Searches Learnt in Syllabus (Merely just combining the two)
+    -Intra Sort
+        -No time, also involves searches learnt before , however implementation is advanced
 
 Error Handling :
 All menus - Disallow any input that is not an available option
@@ -236,7 +235,7 @@ def main():
                 else:
                     print("\n\u001b[33mReturning to main menu...\u001b[0m")
 
-        elif (choice == "EasterEgg"):
+        elif (choice.lower() == "easteregg"):
             display_records(db)
             valid = 1
             secChoice = inputValue("\n\u001b[7mWhat would you like to do? \u001b[0m ", valid, menu(5.1))

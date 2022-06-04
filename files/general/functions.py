@@ -126,6 +126,7 @@ def menu(stage):
         print("1.", menu[0][0])
         print("2.", menu[0][1])
         print("X.", menu[0][2])
+        print("\nEasterEgg. ???")
         print("\n========================\n")
         return {1:"\n\u001b[33mDisplaying Records... \u001b[0m", "X":"\n\u001b[31mExitting Application... \u001b[0m\n", 2:"\n\u001b[33mRecords Settings... \u001b[0m", "EASTEREGG":"\n\u001b[33mDisplaying Easter Egg Sorts... \u001b[0m"}
     
@@ -816,7 +817,7 @@ def slow_sorting(db, valid, mode):
 
     elif (mode == 2):
         upd = update_input(valid, "\n\u001b[31mThis sort may remove elements from the list. Are you sure you want to do this? (Y/N)\u001b[0m\n")
-        if (upd == "X"):
+        if (upd.upper() == "N"):
             return
     
         db = stalinSort(db, choice, asc)
