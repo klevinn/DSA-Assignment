@@ -17,10 +17,11 @@ Done Functions;
     -Tree Sort Function
     -Gnome Sort Function
     -Stalin Sort Function
-    -Bozo Sort Function
+    -Bogo Sort Function
     -Sleep Sort Function
     -Slow Sort Function
     -Cocktail Shaker Sort Function
+    -Radix Sort Function
 - Advanced Search (https://stackabuse.com/search-algorithms-in-python/)
     -Jump Search Function
     -Exponential Search Function
@@ -33,8 +34,6 @@ Done Functions;
 - Extras 
     - UI (Coloring)
 - Dropped Features
-    -Raditz Sort.
-        -Only good time complexity for large amount of data
     -Interpolation Search.
         -Similar to another search function (No use of implementation)
     -Tim Sort.
