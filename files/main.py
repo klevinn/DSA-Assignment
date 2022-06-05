@@ -4,7 +4,28 @@ from general.functions import *
 
 """
 Comments
-#Formatting 
+
+References:
+https://www.programiz.com/dsa/sorting-algorithm
+https://stackabuse.com/search-algorithms-in-python/
+https://www.geeksforgeeks.org/pancake-sorting/
+https://www.geeksforgeeks.org/comb-sort/
+https://www.geeksforgeeks.org/gnome-sort-a-stupid-one/
+https://github.com/gustavo-depaula/stalin-sort
+https://www.geeksforgeeks.org/python-program-for-bogosort-or-permutation-sort/
+https://gist.github.com/maxcountryman/1035597
+https://ispycode.com/Python/Sorting-examples/Sleep-Sort
+https://www.geeksforgeeks.org/sort-the-array-using-slow-sort/
+https://www.w3resource.com/python-exercises/data-structures-and-algorithms/python-search-and-sorting-exercise-14.php
+https://www.simplilearn.com/tutorials/data-structure-tutorial/shell-sort#:~:text=The%20Time%20Complexity%20of%20the%20Shell%20Sort%20Algorithm&text=Shell%20sort's%20worst%2Dcase%20complexity,)%2C%20or%20something%20in%20between.
+https://medium.com/karuna-sehgal/an-introduction-to-bucket-sort-62aa5325d124
+https://stackabuse.com/radix-sort-in-python/
+https://www.geeksforgeeks.org/jump-search/
+https://en.wikipedia.org/wiki/Heapsort
+https://en.wikipedia.org/wiki/Shellsort
+https://www.simplilearn.com/tutorials/data-structure-tutorial/radix-sort
+https://medium.com/basecs/counting-linearly-with-counting-sort-cd8516ae09b3
+https://stackabuse.com/counting-sort-in-python/
 
 Done Functions;
 - All Required Functions
@@ -22,7 +43,7 @@ Done Functions;
     -Slow Sort Function
     -Cocktail Shaker Sort Function
     -Radix Sort Function
-- Advanced Search (https://stackabuse.com/search-algorithms-in-python/)
+- Advanced Search 
     -Jump Search Function
     -Exponential Search Function
     -Binary Tree Search Function

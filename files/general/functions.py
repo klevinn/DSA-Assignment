@@ -739,18 +739,19 @@ def search(db, mode):
                     print("If you want to update the respective record, search for the pax number / package name and edit the respective record\u001b[0m\n")
 
             else:
-                valid = 1
-                while (valid):
-                    num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
-                    if (num != '') and (not (isinstance(num, int))):
-                        print("\n\u001b[31mInvalid Input\u001b[0m\n")
-                    elif (isinstance(num, int)) and (num > len(results)):
-                        print("\n\u001b[31mPlease select one of the options\u001b[0m\n")
-                    elif (num == ''):
-                        return
-                    else:
-                        break
                 if (choice == 3):
+                    valid = 1
+                    while (valid):
+                        num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
+                        if (num != '') and (not (isinstance(num, int))):
+                            print("\n\u001b[31mInvalid Input\u001b[0m\n")
+                        elif (isinstance(num, int)) and (num > len(results)):
+                            print("\n\u001b[31mPlease select one of the options\u001b[0m\n")
+                        elif (num == ''):
+                            return
+                        else:
+                            break
+
                     update = question("\u001b[7mWhat would you like to update the number to? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                     if (update != ''):
                         db[list(results.keys())[num-1]].set_paxnum(update)
