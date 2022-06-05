@@ -466,7 +466,7 @@ def listingFunc(db,valid, tertChoice):
     ranje = listing(valid)
     db = countingSort(db, tertChoice, 1)
     resultslist = []
-    invalid = 0
+    invalid1, invalid2 = 0, 0
 
     for i in range(len(ranje)):
         results = binarySearch(db,ranje[i],tertChoice+2)
@@ -478,7 +478,7 @@ def listingFunc(db,valid, tertChoice):
                     results = linearSearch(db, ranje[i],'listCost1')
             
             if (len(results) == 0):
-                invalid = 1
+                invalid1 = 1
 
         else:
             if(len(results) == 0):
@@ -488,22 +488,36 @@ def listingFunc(db,valid, tertChoice):
                     results = linearSearch(db, ranje[i],'listCost2')
                 
                 if (len(results) == 0):
-                    invalid = 1
+                    invalid2 = 1
 
         
         resultslist.append(results)
     
-    if (invalid):
+
+    if (invalid1) and (invalid2):
         print("\n\u001b[31;1m0 Results found!")
         print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
 
     else:
-        lowestInd = min(resultslist[0])
-        highestInd = max(resultslist[1])
-        if (highestInd > 0):
+        if (invalid1):
+            lowestInd = None
+            highestInd = max(resultslist[1])
+        elif (invalid2):
+            highestInd = None
+            lowestInd = min(resultslist[0])
+        else:
+            lowestInd = min(resultslist[0])
+            highestInd = max(resultslist[1])
+        
+        if (highestInd >= 0):
             highestInd += 1
         elif (highestInd == -1):
             highestInd = None
+        
+        if (lowestInd == None) and (highestInd == None):
+            print("\n\u001b[31;1m0 Results found!")
+            print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
+            return
 
         headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
         data = []
@@ -562,7 +576,7 @@ def search(db, mode):
             print("\u001b[32mSort Complete!\u001b[0m")
         
         if (choice == 1):
-            keyword = question("\n\u001b[7mEnter keyword: \u001b[0m ", valid, "str")
+            keyword = question("\n\u001b[7mEnter keyword: \u001b[0m ", valid, "str").strip()
         else:
             addmenu()
             while True:
@@ -635,6 +649,8 @@ def search(db, mode):
                     num = question("\u001b[7mUse which row to indicate & Who would you like to edit? (Leave blank if not wanted): \u001b[0m ", valid, "int")
                     if (num != '') and (not isinstance(num, int)):
                         print("\n\u001b[31mInvalid Input\u001b[0m\n")
+                    elif (isinstance(num, int)) and (num > len(results)):
+                        print("\n\u001b[31mPlease select one of the options\u001b[0m\n")
                     elif (num == ''):
                         return
                     else:
@@ -720,8 +736,10 @@ def search(db, mode):
                 valid = 1
                 while (valid):
                     num = question("\u001b[7mWho would you like to edit? (Use which row to indicate & Leave blank if not wanted): \u001b[0m ", valid, "int")
-                    if (num != ''):
+                    if (num != '') and (not (isinstance(num, int))):
                         print("\n\u001b[31mInvalid Input\u001b[0m\n")
+                    elif (isinstance(num, int)) and (num > len(results)):
+                        print("\n\u001b[31mPlease select one of the options\u001b[0m\n")
                     elif (num == ''):
                         return
                     else:

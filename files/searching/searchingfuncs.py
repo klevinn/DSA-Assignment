@@ -22,19 +22,19 @@ def linearSearch(arr, target, mode):
                     ind[i] = arr[i]
         
         if (mode == 'listNum1'):
-            if (arr[i].get_paxnum() > target):
+            if (arr[i].get_paxnum() >= target):
                 ind[i] = arr[i]
                 return ind
         elif (mode == 'listNum2'):
-            if (arr[-(i+1)].get_paxnum() < target):
+            if (arr[-(i+1)].get_paxnum() <= target):
                 ind[-(i+1)] = arr[-(i+1)]
                 return ind
         elif (mode == 'listCost1'):
-            if (arr[i].get_packcost() > target):
+            if (arr[i].get_packcost() >= target):
                 ind[i] = arr[i]
                 return ind #returning instantly shld get the next highest from the target
         elif (mode == 'listCost2'):
-            if (arr[-(i+1)].get_packcost() < target):
+            if (arr[-(i+1)].get_packcost() <= target):
                 ind[-(i+1)] = arr[-(i+1)]
                 return ind #returning instantly shld get the next highest from the target
     
