@@ -418,7 +418,7 @@ def question(question, valid, itype):
                 x = float(input(question))
                 return x
         except:
-            if (itype == "int"):
+            if (itype == "int") and (x == ''):
                 return x
             print("\n\u001b[31mInvalid Input \u001b[0m\n")
 
@@ -668,15 +668,16 @@ def search(db, mode):
                     update = ''
                     while True:
                         try:
-                            package = int(input("\u001b[7mWhat would you like to update the Package To (Leave blank if not wanted): \u001b[0m "))
+                            package = input("\u001b[7mWhat would you like to update the Package To (Leave blank if not wanted): \u001b[0m ")
+                            if package.strip() == '':
+                                break
+                            package = int(package)
                             if (package > 4) or (package < 1):
                                 print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                             else:
                                 update = "Valid"
                                 break
                         except:
-                            if (package == 1): #returns 1 when left blank
-                                break
                             print("\n\u001b[31mPlease enter a valid option \u001b[0m\n ")
                     
                     if (update):
