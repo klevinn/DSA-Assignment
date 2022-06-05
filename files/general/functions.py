@@ -500,15 +500,25 @@ def listingFunc(db,valid, tertChoice):
 
     else:
         if (invalid1):
-            lowestInd = None
             highestInd = max(resultslist[1])
+            lowestInd = highestInd
         elif (invalid2):
             highestInd = None
             lowestInd = min(resultslist[0])
+            highestInd = lowestInd
         else:
             lowestInd = min(resultslist[0])
             highestInd = max(resultslist[1])
+        print(resultslist)
+        print(highestInd, lowestInd)
+
+        if (lowestInd == highestInd):
+            print("Number 1")
+            print("\n\u001b[31;1m0 Results found!")
+            print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
+            return
         
+
         if (lowestInd):
             if (lowestInd == 0):
                 lowestInd = None
@@ -519,10 +529,6 @@ def listingFunc(db,valid, tertChoice):
             elif (highestInd == -1):
                 highestInd = None
         
-        if (not lowestInd) and (not highestInd):
-            print("\n\u001b[31;1m0 Results found!")
-            print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
-            return
 
         headers = ["Customer Name", "Package Name", "Number of Pax", "Cost per Pax(S$)"]
         data = []
