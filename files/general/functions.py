@@ -509,11 +509,8 @@ def listingFunc(db,valid, tertChoice):
         else:
             lowestInd = min(resultslist[0])
             highestInd = max(resultslist[1])
-        print(resultslist)
-        print(highestInd, lowestInd)
 
         if (lowestInd == highestInd):
-            print("Number 1")
             print("\n\u001b[31;1m0 Results found!")
             print(f"Entered Range: {ranje[0]}-{ranje[1]}\u001b[0m")
             return
