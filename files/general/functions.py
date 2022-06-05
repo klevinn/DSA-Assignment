@@ -556,7 +556,7 @@ def search(db, mode):
     #Choices 1 and 2 deal with String Inputs while 3 and 4 deal with numeric input
     elif (choice < 3):
         if (mode > 1) and (mode != 6): #Binary search tree is option 6, not needed sorting
-            quickSort(db, 0, len(db)-1, choice, 1)
+            heapSort(db, choice, 1)
             print("\u001b[1mThis Search Requires Sorting!")
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")
@@ -678,7 +678,7 @@ def search(db, mode):
 
     else:
         if (mode > 1) and (mode != 6):
-            quickSort(db, 0, len(db)-1, choice, 1)
+            db = countingSort(db, choice-2, 1)
             print("\u001b[1mThis Search Requires Sorting!")
             print("The Database will be sorted based on the category you searched by!\u001b[0m")
             print("\u001b[32mSort Complete!\u001b[0m")

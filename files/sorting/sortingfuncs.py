@@ -14,6 +14,7 @@ method() function basically gets the value from the object see in shortenfunc.py
 
 n is the input size (len of array)
 k is the greatest number (counting sort)
+d is the number of places.
 """
 """
 Bubble Sort Function
@@ -699,9 +700,9 @@ def bucketSort(array, mode, rev):
 
 """
 RaditzSort (Only paxnum is implemented, and reverse uses .reverse())
-    Best time complexity: O(n+k)
-    Worst time complexity: O(n+k)
-    Average time complexity: O(n+k)
+    Best time complexity: O(d(n+k))
+    Worst time complexity: O(d(n+k))
+    Average time complexity: O(d(n+k))
 
 Counting Sort using Places, such as ones, tens, hundreds
 
