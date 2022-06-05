@@ -464,7 +464,7 @@ Then we derive the index and display the list from the 2 indexes derived
 """
 def listingFunc(db,valid, tertChoice):
     ranje = listing(valid)
-    insertionSort(db,tertChoice+2,1)
+    db = countingSort(db, tertChoice, 1)
     resultslist = []
     invalid = 0
 
