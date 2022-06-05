@@ -38,8 +38,8 @@ Done Functions;
         -Similar to another search function (No use of implementation)
     -Tim Sort.
         -Algorithm for .sort() in Python
-    -Intra Sort
-        -No time, also involves searches learnt before , however implementation is advanced
+    -Intro Sort
+        -No time, also involves sorts learnt before , however implementation is advanced
 
 Error Handling :
 All menus - Disallow any input that is not an available option
@@ -51,7 +51,7 @@ def main():
     choice = ''
     while (choice != 'X') and (choice != 'x'):
         db = open_pickles()
-        logs = menu(1)
+        logs = menu(1, db=db)
         while (True):
             choice = input("\u001b[7mWhat would you like to do? \u001b[0m ")
             try: 

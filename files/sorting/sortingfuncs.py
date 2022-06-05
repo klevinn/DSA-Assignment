@@ -11,6 +11,9 @@ mode = the type of sorting to be done (Customer Name, Package Name, Number of Pa
 rev = 1 if ascending, 2 if descending
 
 method() function basically gets the value from the object see in shortenfunc.py in the general folder
+
+n is the input size (len of array)
+k is the greatest number (counting sort)
 """
 """
 Bubble Sort Function
@@ -709,12 +712,15 @@ So we look at ones place first, create a count list based on that, then sort the
 def radixSort(array, mode, rev):
     # Get maximum element
     maxElemInd = findMax(array, len(array), mode+2, 1)
-    maxElement = array[maxElemInd].get_paxnum()
+    if (mode == 1):
+        maxElement = array[maxElemInd].get_paxnum()
+    else:
+        maxElement = round(array[maxElemInd].get_packcost() * 100)
 
     # Apply counting sort to sort elements based on place value.
     place = 1
     while (maxElement // place > 0):
-        countingSort_raditz(array, place)
+        countingSort_raditz(array, place, mode, maxElement)
         place *= 10
     
     if (rev != 1):

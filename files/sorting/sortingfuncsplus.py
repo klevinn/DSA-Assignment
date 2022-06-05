@@ -152,24 +152,17 @@ Raditz Sort Functions : Counting Sort by Place
 Just Counting Sort algo, but divides it by the place to get the numbers in the ones, tens, hundreds
 
 """
-def countingSort_raditz(array,place):
+def countingSort_raditz(array,place, mode, maxelem):
     size = len(array)
     output = [0] * size
-    newarr = [] 
-    for i in range(len(array)):
-        # if (mode == 1):
-        newarr.append(array[i].get_paxnum())
-        # else:
-        #     newarr.append(array[i].get_packcost())
-    
-    greatest = round(max(newarr))
+    greatest = maxelem
     count = [0] * (greatest + 1)
 
     for i in range(0, size):
-        # if (mode == 1):
-        index = array[i].get_paxnum() // place
-        # else:
-        #     index = array[i].get_packcost() // place
+        if (mode == 1):
+            index = array[i].get_paxnum() // place
+        else:
+            index = round(array[i].get_packcost() * 100) // place
 
         count[index % 10] += 1
     
@@ -177,34 +170,20 @@ def countingSort_raditz(array,place):
         count[i] += count[i - 1]
     
     i = size - 1
-    #Ascending
-    # if (rev == 1):
+
     while (i >= 0):
-        # if (mode == 1):
-        index = array[i].get_paxnum() // place
-        output[count[index % 10] - 1] = array[i]
-        count[index % 10] -= 1
-        # else:
-        #     index = array[i].get_packcost() // place
-        #     output[count[index % 10] - 1] = array[i]
-        #     count[index % 10] -= 1
+        if (mode == 1):
+            index = array[i].get_paxnum() // place
+            output[count[index % 10] - 1] = array[i]
+            count[index % 10] -= 1
+        else:
+            index = round(array[i].get_packcost() * 100) // place
+            output[count[index % 10] - 1] = array[i]
+            count[index % 10] -= 1
 
         i -= 1
         
 
-    # else:
-    #     #Descending
-    #     while (i >= 0):
-    #         if (mode == 1):
-    #             index = array[i].get_paxnum() // place
-    #             output[-(count[index % 10])] = array[i]
-    #             count[index % 10] -= 1
-    #         else:
-    #             index = array[i].get_packcost() // place
-    #             output[-(count[index % 10])] = array[i]
-    #             count[index % 10] -= 1
-            
-    #         i -= 1
 
     for i in range(0, size):
         array[i] = output[i]

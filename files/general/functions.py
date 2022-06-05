@@ -94,13 +94,13 @@ def display_records_search(results):
     print(tabulate(data, headers=headers, tablefmt="grid", floatfmt=".2f"))
 
 #Menu
-def menu(stage): 
+def menu(stage, db=None): 
     #Additional functions for staff members
     additional = ["Add a Record", "Update a Record", "Delete a Record"]
 
     menu = [["Display all Records", "Records Settings", "Exit Application", "Return To Main Menu"],
 
-    ["Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Sort Records using Bucket Sort(Only Integers)", "Sort Records using Radix Sort (Only Pax number)"],
+    ["Sort record using Bubble sort", "Sort record using Selection sort", "Sort records using Insertion sort","Sort Records using Merge Sort","Sort Records using Quick Sort", "Sort Records using Counting Sort (Only Integers)", "Sort Records using Shell Sort", "Sort Records using Pancake Sort", "Sort Records using Comb Sort", "Sort Records using Cocktail Shaker Sort", "Sort Records using Tree Sort" ,"Sort Records using Heap Sort", "Sort Records using Bucket Sort(Only Integers)", "Sort Records using Radix Sort (Only Integers)"],
 
     ["Search record using Linear Search and update record", "Search record using Binary Search and update record", "Search record using Jump Search and update record", "Search record using Fibonacci Search and update record", "Search record using Exponential Search and update record", "Search record using Binary Search Tree and update Record"],
 
@@ -123,6 +123,7 @@ def menu(stage):
     #Stage 1 : The Main Menu. Asking Users if they want to display records, deal with records settings or Close Applicationd
     if (stage == 1):
         print("\n========= Menu =========\n")
+        print(f"Number Of Records : {len(db)}\n")
         print("1.", menu[0][0])
         print("2.", menu[0][1])
         print("X.", menu[0][2])
@@ -756,10 +757,10 @@ def sorting(db, valid, mode):
     asc = inputValue("\u001b[7mAscending or Descending? \u001b[0m ", valid, menu("asc"))
     if (asc == "X"):
         return
-    if(mode == 6) or (mode == 13):
+    if(mode == 6) or (mode == 13) or (mode == 14):
         choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.1))
-    elif (mode == 14):
-        choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.2))
+    # elif (mode == 14):
+    #     choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3.2))
     else:
         choice = inputValue("\u001b[7mWhat would you like to sort by? \u001b[0m ",valid, menu(3))
     if (choice == "X"):
