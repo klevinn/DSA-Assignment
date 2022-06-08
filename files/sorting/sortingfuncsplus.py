@@ -152,7 +152,7 @@ Raditz Sort Functions : Counting Sort by Place
 Just Counting Sort algo, but divides it by the place to get the numbers in the ones, tens, hundreds
 
 """
-def countingSort_raditz(array,place, mode, maxelem):
+def countingSort_raditz(array,place, mode, maxelem, rev):
     size = len(array)
     output = [0] * size
     greatest = maxelem
@@ -166,8 +166,12 @@ def countingSort_raditz(array,place, mode, maxelem):
 
         count[index % 10] += 1
     
-    for i in range(1, len(count)):
-        count[i] += count[i - 1]
+    if (rev == 1):
+        for i in range(1, len(count)):
+            count[i] += count[i - 1]
+    else:
+        for i in range(len(count)-2,-1,-1):
+            count[i] += count[i + 1]
     
     i = size - 1
 

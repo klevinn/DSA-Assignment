@@ -721,8 +721,6 @@ def radixSort(array, mode, rev):
     # Apply counting sort to sort elements based on place value.
     place = 1
     while (maxElement // place > 0):
-        countingSort_raditz(array, place, mode, maxElement)
+        countingSort_raditz(array, place, mode, maxElement, rev)
         place *= 10
     
-    if (rev != 1):
-        array.reverse()
