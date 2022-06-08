@@ -1,4 +1,4 @@
-# Hotel Records Sstem
+# Hotel Records System
 
 <h1 align="center">
     <img src="assets/nyplogo.png" style="width: 50%; height: auto;" alt="NYP logo">
@@ -40,27 +40,27 @@ This project requires me to implement data structures & algorithms learnt in cla
 ### Algorithms Implemented
 
 - Sorting Algorithms ([sortingfuncs.py](files/sorting/sortingfuncs.py))
-    -Counting Sort 
-    -Shell Sort 
-    -Comb Sort 
-    -Heap Sort 
-    -Pancake Sort 
-    -Tree Sort 
-    -Cocktail Shaker Sort 
-    -Radix Sort 
+    - Counting Sort 
+    - Shell Sort 
+    - Comb Sort 
+    - Heap Sort 
+    - Pancake Sort 
+    - Tree Sort 
+    - Cocktail Shaker Sort 
+    - Radix Sort 
 
 - Slow Sorting Algorithms ([slowsortingfuncs.py](files/sorting/slowsortingfuncs.py))
-    -Gnome Sort 
-    -Stalin Sort 
-    -Bogo Sort 
-    -Sleep Sort 
-    -Slow Sort 
+    - Gnome Sort 
+    - Stalin Sort 
+    - Bogo Sort 
+    - Sleep Sort 
+    - Slow Sort 
 
 - Search Algorithms ([searchingfuncs.py](files/searching/searchingfuncs.py))
-    -Jump Search 
-    -Exponential Search 
-    -Binary Tree Search 
-    -Fibonacci Search 
+    - Jump Search 
+    - Exponential Search 
+    - Binary Tree Search 
+    - Fibonacci Search 
 
 - Data Structures
     - Binary Search Tree ([binarysearchtree.py](files/tree/binarysearchtree.py))
